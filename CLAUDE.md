@@ -25,6 +25,7 @@
 ## 作業の進め方
 
 - **ブランチと PR**：作業はブランチで行い、PR にする。main へのマージは人が行う。
+- **PR を出す前の確認**：`pnpm typecheck`、`pnpm lint`、`pnpm test` がすべて通ることを確かめる（CI と同じ内容）。画面に関わる変更では、`pnpm test:e2e` も通す。
 - **コミットと PR の書き方**：日本語で書き、先頭に Conventional Commits の種別（`feat:` `fix:` `docs:` `chore:` など）を付ける。
 - **コミットの作成者**：`namihagi <43953318+namihagi@users.noreply.github.com>` にする。これはリポジトリのローカル設定に入っている。新しくクローンした環境では、コミットする前に `git config user.email` を確認する。
 - **言語**：ドキュメントは日本語で書く。コードの識別子は英語にし、データの値（港名、航路名など）は日本語にする。

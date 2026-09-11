@@ -18,7 +18,11 @@
       "Bash(gh pr view *)",
       "Bash(gh pr list *)",
       "Bash(gh pr checks *)",
-      "Bash(gh pr diff *)"
+      "Bash(gh pr diff *)",
+      "Bash(pnpm format)",
+      "Bash(pnpm test:e2e)",
+      "Bash(pnpm exec biome *)",
+      "Bash(pnpm exec playwright test *)"
     ],
     "deny": [
       "Bash(git push --force *)",
@@ -29,6 +33,20 @@
       "Bash(git push * main)",
       "Bash(git push origin HEAD:main *)",
       "Bash(gh pr merge *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; cd \"$CLAUDE_PROJECT_DIR\" && pnpm exec biome format --write --no-errors-on-unmatched \"$f\"; } >/dev/null 2>&1 || true",
+            "statusMessage": "Biome で整形中"
+          }
+        ]
+      }
     ]
   }
 }

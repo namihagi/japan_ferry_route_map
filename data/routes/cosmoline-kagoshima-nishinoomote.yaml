@@ -1,0 +1,15 @@
+id: cosmoline-kagoshima-nishinoomote
+name: 鹿児島～種子島航路
+operator: コスモライン
+vesselType: ferry
+status: operating
+officialUrl: https://cosmoline.jp/
+portsOfCall: [kagoshima-honko, nishinoomote]
+legs:
+  - from: kagoshima-honko
+    to: nishinoomote
+    osmWays: [92125672]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://cosmoline.jp/

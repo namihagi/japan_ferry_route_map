@@ -1,0 +1,15 @@
+id: tokashiki-ferry
+name: 泊～渡嘉敷航路（フェリーとかしき）
+operator: 渡嘉敷村
+vesselType: ferry
+status: operating
+officialUrl: https://www.vill.tokashiki.okinawa.jp/
+portsOfCall: [naha-tomari, tokashiki]
+legs:
+  - from: naha-tomari
+    to: tokashiki
+    osmWays: [48290060]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.vill.tokashiki.okinawa.jp/

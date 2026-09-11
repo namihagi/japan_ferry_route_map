@@ -1,0 +1,15 @@
+id: kyusho-ferry-shimabara-kumamoto
+name: 島原～熊本航路
+operator: 九商フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.kyusho-ferry.co.jp/
+portsOfCall: [shimabara, kumamoto]
+legs:
+  - from: shimabara
+    to: kumamoto
+    osmWays: [921394967]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.kyusho-ferry.co.jp/

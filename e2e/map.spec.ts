@@ -67,16 +67,18 @@ test("推定形状の航路をクリックすると、推定の線であるこ�
 });
 
 test("船種で絞り込むと、その船種の航路が地図から消える", async ({ page }) => {
-  const rendered = () =>
-    page.evaluate(
-      () =>
-        window.ferryMap?.queryRenderedFeatures({ layers: ["routes-osm", "routes-estimated"] })
-          .length,
-    );
+  const renderedVesselTypes = () =>
+    page.evaluate(() => [
+      ...new Set(
+        window.ferryMap
+          ?.queryRenderedFeatures({ layers: ["routes-osm", "routes-estimated"] })
+          .map((f) => String(f.properties.vesselType)),
+      ),
+    ]);
   await jumpTo(page, [136.5, 34.5], 5);
-  expect(await rendered()).toBeGreaterThan(0);
+  expect(await renderedVesselTypes()).toContain("ferry");
 
   await page.getByRole("checkbox", { name: "フェリー" }).uncheck();
-  await expect(page.locator(".panel__count")).toContainText("のうち 0 航路");
-  await expect.poll(rendered).toBe(0);
+  await expect(page.locator(".panel__count")).toContainText("航路のうち");
+  await expect.poll(renderedVesselTypes).not.toContain("ferry");
 });

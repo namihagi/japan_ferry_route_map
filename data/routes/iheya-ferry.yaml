@@ -1,0 +1,15 @@
+id: iheya-ferry
+name: 運天～伊平屋航路
+operator: 伊平屋村
+vesselType: ferry
+status: operating
+officialUrl: https://www.vill.iheya.okinawa.jp/
+portsOfCall: [unten, iheya]
+legs:
+  - from: unten
+    to: iheya
+    osmWays: [461040328]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.vill.iheya.okinawa.jp/

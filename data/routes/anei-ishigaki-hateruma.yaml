@@ -1,0 +1,14 @@
+id: anei-ishigaki-hateruma
+name: 波照間航路
+operator: 安栄観光
+vesselType: highspeed
+status: operating
+officialUrl: https://aneikankou.co.jp/
+portsOfCall: [ishigaki, hateruma]
+legs:
+  - from: ishigaki
+    to: hateruma
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://aneikankou.co.jp/

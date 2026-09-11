@@ -1,0 +1,16 @@
+id: kyushu-yusen-karatsu-indoji
+name: 唐津～印通寺航路
+operator: 九州郵船
+vesselType: ferry
+status: operating
+officialUrl: https://www.kyu-you.co.jp/
+portsOfCall: [karatsu, indoji]
+legs:
+  - from: karatsu
+    to: indoji
+    osmWays: [1008128643]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.kyu-you.co.jp/
+    - https://www.kyu-you.co.jp/route/

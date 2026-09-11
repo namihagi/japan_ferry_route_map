@@ -1,0 +1,15 @@
+id: anei-ishigaki-ohara
+name: 大原航路
+operator: 安栄観光
+vesselType: highspeed
+status: operating
+officialUrl: https://aneikankou.co.jp/
+portsOfCall: [ishigaki, ohara]
+legs:
+  - from: ishigaki
+    to: ohara
+    osmWays: [43558320, 462247399]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://aneikankou.co.jp/

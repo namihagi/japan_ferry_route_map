@@ -1,0 +1,54 @@
+{
+  "type": "Feature",
+  "properties": {
+    "from": "hateruma",
+    "to": "ishigaki",
+    "fromCoord": [
+      123.7658,
+      24.0673
+    ],
+    "toCoord": [
+      124.1555,
+      24.3365
+    ],
+    "method": "corridor-grid-v1",
+    "stage": "single",
+    "cellSizeM": 40,
+    "snapFromM": 0.0,
+    "snapToM": 0.0,
+    "landCrossingM": 0.0
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        123.7658,
+        24.0673
+      ],
+      [
+        123.765766,
+        24.067455
+      ],
+      [
+        123.766949,
+        24.069973
+      ],
+      [
+        123.997669,
+        24.255593
+      ],
+      [
+        124.140044,
+        24.334013
+      ],
+      [
+        124.155426,
+        24.336531
+      ],
+      [
+        124.1555,
+        24.3365
+      ]
+    ]
+  }
+}

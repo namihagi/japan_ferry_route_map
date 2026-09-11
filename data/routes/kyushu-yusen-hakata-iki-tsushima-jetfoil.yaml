@@ -1,0 +1,20 @@
+id: kyushu-yusen-hakata-iki-tsushima-jetfoil
+name: 博多～壱岐～対馬航路（ジェットフォイル）
+operator: 九州郵船
+vesselType: highspeed
+status: operating
+officialUrl: https://www.kyu-you.co.jp/
+portsOfCall: [hakata, ashibe, izuhara]
+legs:
+  - from: hakata
+    to: ashibe
+    osmWays: [297644928]
+  - from: ashibe
+    to: izuhara
+    osmWays: [1073099430]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.kyu-you.co.jp/
+    - https://www.kyu-you.co.jp/route/
+note: 壱岐は便によって郷ノ浦港に寄港する。

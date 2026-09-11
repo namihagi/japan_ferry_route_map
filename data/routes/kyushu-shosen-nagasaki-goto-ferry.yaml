@@ -1,0 +1,19 @@
+id: kyushu-shosen-nagasaki-goto-ferry
+name: 長崎～五島航路（フェリー）
+operator: 九州商船
+vesselType: ferry
+status: operating
+officialUrl: https://kyusho.co.jp/
+portsOfCall: [nagasaki, naraoo, fukue]
+legs:
+  - from: nagasaki
+    to: naraoo
+    osmWays: [838193413]
+  - from: naraoo
+    to: fukue
+    osmWays: [838193413]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://kyusho.co.jp/
+    - https://kyusho.co.jp/routes

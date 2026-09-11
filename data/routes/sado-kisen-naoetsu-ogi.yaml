@@ -1,0 +1,15 @@
+id: sado-kisen-naoetsu-ogi
+name: 直江津～小木航路
+operator: 佐渡汽船
+vesselType: ferry
+status: operating
+officialUrl: https://www.sadokisen.co.jp/
+portsOfCall: [naoetsu, ogi]
+legs:
+  - from: naoetsu
+    to: ogi
+    osmWays: [550415130]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.sadokisen.co.jp/

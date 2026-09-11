@@ -1,0 +1,15 @@
+id: anei-ishigaki-hatoma
+name: 鳩間航路
+operator: 安栄観光
+vesselType: highspeed
+status: operating
+officialUrl: https://aneikankou.co.jp/
+portsOfCall: [ishigaki, hatoma]
+legs:
+  - from: ishigaki
+    to: hatoma
+    osmWays: [450351445]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://aneikankou.co.jp/

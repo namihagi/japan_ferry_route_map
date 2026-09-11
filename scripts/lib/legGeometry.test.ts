@@ -9,13 +9,10 @@ const C: Position = [133.2, 34.0];
 
 describe("stitchWays", () => {
   it("逆向きの way を反転し、つなぎ目の重複点を除いてつなぐ", () => {
-    const line = stitchWays(
-      [
-        [B, A],
-        [C, B],
-      ],
-      A,
-    );
+    const line = stitchWays([
+      [B, A],
+      [C, B],
+    ]);
     expect(line).toEqual([A, B, C]);
   });
 });
@@ -50,6 +47,13 @@ describe("buildLegGeometry", () => {
     expect(first[first.length - 1]?.[0]).toBeCloseTo(133.1, 3);
     expect(second[0]?.[0]).toBeCloseTo(133.1, 3);
     expect(second[second.length - 1]).toEqual(C);
+  });
+
+  it("1本の way を途中の寄港地で区切るとき、区間が way と逆向きでも切り出せる", () => {
+    // way は C→A の向き。区間 B→C は way の途中から始まる
+    const leg = buildLegGeometry([[C, B, A]], B, C);
+    expect(leg[0]?.[0]).toBeCloseTo(133.1, 3);
+    expect(leg[leg.length - 1]).toEqual(C);
   });
 
   it("到着港側から描かれた way も、出発港から始まる向きにそろえる", () => {

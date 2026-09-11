@@ -1,0 +1,16 @@
+id: tanegashima-yakushima-highspeed-kagoshima-miyanoura
+name: 鹿児島～屋久島航路（トッピー・ロケット）
+operator: 種子屋久高速船
+vesselType: highspeed
+status: operating
+officialUrl: https://www.tykousoku.jp/
+portsOfCall: [kagoshima-honko, miyanoura]
+legs:
+  - from: kagoshima-honko
+    to: miyanoura
+    osmWays: [463880166]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.tykousoku.jp/
+note: 指宿経由の便は2026年4月1日から休止している。

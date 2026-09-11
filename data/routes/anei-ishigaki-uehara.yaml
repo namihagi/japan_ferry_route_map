@@ -1,0 +1,15 @@
+id: anei-ishigaki-uehara
+name: 上原航路
+operator: 安栄観光
+vesselType: highspeed
+status: operating
+officialUrl: https://aneikankou.co.jp/
+portsOfCall: [ishigaki, uehara]
+legs:
+  - from: ishigaki
+    to: uehara
+    osmWays: [47587064]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://aneikankou.co.jp/

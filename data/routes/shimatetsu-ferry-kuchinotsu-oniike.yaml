@@ -1,0 +1,15 @@
+id: shimatetsu-ferry-kuchinotsu-oniike
+name: 口之津～鬼池航路（島鉄フェリー）
+operator: 島原鉄道
+vesselType: ferry
+status: operating
+officialUrl: https://www.shimatetsu.co.jp/
+portsOfCall: [kuchinotsu, oniike]
+legs:
+  - from: kuchinotsu
+    to: oniike
+    osmWays: [411009793]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.shimatetsu.co.jp/

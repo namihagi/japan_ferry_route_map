@@ -1,0 +1,15 @@
+id: sado-kisen-niigata-ryotsu-jetfoil
+name: 新潟～両津航路（ジェットフォイル）
+operator: 佐渡汽船
+vesselType: highspeed
+status: operating
+officialUrl: https://www.sadokisen.co.jp/
+portsOfCall: [niigata, ryotsu]
+legs:
+  - from: niigata
+    to: ryotsu
+    osmWays: [38620645]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.sadokisen.co.jp/

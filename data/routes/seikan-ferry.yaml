@@ -1,0 +1,15 @@
+id: seikan-ferry
+name: 青森～函館航路
+operator: 青函フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.seikan-ferry.co.jp/
+portsOfCall: [aomori, hakodate]
+legs:
+  - from: aomori
+    to: hakodate
+    osmWays: [670675784]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.seikan-ferry.co.jp/

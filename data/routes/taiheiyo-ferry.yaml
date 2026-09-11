@@ -1,0 +1,18 @@
+id: taiheiyo-ferry
+name: 名古屋～仙台～苫小牧航路
+operator: 太平洋フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.taiheiyo-ferry.co.jp/
+portsOfCall: [nagoya, sendai, tomakomai]
+legs:
+  - from: nagoya
+    to: sendai
+    osmWays: [550415108]
+  - from: sendai
+    to: tomakomai
+    osmWays: [550415133]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.taiheiyo-ferry.co.jp/

@@ -1,0 +1,15 @@
+id: meimon-taiyo-ferry
+name: 大阪～新門司航路
+operator: 名門大洋フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.cityline.co.jp/
+portsOfCall: [osaka-nanko, shinmoji]
+legs:
+  - from: osaka-nanko
+    to: shinmoji
+    osmWays: [1355696240]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.cityline.co.jp/

@@ -1,0 +1,15 @@
+id: hankyu-izumiotsu-shinmoji
+name: 泉大津～新門司航路
+operator: 阪九フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.han9f.co.jp/
+portsOfCall: [izumiotsu, shinmoji]
+legs:
+  - from: izumiotsu
+    to: shinmoji
+    osmWays: [550415138]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.han9f.co.jp/

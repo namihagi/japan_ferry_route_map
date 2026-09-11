@@ -1,0 +1,15 @@
+id: hankyu-kobe-shinmoji
+name: 神戸～新門司航路
+operator: 阪九フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.han9f.co.jp/
+portsOfCall: [kobe-rokko, shinmoji]
+legs:
+  - from: kobe-rokko
+    to: shinmoji
+    osmWays: [1355138062]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.han9f.co.jp/

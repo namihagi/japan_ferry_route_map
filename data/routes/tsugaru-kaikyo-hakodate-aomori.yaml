@@ -1,0 +1,15 @@
+id: tsugaru-kaikyo-hakodate-aomori
+name: 函館～青森航路
+operator: 津軽海峡フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.tsugarukaikyo.co.jp/
+portsOfCall: [hakodate, aomori]
+legs:
+  - from: hakodate
+    to: aomori
+    osmWays: [670676201]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.tsugarukaikyo.co.jp/

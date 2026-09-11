@@ -1,0 +1,15 @@
+id: tsugaru-kaikyo-muroran-aomori
+name: 室蘭～青森航路
+operator: 津軽海峡フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.tsugarukaikyo.co.jp/
+portsOfCall: [muroran, aomori]
+legs:
+  # OSM に航路の線がない（2026-09-11 時点）ため、推定形状を使う
+  - from: muroran
+    to: aomori
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.tsugarukaikyo.co.jp/

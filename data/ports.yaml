@@ -36,3 +36,138 @@
   name: 福田（小豆島）
   lon: 134.34463
   lat: 34.54346
+
+- id: maizuru
+  name: 舞鶴
+  lon: 135.3925
+  lat: 35.481
+
+- id: otaru
+  name: 小樽
+  lon: 141.017
+  lat: 43.1907
+
+- id: tsuruga
+  name: 敦賀
+  lon: 136.0729
+  lat: 35.6783
+
+- id: tomakomai-higashi
+  name: 苫小牧東
+  lon: 141.8187
+  lat: 42.6097
+
+- id: niigata
+  name: 新潟
+  lon: 139.0689
+  lat: 37.9381
+
+- id: akita
+  name: 秋田
+  lon: 140.0586
+  lat: 39.755
+
+- id: nagoya
+  name: 名古屋
+  lon: 136.8458
+  lat: 35.059
+
+- id: sendai
+  name: 仙台
+  lon: 141.0055
+  lat: 38.2736
+
+- id: tomakomai
+  name: 苫小牧
+  lon: 141.636
+  lat: 42.6378
+
+- id: oarai
+  name: 大洗
+  lon: 140.5751
+  lat: 36.3087
+
+- id: osaka-nanko
+  name: 大阪（南港）
+  lon: 135.42
+  lat: 34.628
+
+- id: beppu
+  name: 別府
+  lon: 131.5043
+  lat: 33.3047
+
+- id: kobe-rokko
+  name: 神戸（六甲アイランド）
+  lon: 135.283
+  lat: 34.6972
+
+- id: oita
+  name: 大分
+  lon: 131.5891
+  lat: 33.2461
+
+- id: shibushi
+  name: 志布志
+  lon: 131.0984
+  lat: 31.4621
+
+- id: izumiotsu
+  name: 泉大津
+  lon: 135.3962
+  lat: 34.5179
+
+- id: yokosuka
+  name: 横須賀
+  lon: 139.6787
+  lat: 35.2838
+
+- id: kobe-sannomiya
+  name: 神戸（三宮）
+  lon: 135.1994
+  lat: 34.6818
+
+- id: miyazaki
+  name: 宮崎
+  lon: 131.4585
+  lat: 31.9109
+
+- id: hachinohe
+  name: 八戸
+  lon: 141.507
+  lat: 40.5487
+
+- id: toyo
+  name: 東予
+  lon: 133.1179
+  lat: 33.9289
+
+- id: niihama
+  name: 新居浜
+  lon: 133.3327
+  lat: 33.9868
+
+- id: aomori
+  name: 青森
+  lon: 140.7166
+  lat: 40.845
+
+- id: hakodate
+  name: 函館
+  lon: 140.715
+  lat: 41.801
+
+- id: oma
+  name: 大間
+  lon: 140.898
+  lat: 41.5261
+
+- id: muroran
+  name: 室蘭
+  lon: 140.9765
+  lat: 42.3272
+
+- id: wakayama
+  name: 和歌山
+  lon: 135.1441
+  lat: 34.2176

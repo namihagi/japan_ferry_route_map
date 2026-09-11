@@ -1,0 +1,15 @@
+id: silver-ferry-hachinohe-tomakomai
+name: シルバーフェリー（八戸～苫小牧）
+operator: 川崎近海汽船
+vesselType: ferry
+status: operating
+officialUrl: https://www.silverferry.jp/
+portsOfCall: [hachinohe, tomakomai]
+legs:
+  - from: hachinohe
+    to: tomakomai
+    osmWays: [553228635]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.silverferry.jp/

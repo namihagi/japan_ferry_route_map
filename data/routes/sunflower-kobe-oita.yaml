@@ -1,0 +1,15 @@
+id: sunflower-kobe-oita
+name: 神戸～大分航路
+operator: 商船三井さんふらわあ
+vesselType: ferry
+status: operating
+officialUrl: https://www.ferry-sunflower.co.jp/
+portsOfCall: [kobe-rokko, oita]
+legs:
+  - from: kobe-rokko
+    to: oita
+    osmWays: [1355138061]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.ferry-sunflower.co.jp/

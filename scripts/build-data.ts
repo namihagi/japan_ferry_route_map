@@ -22,6 +22,10 @@ try {
   await mkdir(paths.publicDataDir, { recursive: true });
   await writeFile(join(paths.publicDataDir, PUBLIC_DATA_FILES.routes), JSON.stringify(data.routes));
   await writeFile(join(paths.publicDataDir, PUBLIC_DATA_FILES.ports), JSON.stringify(data.ports));
+  await writeFile(
+    join(paths.publicDataDir, PUBLIC_DATA_FILES.routeDetails),
+    JSON.stringify(data.routeDetails),
+  );
 
   const published = new Set(data.routes.features.map((f) => f.properties.routeId)).size;
   console.log(

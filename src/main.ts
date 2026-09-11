@@ -1,11 +1,50 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./style.css";
-import { Map as MapLibreMap, NavigationControl, setWorkerUrl } from "maplibre-gl";
+import {
+  type LngLat,
+  Map as MapLibreMap,
+  NavigationControl,
+  Popup,
+  setWorkerUrl,
+} from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
+import { PUBLIC_DATA_FILES, type RouteDetail } from "./domain/publicData.ts";
+import {
+  matchesFilter,
+  operatorsOf,
+  type RouteFilter,
+  routesByPort,
+  SHOW_ALL,
+  toFilterExpression,
+} from "./domain/routeFilter.ts";
 import { createBaseStyle, JAPAN_BOUNDS } from "./map/baseStyle.ts";
-import { addRouteLayers } from "./map/routeLayers.ts";
+import { addPortLayers, portIdsNear } from "./map/portLayers.ts";
+import {
+  addRouteLayers,
+  highlightRoutes,
+  routeIdsNear,
+  setRouteFilter,
+} from "./map/routeLayers.ts";
+import { createFilterPanel } from "./ui/filterPanel.ts";
+import { routeChoices, routeTicket } from "./ui/routeCards.ts";
+
+declare global {
+  interface Window {
+    /** E2E テストから地図の状態を調べるために公開している。 */
+    ferryMap?: MapLibreMap;
+  }
+}
 
 setWorkerUrl(workerUrl);
+
+const dataBaseUrl = `${import.meta.env.BASE_URL}data/`;
+const routeDetails = fetch(`${dataBaseUrl}${PUBLIC_DATA_FILES.routeDetails}`).then(
+  async (response) => {
+    if (!response.ok)
+      throw new Error(`航路の情報を読み込めませんでした（HTTP ${response.status}）`);
+    return (await response.json()) as RouteDetail[];
+  },
+);
 
 const map = new MapLibreMap({
   container: "map",
@@ -14,4 +53,69 @@ const map = new MapLibreMap({
   maxZoom: 17,
 });
 map.addControl(new NavigationControl({ showCompass: false }));
-map.on("load", () => addRouteLayers(map, `${import.meta.env.BASE_URL}data/`));
+window.ferryMap = map;
+
+map.on("load", async () => {
+  addRouteLayers(map, dataBaseUrl);
+  addPortLayers(map, dataBaseUrl);
+
+  const details = await routeDetails;
+  const byId = new Map(details.map((route) => [route.id, route]));
+  const byPort = routesByPort(details);
+  const portNames = new Map(
+    details.flatMap((route) => route.portsOfCall.map((p) => [p.id, p.name])),
+  );
+  let filter: RouteFilter = SHOW_ALL;
+
+  // 地図のクリックで閉じる処理は自前で行う（closeOnClick だと、別の航路を選んだ直後に閉じてしまう）
+  const popup = new Popup({
+    className: "ferry-popup",
+    maxWidth: "min(340px, 90vw)",
+    closeOnClick: false,
+  });
+  popup.on("close", () => highlightRoutes(map, null));
+
+  const open = (content: HTMLElement, at: LngLat, highlighted: string[]) => {
+    popup.setLngLat(at).setDOMContent(content).addTo(map);
+    highlightRoutes(map, highlighted);
+  };
+  const showRoute = (route: RouteDetail, at: LngLat) => open(routeTicket(route), at, [route.id]);
+  const showChoices = (heading: string, routes: RouteDetail[], at: LngLat) =>
+    open(
+      routeChoices(heading, routes, (route) => showRoute(route, at)),
+      at,
+      routes.map((route) => route.id),
+    );
+
+  const panel = createFilterPanel(operatorsOf(details), filter, (next) => {
+    filter = next;
+    setRouteFilter(map, toFilterExpression(filter));
+    panel.setVisibleCount(
+      details.filter((route) => matchesFilter(route, filter)).length,
+      details.length,
+    );
+    popup.remove();
+  });
+  panel.setVisibleCount(details.length, details.length);
+  document.body.append(panel.element);
+
+  map.on("click", (event) => {
+    const portId = portIdsNear(map, event.point)[0];
+    if (portId) {
+      const routes = (byPort.get(portId) ?? []).filter((route) => matchesFilter(route, filter));
+      showChoices(`${portNames.get(portId) ?? ""}に発着する航路`, routes, event.lngLat);
+      return;
+    }
+    const routes = routeIdsNear(map, event.point).flatMap((id) => byId.get(id) ?? []);
+    const [only] = routes;
+    if (only === undefined) popup.remove();
+    else if (routes.length === 1) showRoute(only, event.lngLat);
+    else showChoices(`この場所を通る航路（${routes.length}）`, routes, event.lngLat);
+  });
+
+  map.on("mousemove", (event) => {
+    const clickable =
+      portIdsNear(map, event.point).length > 0 || routeIdsNear(map, event.point).length > 0;
+    map.getCanvas().style.cursor = clickable ? "pointer" : "";
+  });
+});

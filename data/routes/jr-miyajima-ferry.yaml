@@ -1,0 +1,17 @@
+id: jr-miyajima-ferry
+name: 宮島航路
+operator: JR西日本宮島フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://jr-miyajimaferry.co.jp/
+portsOfCall: [miyajimaguchi, miyajima]
+legs:
+  - from: miyajimaguchi
+    to: miyajima
+    osmWays: [41961998]
+verification:
+  checkedOn: "2026-09-11"
+  sources:
+    - https://jr-miyajimaferry.co.jp/
+    - https://jr-miyajimaferry.co.jp/fare/
+note: 日中の一部の便は大鳥居に近づく「大鳥居便」として運航する。形状は通常便のもの。

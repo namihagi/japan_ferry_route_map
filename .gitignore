@@ -19,3 +19,6 @@ playwright-report/
 .claude/settings.local.json
 .DS_Store
 *.log
+
+# 生成した公開データ（pnpm data:build が作る）
+public/data/

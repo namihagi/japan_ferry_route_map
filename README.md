@@ -32,7 +32,21 @@
 
 ## 開発
 
-雛形を作成したあとに追記します。設計資料は次のとおりです。
+Node 24 と pnpm が必要です。pnpm のバージョンは `package.json` の `packageManager` で固定しています。pnpm 10 以降なら、自動でそのバージョンに切り替わります。
+
+```sh
+pnpm install
+pnpm dev          # 開発サーバー
+pnpm typecheck    # 型チェック
+pnpm lint         # リントと整形のチェック（pnpm format で自動修正）
+pnpm test         # ユニットテスト
+pnpm test:e2e     # ブラウザでの E2E テスト（初回は pnpm exec playwright install chromium）
+pnpm build        # dist/ にビルド
+```
+
+main にマージすると、GitHub Actions が GitHub Pages へ自動でデプロイします。
+
+設計資料は次のとおりです。
 
 - [`docs/spec.md`](docs/spec.md)：初版の仕様
 - [`CONTEXT.md`](CONTEXT.md)：用語集

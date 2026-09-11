@@ -1,0 +1,20 @@
+id: kyushu-yusen-hakata-iki-tsushima-ferry
+name: 博多～壱岐～対馬航路（フェリー）
+operator: 九州郵船
+vesselType: ferry
+status: operating
+officialUrl: https://www.kyu-you.co.jp/
+portsOfCall: [hakata, gonoura, izuhara]
+legs:
+  - from: hakata
+    to: gonoura
+    osmWays: [41424480]
+  - from: gonoura
+    to: izuhara
+    osmWays: [424078610]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.kyu-you.co.jp/
+    - https://www.kyu-you.co.jp/route/
+note: 壱岐は便によって芦辺港に寄港する。

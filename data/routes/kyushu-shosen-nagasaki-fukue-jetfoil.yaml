@@ -1,0 +1,16 @@
+id: kyushu-shosen-nagasaki-fukue-jetfoil
+name: 長崎～福江航路（ジェットフォイル）
+operator: 九州商船
+vesselType: highspeed
+status: operating
+officialUrl: https://kyusho.co.jp/
+portsOfCall: [nagasaki, fukue]
+legs:
+  - from: nagasaki
+    to: fukue
+    osmWays: [838193412]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://kyusho.co.jp/
+    - https://kyusho.co.jp/routes

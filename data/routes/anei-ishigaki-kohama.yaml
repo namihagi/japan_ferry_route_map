@@ -1,0 +1,15 @@
+id: anei-ishigaki-kohama
+name: 小浜航路
+operator: 安栄観光
+vesselType: highspeed
+status: operating
+officialUrl: https://aneikankou.co.jp/
+portsOfCall: [ishigaki, kohama]
+legs:
+  - from: ishigaki
+    to: kohama
+    osmWays: [450518268]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://aneikankou.co.jp/

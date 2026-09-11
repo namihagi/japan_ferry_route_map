@@ -21,16 +21,22 @@ function squaredDistance(a: Position, b: Position): number {
 
 /**
  * 複数の way を1本の線につなぐ。各 way の向きは、前の線の終点に近い側から始まるように揃える。
- * 最初の way は、始点が出発港に近くなる向きにする。
+ * 最初の way は、終点が2本目の way に近くなる向きにする（1本だけなら描かれた向きのまま）。
  */
-export function stitchWays(ways: Position[][], fromPort: Position): Position[] {
+export function stitchWays(ways: Position[][]): Position[] {
   const [first, ...rest] = ways;
   if (!first || first.length < 2) throw new Error("way の座標が足りない");
 
-  const firstStart = first[0] as Position;
-  const firstEnd = first[first.length - 1] as Position;
+  const [second] = rest;
+  const nearestToSecond = (p: Position) =>
+    second
+      ? Math.min(
+          squaredDistance(p, second[0] as Position),
+          squaredDistance(p, second[second.length - 1] as Position),
+        )
+      : 0;
   const line =
-    squaredDistance(firstStart, fromPort) <= squaredDistance(firstEnd, fromPort)
+    nearestToSecond(first[first.length - 1] as Position) <= nearestToSecond(first[0] as Position)
       ? [...first]
       : [...first].reverse();
 
@@ -81,11 +87,22 @@ export function trimToPorts(line: Position[], fromPort: Position, toPort: Positi
   return lineSlice(start, stop, feature).geometry.coordinates;
 }
 
-/** 区間の実測形状を作る。ways は区間に割り当てた way の座標列（つながる順）。 */
+/**
+ * 区間の実測形状を作る。ways は区間に割り当てた way の座標列（つながる順）。
+ * 線上で出発港が到着港より後ろにあれば、線全体を逆向きにしてから切り取る
+ * （1本の長い way を途中の寄港地で区切るとき、way の向きと区間の向きが逆のことがあるため）。
+ */
 export function buildLegGeometry(
   ways: Position[][],
   fromPort: Position,
   toPort: Position,
 ): Position[] {
-  return trimToPorts(stitchWays(ways, fromPort), fromPort, toPort);
+  const line = stitchWays(ways);
+  const feature = lineString(line);
+  const along = (port: Position) => nearestPointOnLine(feature, port).properties.totalDistance;
+  return trimToPorts(
+    along(fromPort) > along(toPort) ? [...line].reverse() : line,
+    fromPort,
+    toPort,
+  );
 }

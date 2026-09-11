@@ -1,0 +1,15 @@
+id: izena-ferry
+name: 運天～伊是名航路
+operator: 伊是名村
+vesselType: ferry
+status: operating
+officialUrl: https://www.vill.izena.okinawa.jp/
+portsOfCall: [unten, izena]
+legs:
+  - from: unten
+    to: izena
+    osmWays: [461040329]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.vill.izena.okinawa.jp/

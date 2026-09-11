@@ -1,0 +1,15 @@
+id: orita-kisen-kagoshima-miyanoura
+name: 鹿児島～屋久島航路（フェリー屋久島2）
+operator: 折田汽船
+vesselType: ferry
+status: operating
+officialUrl: https://ferryyakusima2.com/
+portsOfCall: [kagoshima-honko, miyanoura]
+legs:
+  - from: kagoshima-honko
+    to: miyanoura
+    osmWays: [349942528]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://ferryyakusima2.com/

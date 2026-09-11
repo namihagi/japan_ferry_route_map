@@ -1,0 +1,16 @@
+id: tanegashima-yakushima-highspeed-kagoshima-nishinoomote
+name: 鹿児島～種子島航路（トッピー・ロケット）
+operator: 種子屋久高速船
+vesselType: highspeed
+status: operating
+officialUrl: https://www.tykousoku.jp/
+portsOfCall: [kagoshima-honko, nishinoomote]
+legs:
+  - from: kagoshima-honko
+    to: nishinoomote
+    osmWays: [92125672]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.tykousoku.jp/
+note: 形状は同じ港を結ぶコスモラインの線を使っている。

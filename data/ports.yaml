@@ -171,3 +171,218 @@
   name: 和歌山
   lon: 135.1441
   lat: 34.2176
+
+- id: ryotsu
+  name: 両津
+  lon: 138.4382
+  lat: 38.081
+
+- id: naoetsu
+  name: 直江津
+  lon: 138.2516
+  lat: 37.1835
+
+- id: ogi
+  name: 小木
+  lon: 138.2815
+  lat: 37.816
+
+- id: hakata
+  name: 博多
+  lon: 130.398
+  lat: 33.606
+
+- id: gonoura
+  name: 郷ノ浦（壱岐）
+  lon: 129.6853
+  lat: 33.7423
+
+- id: ashibe
+  name: 芦辺（壱岐）
+  lon: 129.7545
+  lat: 33.8103
+
+- id: izuhara
+  name: 厳原（対馬）
+  lon: 129.2917
+  lat: 34.1971
+
+- id: karatsu
+  name: 唐津
+  lon: 129.9629
+  lat: 33.4696
+
+- id: indoji
+  name: 印通寺（壱岐）
+  lon: 129.756
+  lat: 33.7415
+
+- id: nagasaki
+  name: 長崎
+  lon: 129.868
+  lat: 32.745
+
+- id: naraoo
+  name: 奈良尾（中通島）
+  lon: 129.06142
+  lat: 32.84616
+
+- id: fukue
+  name: 福江
+  lon: 128.8523
+  lat: 32.6968
+
+- id: kagoshima-shinko
+  name: 鹿児島（新港）
+  lon: 130.5688
+  lat: 31.581
+
+- id: naze
+  name: 名瀬（奄美大島）
+  lon: 129.50386
+  lat: 28.3933
+
+- id: kametoku
+  name: 亀徳（徳之島）
+  lon: 129.0243
+  lat: 27.73781
+
+- id: wadomari
+  name: 和泊（沖永良部島）
+  lon: 128.66592
+  lat: 27.39741
+
+- id: yoron
+  name: 与論
+  lon: 128.40096
+  lat: 27.03636
+
+- id: motobu
+  name: 本部
+  lon: 127.88012
+  lat: 26.64125
+
+- id: naha
+  name: 那覇
+  lon: 127.6694
+  lat: 26.2106
+
+- id: kagoshima-honko
+  name: 鹿児島（本港）
+  lon: 130.566
+  lat: 31.5912
+
+- id: nishinoomote
+  name: 西之表（種子島）
+  lon: 130.99
+  lat: 30.7315
+
+- id: miyanoura
+  name: 宮之浦（屋久島）
+  lon: 130.5741
+  lat: 30.4317
+
+- id: naha-tomari
+  name: 那覇（泊）
+  lon: 127.683
+  lat: 26.2245
+
+- id: tokashiki
+  name: 渡嘉敷
+  lon: 127.368
+  lat: 26.1993
+
+- id: aka
+  name: 阿嘉
+  lon: 127.2875
+  lat: 26.1893
+
+- id: zamami
+  name: 座間味
+  lon: 127.3025
+  lat: 26.2267
+
+- id: aguni
+  name: 粟国
+  lon: 127.2328
+  lat: 26.5787
+
+- id: ie
+  name: 伊江
+  lon: 127.8008
+  lat: 26.7071
+
+- id: unten
+  name: 運天
+  lon: 127.9976
+  lat: 26.6775
+
+- id: iheya
+  name: 伊平屋
+  lon: 127.9695
+  lat: 27.0371
+
+- id: izena
+  name: 伊是名
+  lon: 127.9522
+  lat: 26.9287
+
+- id: ishigaki
+  name: 石垣
+  lon: 124.1555
+  lat: 24.3365
+
+- id: taketomi
+  name: 竹富
+  lon: 124.0936
+  lat: 24.3365
+
+- id: kohama
+  name: 小浜
+  lon: 123.9917
+  lat: 24.3444
+
+- id: kuroshima
+  name: 黒島
+  lon: 124.0015
+  lat: 24.2534
+
+- id: uehara
+  name: 上原（西表島）
+  lon: 123.8002
+  lat: 24.4182
+
+- id: hatoma
+  name: 鳩間
+  lon: 123.8205
+  lat: 24.4679
+
+- id: ohara
+  name: 大原（西表島）
+  lon: 123.8841
+  lat: 24.2719
+
+- id: hateruma
+  name: 波照間
+  lon: 123.7658
+  lat: 24.0673
+
+- id: shimabara
+  name: 島原
+  lon: 130.3731
+  lat: 32.7666
+
+- id: kumamoto
+  name: 熊本
+  lon: 130.5893
+  lat: 32.7627
+
+- id: oniike
+  name: 鬼池（天草）
+  lon: 130.1872
+  lat: 32.5465
+
+- id: kuchinotsu
+  name: 口之津
+  lon: 130.1863
+  lat: 32.6087

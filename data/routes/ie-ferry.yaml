@@ -1,0 +1,15 @@
+id: ie-ferry
+name: 本部～伊江航路
+operator: 伊江村
+vesselType: ferry
+status: operating
+officialUrl: https://www.iejima.org/
+portsOfCall: [motobu, ie]
+legs:
+  - from: motobu
+    to: ie
+    osmWays: [426962855]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.iejima.org/

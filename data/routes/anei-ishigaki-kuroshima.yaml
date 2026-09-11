@@ -1,0 +1,15 @@
+id: anei-ishigaki-kuroshima
+name: 黒島航路
+operator: 安栄観光
+vesselType: highspeed
+status: operating
+officialUrl: https://aneikankou.co.jp/
+portsOfCall: [ishigaki, kuroshima]
+legs:
+  - from: ishigaki
+    to: kuroshima
+    osmWays: [450355209]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://aneikankou.co.jp/

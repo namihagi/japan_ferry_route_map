@@ -1,0 +1,18 @@
+id: zamami-ferry
+name: 泊～阿嘉～座間味航路（フェリーざまみ3）
+operator: 座間味村
+vesselType: ferry
+status: operating
+officialUrl: https://www.vill.zamami.okinawa.jp/
+portsOfCall: [naha-tomari, aka, zamami]
+legs:
+  - from: naha-tomari
+    to: aka
+    osmWays: [549904479]
+  - from: aka
+    to: zamami
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.vill.zamami.okinawa.jp/
+note: 便によって寄港の順序が異なる。

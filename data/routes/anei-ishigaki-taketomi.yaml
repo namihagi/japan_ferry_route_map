@@ -1,0 +1,15 @@
+id: anei-ishigaki-taketomi
+name: 竹富航路
+operator: 安栄観光
+vesselType: highspeed
+status: operating
+officialUrl: https://aneikankou.co.jp/
+portsOfCall: [ishigaki, taketomi]
+legs:
+  - from: ishigaki
+    to: taketomi
+    osmWays: [43558320]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://aneikankou.co.jp/

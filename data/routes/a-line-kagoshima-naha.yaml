@@ -1,0 +1,30 @@
+id: a-line-kagoshima-naha
+name: 鹿児島～那覇航路
+operator: マルエーフェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.aline-ferry.com/
+portsOfCall: [kagoshima-shinko, naze, kametoku, wadomari, yoron, motobu, naha]
+legs:
+  - from: kagoshima-shinko
+    to: naze
+    osmWays: [423867828]
+  - from: naze
+    to: kametoku
+    osmWays: [423867828]
+  - from: kametoku
+    to: wadomari
+    osmWays: [423867828]
+  - from: wadomari
+    to: yoron
+    osmWays: [423867828]
+  - from: yoron
+    to: motobu
+    osmWays: [423867828]
+  - from: motobu
+    to: naha
+    osmWays: [423867828]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.aline-ferry.com/

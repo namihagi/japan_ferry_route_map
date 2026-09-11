@@ -1,0 +1,15 @@
+id: aguni-ferry
+name: 泊～粟国航路
+operator: 粟国村
+vesselType: ferry
+status: operating
+officialUrl: https://www.vill.aguni.okinawa.jp/
+portsOfCall: [naha-tomari, aguni]
+legs:
+  - from: naha-tomari
+    to: aguni
+    osmWays: [168151922]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.vill.aguni.okinawa.jp/

@@ -29,8 +29,25 @@ export interface PortFeatureProperties {
   name: string;
 }
 
+/** route-details.json の各要素。地図で航路を選んだときに見せる情報。 */
+export interface RouteDetail {
+  id: string;
+  name: string;
+  operator: string;
+  vesselType: VesselType;
+  status: RouteStatus;
+  seasonal: boolean;
+  officialUrl: string;
+  durationMinutes?: number;
+  /** 寄港地（代表的な順序） */
+  portsOfCall: { id: string; name: string }[];
+  /** 推定形状の区間を含むか */
+  hasEstimatedLegs: boolean;
+}
+
 /** public/data/ 以下のファイル名。 */
 export const PUBLIC_DATA_FILES = {
   routes: "routes.geojson",
   ports: "ports.geojson",
+  routeDetails: "route-details.json",
 } as const;

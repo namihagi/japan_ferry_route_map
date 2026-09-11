@@ -3,6 +3,7 @@ import type {
   GeometrySource,
   LegFeatureProperties,
   PortFeatureProperties,
+  RouteDetail,
 } from "../../src/domain/publicData.ts";
 import { type EstimatedLegFeature, portPairKey } from "./estimatedGeometry.ts";
 import { buildLegGeometry } from "./legGeometry.ts";
@@ -12,6 +13,7 @@ import { findRegistryProblems, type Port, type Registry } from "./registry.ts";
 export interface PublicData {
   routes: FeatureCollection<LineString, LegFeatureProperties>;
   ports: FeatureCollection<Point, PortFeatureProperties>;
+  routeDetails: RouteDetail[];
   /** 照合前のため公開しなかった航路の ID。 */
   skippedRouteIds: string[];
 }
@@ -56,6 +58,7 @@ export function buildPublicData(
   const legFeatures: Feature<LineString, LegFeatureProperties>[] = [];
   const usedPortIds = new Set<string>();
   const skippedRouteIds: string[] = [];
+  const routeDetails: RouteDetail[] = [];
 
   for (const route of registry.routes) {
     if (!route.verification) {
@@ -111,6 +114,22 @@ export function buildPublicData(
       usedPortIds.add(from.id);
       usedPortIds.add(to.id);
     });
+
+    routeDetails.push({
+      id: route.id,
+      name: route.name,
+      operator: route.operator,
+      vesselType: route.vesselType,
+      status: route.status,
+      seasonal: route.seasonal,
+      officialUrl: route.officialUrl,
+      ...(route.durationMinutes ? { durationMinutes: route.durationMinutes } : {}),
+      portsOfCall: route.portsOfCall.map((id) => ({
+        id,
+        name: registry.ports.get(id)?.name ?? id,
+      })),
+      hasEstimatedLegs: route.legs.some((leg) => !leg.osmWays),
+    });
   }
 
   if (problems.length > 0) throw new Error(problems.join("\n"));
@@ -127,6 +146,7 @@ export function buildPublicData(
   return {
     routes: { type: "FeatureCollection", features: legFeatures },
     ports: { type: "FeatureCollection", features: portFeatures },
+    routeDetails,
     skippedRouteIds,
   };
 }

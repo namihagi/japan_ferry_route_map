@@ -9,10 +9,14 @@ export const JAPAN_BOUNDS: LngLatBoundsLike = [
 const GSI_ATTRIBUTION =
   '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">国土地理院</a>';
 
+/** 港名などの文字に使うフォント（地理院が配信している Noto Sans CJK JP のグリフ）。 */
+export const LABEL_FONT = ["NotoSansCJKjp-Regular"];
+
 /** 背景地図（地理院タイル 淡色地図）だけを持つスタイル。 */
 export function createBaseStyle(): StyleSpecification {
   return {
     version: 8,
+    glyphs: "https://maps.gsi.go.jp/xyz/noto-jp/{fontstack}/{range}.pbf",
     sources: {
       "gsi-pale": {
         type: "raster",

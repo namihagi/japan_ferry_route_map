@@ -49,6 +49,16 @@ describe("buildPublicData", () => {
     );
     expect(data.routes.features.map((f) => f.properties.routeId)).toEqual(["verified"]);
     expect(data.skippedRouteIds).toEqual(["draft"]);
+    expect(data.routeDetails).toEqual([
+      expect.objectContaining({
+        id: "verified",
+        portsOfCall: [
+          { id: "a", name: "A港" },
+          { id: "b", name: "B港" },
+        ],
+        hasEstimatedLegs: false,
+      }),
+    ]);
     expect(data.ports.features.map((f) => f.properties.name)).toEqual(["A港", "B港"]);
   });
 

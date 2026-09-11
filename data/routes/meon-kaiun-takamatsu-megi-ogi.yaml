@@ -1,0 +1,18 @@
+id: meon-kaiun-takamatsu-megi-ogi
+name: 高松～女木島～男木島航路
+operator: 雌雄島海運
+vesselType: ferry
+status: operating
+officialUrl: https://meon.co.jp/
+portsOfCall: [takamatsu, megijima, ogijima]
+legs:
+  - from: takamatsu
+    to: megijima
+    osmWays: [139321984]
+  - from: megijima
+    to: ogijima
+    osmWays: [139321985]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://meon.co.jp/

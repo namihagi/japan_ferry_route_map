@@ -1,0 +1,15 @@
+id: shikoku-kisen-uno-miyanoura-ferry
+name: 宇野～宮浦（直島）航路（フェリー）
+operator: 四国汽船
+vesselType: ferry
+status: operating
+officialUrl: https://shikokukisen.com/
+portsOfCall: [uno, naoshima-miyanoura]
+legs:
+  - from: uno
+    to: naoshima-miyanoura
+    osmWays: [591847065]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://shikokukisen.com/

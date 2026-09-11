@@ -1,0 +1,15 @@
+id: shikoku-kisen-uno-honmura
+name: 宇野～本村（直島）航路
+operator: 四国汽船
+vesselType: passenger
+status: operating
+officialUrl: https://shikokukisen.com/
+portsOfCall: [uno, honmura]
+legs:
+  - from: uno
+    to: honmura
+    osmWays: [395058758]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://shikokukisen.com/

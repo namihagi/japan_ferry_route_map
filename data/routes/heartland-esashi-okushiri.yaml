@@ -1,0 +1,17 @@
+id: heartland-esashi-okushiri
+name: 江差～奥尻島航路
+operator: ハートランドフェリー
+vesselType: ferry
+status: operating
+officialUrl: https://heartlandferry.jp/
+portsOfCall: [esashi, okushiri]
+legs:
+  - from: esashi
+    to: okushiri
+    osmWays: [330655432]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://heartlandferry.jp/
+    - https://heartlandferry.jp/status/
+note: オクシリアイランドフェリーの名前で運航している。

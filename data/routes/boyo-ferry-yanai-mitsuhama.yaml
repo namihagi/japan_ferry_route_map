@@ -1,0 +1,15 @@
+id: boyo-ferry-yanai-mitsuhama
+name: 柳井～三津浜航路
+operator: 防予フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.boyoferry.co.jp/
+portsOfCall: [yanai, mitsuhama]
+legs:
+  - from: yanai
+    to: mitsuhama
+    osmWays: [439841626]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.boyoferry.co.jp/

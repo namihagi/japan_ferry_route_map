@@ -1,0 +1,15 @@
+id: kokusai-ryobi-takamatsu-ikeda
+name: 高松～池田（小豆島）航路
+operator: 国際両備フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://ryobi-shodoshima.jp/
+portsOfCall: [takamatsu, ikeda]
+legs:
+  - from: takamatsu
+    to: ikeda
+    osmWays: [185758149]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://ryobi-shodoshima.jp/

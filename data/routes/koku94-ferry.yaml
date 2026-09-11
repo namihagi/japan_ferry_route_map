@@ -1,0 +1,15 @@
+id: koku94-ferry
+name: 三崎～佐賀関航路
+operator: 国道九四フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.koku94.jp/
+portsOfCall: [misaki, saganoseki]
+legs:
+  - from: misaki
+    to: saganoseki
+    osmWays: [79686419]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.koku94.jp/

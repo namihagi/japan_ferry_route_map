@@ -1,0 +1,15 @@
+id: sanwa-ferry
+name: 牛深～蔵之元航路
+operator: 三和商船
+vesselType: ferry
+status: operating
+officialUrl: https://ezax.co.jp/
+portsOfCall: [ushibuka, kuranomoto]
+legs:
+  - from: ushibuka
+    to: kuranomoto
+    osmWays: [270360517]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://ezax.co.jp/

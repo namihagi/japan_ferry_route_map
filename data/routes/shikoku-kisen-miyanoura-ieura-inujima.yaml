@@ -1,0 +1,17 @@
+id: shikoku-kisen-miyanoura-ieura-inujima
+name: 宮浦（直島）～家浦（豊島）～犬島航路
+operator: 四国汽船
+vesselType: highspeed
+status: operating
+officialUrl: https://shikokukisen.com/
+portsOfCall: [naoshima-miyanoura, ieura, inujima]
+legs:
+  - from: naoshima-miyanoura
+    to: ieura
+  - from: ieura
+    to: inujima
+    osmWays: [446750528]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://shikokukisen.com/

@@ -1,0 +1,16 @@
+id: heartland-wakkanai-rishiri
+name: 稚内～利尻島航路
+operator: ハートランドフェリー
+vesselType: ferry
+status: operating
+officialUrl: https://heartlandferry.jp/
+portsOfCall: [wakkanai, oshidomari]
+legs:
+  - from: wakkanai
+    to: oshidomari
+    osmWays: [122776536]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://heartlandferry.jp/
+    - https://heartlandferry.jp/timetable/

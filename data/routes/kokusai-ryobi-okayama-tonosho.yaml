@@ -1,0 +1,15 @@
+id: kokusai-ryobi-okayama-tonosho
+name: 新岡山～土庄（小豆島）航路
+operator: 国際両備フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://ryobi-shodoshima.jp/
+portsOfCall: [shin-okayama, tonosho]
+legs:
+  - from: shin-okayama
+    to: tonosho
+    osmWays: [496410907]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://ryobi-shodoshima.jp/

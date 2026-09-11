@@ -1,0 +1,16 @@
+id: heartland-wakkanai-rebun
+name: 稚内～礼文島航路
+operator: ハートランドフェリー
+vesselType: ferry
+status: operating
+officialUrl: https://heartlandferry.jp/
+portsOfCall: [wakkanai, kafuka]
+legs:
+  - from: wakkanai
+    to: kafuka
+    osmWays: [151821705]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://heartlandferry.jp/
+    - https://heartlandferry.jp/timetable/

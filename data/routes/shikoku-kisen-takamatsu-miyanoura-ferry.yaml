@@ -1,0 +1,15 @@
+id: shikoku-kisen-takamatsu-miyanoura-ferry
+name: 高松～宮浦（直島）航路（フェリー）
+operator: 四国汽船
+vesselType: ferry
+status: operating
+officialUrl: https://shikokukisen.com/
+portsOfCall: [takamatsu, naoshima-miyanoura]
+legs:
+  - from: takamatsu
+    to: naoshima-miyanoura
+    osmWays: [185758159]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://shikokukisen.com/

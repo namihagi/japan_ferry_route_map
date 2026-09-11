@@ -1,0 +1,15 @@
+id: jumbo-ferry-kobe-shodoshima
+name: 神戸～小豆島（坂手）航路
+operator: ジャンボフェリー
+vesselType: ferry
+status: operating
+officialUrl: https://ferry.co.jp/
+portsOfCall: [kobe-sannomiya, sakate]
+legs:
+  - from: kobe-sannomiya
+    to: sakate
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://ferry.co.jp/
+note: 高松との間を続けて運航する便もある。

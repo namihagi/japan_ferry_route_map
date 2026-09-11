@@ -1,0 +1,20 @@
+id: ocean-tokyu-ferry
+name: オーシャン東九フェリー
+operator: オーシャントランス
+vesselType: ferry
+status: operating
+officialUrl: https://www.otf.jp/
+portsOfCall: [tokyo-ariake, tokushima, shinmoji]
+legs:
+  - from: tokyo-ariake
+    to: tokushima
+    osmWays: [550203352]
+  - from: tokushima
+    to: shinmoji
+    osmWays: [550202121]
+verification:
+  checkedOn: "2026-09-11"
+  sources:
+    - https://www.otf.jp/
+    - https://www.ocean-trans.co.jp/
+note: 公式サイトの寄港地の表記は「東京（有明）」「徳島（沖洲）」「北九州（新門司）」。

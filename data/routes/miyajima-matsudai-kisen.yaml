@@ -1,0 +1,18 @@
+id: miyajima-matsudai-kisen
+name: 宮島航路
+operator: 宮島松大汽船
+vesselType: ferry
+status: operating
+officialUrl: https://miyajima-matsudai.co.jp/
+durationMinutes: 10
+portsOfCall: [miyajimaguchi, miyajima]
+legs:
+  - from: miyajimaguchi
+    to: miyajima
+    osmWays: [1000787992]
+verification:
+  checkedOn: "2026-09-11"
+  sources:
+    - https://miyajima-matsudai.co.jp/
+    - https://miyajima-matsudai.co.jp/company.html
+    - https://miyajima-matsudai.co.jp/price.html

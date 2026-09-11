@@ -1,0 +1,28 @@
+# 港台帳。港は、旅客が一つの名前で呼ぶ単位（CONTEXT.md「港」）。
+# 座標は港の代表点。会社ごとにターミナルが分かれている港では、それらの間に置く。
+# 座標の出典は OpenStreetMap（amenity=ferry_terminal など）。
+
+- id: tokyo-ariake
+  name: 東京（有明）
+  lon: 139.79575
+  lat: 35.61731
+
+- id: tokushima
+  name: 徳島
+  lon: 134.59673
+  lat: 34.05396
+
+- id: shinmoji
+  name: 新門司
+  lon: 130.99
+  lat: 33.8795
+
+- id: miyajimaguchi
+  name: 宮島口
+  lon: 132.30523
+  lat: 34.3111
+
+- id: miyajima
+  name: 宮島
+  lon: 132.32225
+  lat: 34.3021

@@ -1,0 +1,15 @@
+id: izu-shoto-kaihatsu-chichijima-hahajima
+name: 父島～母島航路（ははじま丸）
+operator: 伊豆諸島開発
+vesselType: passenger
+status: operating
+officialUrl: https://izu-syotou.jp/
+portsOfCall: [chichijima, hahajima]
+legs:
+  - from: chichijima
+    to: hahajima
+    osmWays: [443597097]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://izu-syotou.jp/

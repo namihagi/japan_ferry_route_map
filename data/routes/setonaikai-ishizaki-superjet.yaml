@@ -1,0 +1,20 @@
+id: setonaikai-ishizaki-superjet
+name: 広島～呉～松山航路（スーパージェット）
+operator: 瀬戸内海汽船・石崎汽船
+vesselType: highspeed
+status: operating
+officialUrl: https://setonaikaikisen.co.jp/
+portsOfCall: [hiroshima, kure, matsuyama]
+legs:
+  - from: hiroshima
+    to: kure
+    osmWays: [1002003207]
+  - from: kure
+    to: matsuyama
+    osmWays: [47907712]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://setonaikaikisen.co.jp/
+    - http://www.ishizakikisen.co.jp/
+note: 両社の共同運航。

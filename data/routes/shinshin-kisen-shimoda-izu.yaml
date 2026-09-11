@@ -1,0 +1,24 @@
+id: shinshin-kisen-shimoda-izu
+name: 下田～伊豆諸島航路（フェリーあぜりあ）
+operator: 神新汽船
+vesselType: ferry
+status: operating
+officialUrl: https://shinshin-kisen.jp/
+portsOfCall: [shimoda, toshima, niijima, shikinejima, kozushima]
+legs:
+  - from: shimoda
+    to: toshima
+  - from: toshima
+    to: niijima
+    osmWays: [424081177]
+  - from: niijima
+    to: shikinejima
+    osmWays: [424080674]
+  - from: shikinejima
+    to: kozushima
+    osmWays: [444211181]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://shinshin-kisen.jp/
+note: 便によって寄港の順序が異なる。

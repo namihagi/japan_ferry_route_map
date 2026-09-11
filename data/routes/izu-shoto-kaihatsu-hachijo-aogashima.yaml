@@ -1,0 +1,15 @@
+id: izu-shoto-kaihatsu-hachijo-aogashima
+name: 八丈島～青ヶ島航路（あおがしま丸）
+operator: 伊豆諸島開発
+vesselType: passenger
+status: operating
+officialUrl: https://izu-syotou.jp/
+portsOfCall: [hachijo, aogashima]
+legs:
+  - from: hachijo
+    to: aogashima
+    osmWays: [444419544]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://izu-syotou.jp/

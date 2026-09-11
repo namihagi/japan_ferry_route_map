@@ -1,0 +1,22 @@
+id: shodoshima-teshima-passenger
+name: 宇野～豊島～土庄航路（旅客船）
+operator: 小豆島豊島フェリー
+vesselType: passenger
+status: operating
+officialUrl: https://www.shodoshima-ferry.co.jp/
+portsOfCall: [uno, ieura, karato, tonosho]
+legs:
+  - from: uno
+    to: ieura
+    osmWays: [446750525]
+  - from: ieura
+    to: karato
+    osmWays: [446750525]
+  - from: karato
+    to: tonosho
+    osmWays: [446750525]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.shodoshima-ferry.co.jp/
+    - https://www.shodoshima-ferry.co.jp/timetable/

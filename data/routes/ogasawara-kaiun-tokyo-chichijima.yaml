@@ -1,0 +1,15 @@
+id: ogasawara-kaiun-tokyo-chichijima
+name: 東京～父島航路（おがさわら丸）
+operator: 小笠原海運
+vesselType: passenger
+status: operating
+officialUrl: https://www.ogasawarakaiun.co.jp/
+portsOfCall: [takeshiba, chichijima]
+legs:
+  - from: takeshiba
+    to: chichijima
+    osmWays: [837995827]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.ogasawarakaiun.co.jp/

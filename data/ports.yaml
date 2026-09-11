@@ -541,3 +541,163 @@
   name: 宝島
   lon: 129.20706
   lat: 29.15853
+
+- id: takamatsu-higashi
+  name: 高松東
+  lon: 134.074
+  lat: 34.3542
+
+- id: sakate
+  name: 坂手（小豆島）
+  lon: 134.3214
+  lat: 34.4557
+
+- id: takamatsu
+  name: 高松
+  lon: 134.049
+  lat: 34.3538
+
+- id: ikeda
+  name: 池田（小豆島）
+  lon: 134.2259
+  lat: 34.4793
+
+- id: tonosho
+  name: 土庄（小豆島）
+  lon: 134.1719
+  lat: 34.4899
+
+- id: shin-okayama
+  name: 新岡山
+  lon: 133.986
+  lat: 34.6048
+
+- id: uno
+  name: 宇野
+  lon: 133.955
+  lat: 34.4916
+
+- id: naoshima-miyanoura
+  name: 宮浦（直島）
+  lon: 133.9739
+  lat: 34.4568
+
+- id: honmura
+  name: 本村（直島）
+  lon: 133.9979
+  lat: 34.4619
+
+- id: ieura
+  name: 家浦（豊島）
+  lon: 134.061
+  lat: 34.4901
+
+- id: karato
+  name: 唐櫃（豊島）
+  lon: 134.0957
+  lat: 34.4918
+
+- id: inujima
+  name: 犬島
+  lon: 134.1048
+  lat: 34.5667
+
+- id: megijima
+  name: 女木島
+  lon: 134.0533
+  lat: 34.3884
+
+- id: ogijima
+  name: 男木島
+  lon: 134.0539
+  lat: 34.4219
+
+- id: hiroshima
+  name: 広島
+  lon: 132.4551
+  lat: 34.3513
+
+- id: kure
+  name: 呉
+  lon: 132.555
+  lat: 34.2398
+
+- id: matsuyama
+  name: 松山
+  lon: 132.7039
+  lat: 33.8891
+
+- id: yanai
+  name: 柳井
+  lon: 132.1327
+  lat: 33.9567
+
+- id: mitsuhama
+  name: 三津浜
+  lon: 132.7095
+  lat: 33.8658
+
+- id: misaki
+  name: 三崎
+  lon: 132.1172
+  lat: 33.3902
+
+- id: saganoseki
+  name: 佐賀関
+  lon: 131.8653
+  lat: 33.2499
+
+- id: ushibuka
+  name: 牛深
+  lon: 130.1035
+  lat: 32.1886
+
+- id: kuranomoto
+  name: 蔵之元
+  lon: 130.0279
+  lat: 32.1944
+
+- id: wakkanai
+  name: 稚内
+  lon: 141.6828
+  lat: 45.416
+
+- id: oshidomari
+  name: 鴛泊（利尻島）
+  lon: 141.2287
+  lat: 45.242
+
+- id: kafuka
+  name: 香深（礼文島）
+  lon: 141.0457
+  lat: 45.2979
+
+- id: esashi
+  name: 江差
+  lon: 140.1233
+  lat: 41.8681
+
+- id: okushiri
+  name: 奥尻
+  lon: 139.5171
+  lat: 42.1751
+
+- id: chichijima
+  name: 父島
+  lon: 142.197
+  lat: 27.0952
+
+- id: hahajima
+  name: 母島
+  lon: 142.1599
+  lat: 26.6387
+
+- id: aogashima
+  name: 青ヶ島
+  lon: 139.7589
+  lat: 32.4476
+
+- id: shimoda
+  name: 下田
+  lon: 138.9492
+  lat: 34.6702

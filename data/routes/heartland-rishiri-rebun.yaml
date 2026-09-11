@@ -1,0 +1,16 @@
+id: heartland-rishiri-rebun
+name: 利尻島～礼文島航路
+operator: ハートランドフェリー
+vesselType: ferry
+status: operating
+officialUrl: https://heartlandferry.jp/
+portsOfCall: [oshidomari, kafuka]
+legs:
+  - from: oshidomari
+    to: kafuka
+    osmWays: [122776521]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://heartlandferry.jp/
+    - https://heartlandferry.jp/timetable/

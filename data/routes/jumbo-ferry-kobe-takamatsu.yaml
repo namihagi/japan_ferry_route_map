@@ -1,0 +1,16 @@
+id: jumbo-ferry-kobe-takamatsu
+name: 神戸～高松航路
+operator: ジャンボフェリー
+vesselType: ferry
+status: operating
+officialUrl: https://ferry.co.jp/
+portsOfCall: [kobe-sannomiya, takamatsu-higashi]
+legs:
+  - from: kobe-sannomiya
+    to: takamatsu-higashi
+    osmWays: [550415132]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://ferry.co.jp/
+note: 高松は高松東港に発着する。

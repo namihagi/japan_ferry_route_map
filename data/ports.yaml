@@ -386,3 +386,158 @@
   name: 口之津
   lon: 130.1863
   lat: 32.6087
+
+- id: ukuhira
+  name: 宇久平（宇久島）
+  lon: 129.1304
+  lat: 33.2603
+
+- id: ojika
+  name: 小値賀
+  lon: 129.06304
+  lat: 33.18693
+
+- id: aokata
+  name: 青方（中通島）
+  lon: 129.054
+  lat: 32.9795
+
+- id: naru
+  name: 奈留
+  lon: 128.9393
+  lat: 32.8217
+
+- id: sakaiminato
+  name: 境港
+  lon: 133.2223
+  lat: 35.546
+
+- id: shichirui
+  name: 七類
+  lon: 133.2292
+  lat: 35.5717
+
+- id: kurii
+  name: 来居（知夫里島）
+  lon: 133.0385
+  lat: 36.0262
+
+- id: beppu-oki
+  name: 別府（西ノ島）
+  lon: 133.0412
+  lat: 36.1081
+
+- id: hishiura
+  name: 菱浦（中ノ島）
+  lon: 133.0774
+  lat: 36.1048
+
+- id: saigo
+  name: 西郷（島後）
+  lon: 133.3356
+  lat: 36.2031
+
+- id: takeshiba
+  name: 東京（竹芝）
+  lon: 139.7634
+  lat: 35.6534
+
+- id: oshima-okata
+  name: 大島（岡田）
+  lon: 139.3906
+  lat: 34.7905
+
+- id: toshima
+  name: 利島
+  lon: 139.2804
+  lat: 34.5339
+
+- id: niijima
+  name: 新島
+  lon: 139.2421
+  lat: 34.3701
+
+- id: shikinejima
+  name: 式根島
+  lon: 139.2158
+  lat: 34.3351
+
+- id: kozushima
+  name: 神津島
+  lon: 139.1281
+  lat: 34.2092
+
+- id: miyake
+  name: 三宅島
+  lon: 139.5665
+  lat: 34.0804
+
+- id: mikura
+  name: 御蔵島
+  lon: 139.5868
+  lat: 33.8974
+
+- id: hachijo
+  name: 八丈島
+  lon: 139.8212
+  lat: 33.1236
+
+- id: atami
+  name: 熱海
+  lon: 139.077
+  lat: 35.0897
+
+- id: kikai
+  name: 喜界（湾）
+  lon: 129.93707
+  lat: 28.32643
+
+- id: koniya
+  name: 古仁屋（奄美大島）
+  lon: 129.30869
+  lat: 28.14568
+
+- id: hetono
+  name: 平土野（徳之島）
+  lon: 128.89077
+  lat: 27.81351
+
+- id: china
+  name: 知名（沖永良部島）
+  lon: 128.57176
+  lat: 27.33052
+
+- id: kuchinoshima
+  name: 口之島
+  lon: 129.9128
+  lat: 29.99124
+
+- id: nakanoshima
+  name: 中之島
+  lon: 129.84939
+  lat: 29.83997
+
+- id: tairajima
+  name: 平島
+  lon: 129.53169
+  lat: 29.67894
+
+- id: suwanosejima
+  name: 諏訪之瀬島
+  lon: 129.71289
+  lat: 29.61094
+
+- id: akusekijima
+  name: 悪石島
+  lon: 129.59412
+  lat: 29.45491
+
+- id: kodakarajima
+  name: 小宝島
+  lon: 129.32174
+  lat: 29.2196
+
+- id: takarajima
+  name: 宝島
+  lon: 129.20706
+  lat: 29.15853

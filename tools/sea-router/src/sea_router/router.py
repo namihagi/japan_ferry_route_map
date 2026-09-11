@@ -62,7 +62,7 @@ WARN_SNAP_M = 500.0
 # 線が陸を横切る長さが、これを超えたら警告を出す（メートル）
 WARN_CROSSING_M = 50.0
 
-METHOD = "corridor-grid-v1"
+METHOD = "corridor-grid-v2"  # 計算方法を変えたら上げる（計算済みの推定形状が再計算される）
 
 LandReader = Callable[[tuple[float, float, float, float]], np.ndarray]
 """bbox（経度緯度）を受け取り、その範囲の陸地ポリゴン（経度緯度）の配列を返す関数。"""
@@ -194,14 +194,54 @@ def _bbox(a: tuple[float, float], b: tuple[float, float], margin_m: float) -> Bo
     return (min(a[0], b[0]) - dlon, min(a[1], b[1]) - dlat, max(a[0], b[0]) + dlon, max(a[1], b[1]) + dlat)
 
 
+# 計算範囲（港の組を囲む範囲の余白）。経路が見つからなければ、次の余白で探し直す
+MARGINS = ((15_000.0, 0.35), (40_000.0, 0.7), (80_000.0, 1.2))
+# 経路の長さが直線距離のこの倍数を超えたら、計算範囲の外に近道があるかもしれないので広げて探し直す
+DETOUR_RATIO = 1.3
+
+
+def _path_length_m(coordinates: list[list[float]]) -> float:
+    return sum(haversine_m(tuple(a), tuple(b)) for a, b in pairwise(coordinates))
+
+
 def estimate_leg(
     read_land: LandReader,
     port_from: tuple[float, float],
     port_to: tuple[float, float],
     max_cells: int = MAX_CELLS,
 ) -> Estimate:
+    """海上だけを通る最短経路を探す。
+
+    計算範囲は港の組を囲む範囲に余白を足したもの。経路が見つからないとき、または見つかっても
+    遠回り（直線距離の DETOUR_RATIO 倍超）のときは、余白を広げて探し直し、最も短い経路を採る。
+    """
     distance = haversine_m(port_from, port_to)
-    bbox = _bbox(port_from, port_to, max(15_000.0, distance * 0.35))
+    best: Estimate | None = None
+    error: NoRouteError | None = None
+    for minimum, scale in MARGINS:
+        try:
+            est = _estimate_within(read_land, port_from, port_to, max(minimum, distance * scale), max_cells)
+        except NoRouteError as e:
+            error = e
+            continue
+        if best is None or _path_length_m(est.coordinates) < _path_length_m(best.coordinates):
+            best = est
+        if _path_length_m(best.coordinates) <= distance * DETOUR_RATIO:
+            break
+    if best is None:
+        raise NoRouteError(f"計算範囲を広げても見つからない（{error}）")
+    return best
+
+
+def _estimate_within(
+    read_land: LandReader,
+    port_from: tuple[float, float],
+    port_to: tuple[float, float],
+    margin_m: float,
+    max_cells: int,
+) -> Estimate:
+    distance = haversine_m(port_from, port_to)
+    bbox = _bbox(port_from, port_to, margin_m)
     proj = LocalProjection((bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2)
     (xmin, ymin), (xmax, ymax) = proj.forward(np.array([[bbox[0], bbox[1]], [bbox[2], bbox[3]]]))
     bounds: Bounds = (xmin, ymin, xmax, ymax)

@@ -11,7 +11,7 @@
       140.9765,
       42.3272
     ],
-    "method": "corridor-grid-v1",
+    "method": "corridor-grid-v2",
     "stage": "corridor",
     "cellSizeM": 40,
     "snapFromM": 40.0,

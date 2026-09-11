@@ -1,0 +1,28 @@
+id: nomo-shosen-taiko
+name: 博多～五島航路（太古）
+operator: 野母商船
+vesselType: ferry
+status: operating
+officialUrl: https://www.nomo.co.jp/taiko
+portsOfCall: [hakata, ukuhira, ojika, aokata, naru, fukue]
+legs:
+  - from: hakata
+    to: ukuhira
+    osmWays: [1275082813]
+  - from: ukuhira
+    to: ojika
+    osmWays: [1275082813]
+  - from: ojika
+    to: aokata
+    osmWays: [1275082813]
+  - from: aokata
+    to: naru
+    osmWays: [1275082813]
+  - from: naru
+    to: fukue
+    osmWays: [1275082813]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.nomo.co.jp/taiko
+    - https://www.nomo.co.jp/

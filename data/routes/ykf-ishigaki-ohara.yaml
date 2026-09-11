@@ -1,0 +1,16 @@
+id: ykf-ishigaki-ohara
+name: 西表大原航路
+operator: 八重山観光フェリー
+vesselType: highspeed
+status: operating
+officialUrl: https://yaeyama.co.jp/
+portsOfCall: [ishigaki, ohara]
+legs:
+  - from: ishigaki
+    to: ohara
+    osmWays: [43558320, 462247399]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://yaeyama.co.jp/
+    - https://yaeyama.co.jp/operation.html

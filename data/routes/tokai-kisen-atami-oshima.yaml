@@ -1,0 +1,17 @@
+id: tokai-kisen-atami-oshima
+name: 熱海～大島航路（ジェット船）
+operator: 東海汽船
+vesselType: highspeed
+status: operating
+officialUrl: https://www.tokaikisen.co.jp/
+portsOfCall: [atami, oshima-okata]
+legs:
+  - from: atami
+    to: oshima-okata
+    osmWays: [1482548536]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.tokaikisen.co.jp/
+    - https://www.tokaikisen.co.jp/boarding/timetable/
+note: 一部の便は伊東に寄港する。大島は天候により元町港に発着する。

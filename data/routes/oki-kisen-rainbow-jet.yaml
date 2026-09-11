@@ -1,0 +1,21 @@
+id: oki-kisen-rainbow-jet
+name: 本土～隠岐航路（レインボージェット）
+operator: 隠岐汽船
+vesselType: highspeed
+status: operating
+officialUrl: https://www.oki-kisen.co.jp/
+portsOfCall: [shichirui, beppu-oki, hishiura, saigo]
+legs:
+  - from: shichirui
+    to: beppu-oki
+  - from: beppu-oki
+    to: hishiura
+    osmWays: [424081583]
+  - from: hishiura
+    to: saigo
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.oki-kisen.co.jp/
+    - https://www.oki-kisen.co.jp/timetable/
+note: 境港に発着する便もある。

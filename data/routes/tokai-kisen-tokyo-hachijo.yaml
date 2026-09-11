@@ -1,0 +1,23 @@
+id: tokai-kisen-tokyo-hachijo
+name: 東京～三宅島・御蔵島・八丈島航路（大型客船）
+operator: 東海汽船
+vesselType: passenger
+status: operating
+officialUrl: https://www.tokaikisen.co.jp/
+portsOfCall: [takeshiba, miyake, mikura, hachijo]
+legs:
+  - from: takeshiba
+    to: miyake
+    osmWays: [424083558]
+  - from: miyake
+    to: mikura
+    osmWays: [424083557]
+  - from: mikura
+    to: hachijo
+    osmWays: [444552975]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.tokaikisen.co.jp/
+    - https://www.tokaikisen.co.jp/boarding/timetable/
+note: 三宅島は天候により発着する港が変わる。

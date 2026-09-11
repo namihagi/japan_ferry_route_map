@@ -1,0 +1,25 @@
+id: oki-kisen-ferry
+name: 本土～隠岐航路（フェリー）
+operator: 隠岐汽船
+vesselType: ferry
+status: operating
+officialUrl: https://www.oki-kisen.co.jp/
+portsOfCall: [sakaiminato, kurii, beppu-oki, hishiura, saigo]
+legs:
+  - from: sakaiminato
+    to: kurii
+    osmWays: [424081579]
+  - from: kurii
+    to: beppu-oki
+    osmWays: [424081582]
+  - from: beppu-oki
+    to: hishiura
+    osmWays: [424081583]
+  - from: hishiura
+    to: saigo
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.oki-kisen.co.jp/
+    - https://www.oki-kisen.co.jp/timetable/
+note: 七類港に発着する便もある。便によって寄港の順序が異なる。

@@ -64,3 +64,14 @@ def test_port_on_land_is_snapped_to_nearest_water():
     est = estimate_leg(_wall_with_gap, (133.045, 34.05), (133.10, 34.05))
     assert est.snap_from_m > 0
     assert est.coordinates[0] == [133.045, 34.05]
+
+
+def test_widens_the_search_area_when_the_route_must_round_a_distant_cape():
+    # 2点の間に南北に長い陸（北端は 34.30 付近）があり、最初の計算範囲では回り込めない
+    def peninsula(bbox):
+        return np.array([shapely.box(133.04, 33.50, 133.06, 34.30)])
+
+    est = estimate_leg(peninsula, (133.00, 34.00), (133.10, 34.00))
+    line = shapely.LineString(est.coordinates)
+    assert est.land_crossing_m == 0
+    assert line.bounds[3] > 34.30

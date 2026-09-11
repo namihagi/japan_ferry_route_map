@@ -1,0 +1,23 @@
+id: amami-kaiun
+name: 鹿児島～喜界～知名航路
+operator: 奄美海運
+vesselType: ferry
+status: operating
+officialUrl: https://www.aline-ferry.com/amami
+portsOfCall: [kagoshima-honko, kikai, naze, koniya, hetono, china]
+legs:
+  - from: kagoshima-honko
+    to: kikai
+  - from: kikai
+    to: naze
+  - from: naze
+    to: koniya
+  - from: koniya
+    to: hetono
+  - from: hetono
+    to: china
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.aline-ferry.com/amami
+note: 便によって寄港地が異なる。2026-09-12 時点で、フェリーあまみが機関故障のため一時運休している。

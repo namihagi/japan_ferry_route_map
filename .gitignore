@@ -1,0 +1,21 @@
+# 依存・ビルド成果物
+node_modules/
+dist/
+coverage/
+.venv/
+__pycache__/
+*.pyc
+
+# テスト成果物
+test-results/
+playwright-report/
+
+# ダウンロードしたデータ・中間生成物（再配布できないデータもここに置く）
+.cache/
+
+# ローカル設定
+.env
+.env.*
+.claude/settings.local.json
+.DS_Store
+*.log

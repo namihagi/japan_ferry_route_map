@@ -1,0 +1,15 @@
+id: tokyo-kyushu-ferry
+name: 横須賀～新門司航路
+operator: 東京九州フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://tqf.co.jp/
+portsOfCall: [yokosuka, shinmoji]
+legs:
+  - from: yokosuka
+    to: shinmoji
+    osmWays: [1017810659]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://tqf.co.jp/

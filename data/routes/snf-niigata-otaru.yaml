@@ -1,0 +1,16 @@
+id: snf-niigata-otaru
+name: 新潟～小樽航路
+operator: 新日本海フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.snf.jp/
+portsOfCall: [niigata, otaru]
+legs:
+  - from: niigata
+    to: otaru
+    osmWays: [550415117]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.snf.jp/
+    - https://www.snf.jp/guide/searoute/

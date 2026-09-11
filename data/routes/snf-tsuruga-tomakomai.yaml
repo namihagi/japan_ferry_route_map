@@ -1,0 +1,16 @@
+id: snf-tsuruga-tomakomai
+name: 敦賀～苫小牧東港航路
+operator: 新日本海フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.snf.jp/
+portsOfCall: [tsuruga, tomakomai-higashi]
+legs:
+  - from: tsuruga
+    to: tomakomai-higashi
+    osmWays: [550415128]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.snf.jp/
+    - https://www.snf.jp/guide/searoute/

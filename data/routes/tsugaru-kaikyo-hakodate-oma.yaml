@@ -1,0 +1,15 @@
+id: tsugaru-kaikyo-hakodate-oma
+name: 函館～大間航路
+operator: 津軽海峡フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.tsugarukaikyo.co.jp/
+portsOfCall: [hakodate, oma]
+legs:
+  - from: hakodate
+    to: oma
+    osmWays: [371187975]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.tsugarukaikyo.co.jp/

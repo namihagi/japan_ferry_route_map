@@ -1,0 +1,15 @@
+id: sunflower-osaka-beppu
+name: 大阪～別府航路
+operator: 商船三井さんふらわあ
+vesselType: ferry
+status: operating
+officialUrl: https://www.ferry-sunflower.co.jp/
+portsOfCall: [osaka-nanko, beppu]
+legs:
+  - from: osaka-nanko
+    to: beppu
+    osmWays: [321461203]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.ferry-sunflower.co.jp/

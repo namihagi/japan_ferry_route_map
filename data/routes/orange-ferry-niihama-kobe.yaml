@@ -1,0 +1,16 @@
+id: orange-ferry-niihama-kobe
+name: 新居浜～神戸航路
+operator: 四国開発フェリー
+vesselType: ferry
+status: suspended
+officialUrl: https://www.orange-ferry.co.jp/
+portsOfCall: [niihama, kobe-rokko]
+legs:
+  - from: niihama
+    to: kobe-rokko
+    osmWays: [1141572799]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.orange-ferry.co.jp/
+note: 公式サイトの運航状況に「休航しています」とある（2026-09-12 時点）。

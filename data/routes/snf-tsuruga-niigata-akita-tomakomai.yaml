@@ -1,0 +1,22 @@
+id: snf-tsuruga-niigata-akita-tomakomai
+name: 敦賀～苫小牧東港航路（新潟・秋田経由）
+operator: 新日本海フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.snf.jp/
+portsOfCall: [tsuruga, niigata, akita, tomakomai-higashi]
+legs:
+  - from: tsuruga
+    to: niigata
+    osmWays: [525623597]
+  - from: niigata
+    to: akita
+    osmWays: [525626794]
+  - from: akita
+    to: tomakomai-higashi
+    osmWays: [645295536]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.snf.jp/
+    - https://www.snf.jp/guide/searoute/

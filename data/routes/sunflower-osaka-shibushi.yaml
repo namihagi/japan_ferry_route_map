@@ -1,0 +1,15 @@
+id: sunflower-osaka-shibushi
+name: 大阪～志布志航路
+operator: 商船三井さんふらわあ
+vesselType: ferry
+status: operating
+officialUrl: https://www.ferry-sunflower.co.jp/
+portsOfCall: [osaka-nanko, shibushi]
+legs:
+  - from: osaka-nanko
+    to: shibushi
+    osmWays: [1355696269]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.ferry-sunflower.co.jp/

@@ -1,65 +1,70 @@
 /**
- * 航路台帳が参照している OSM の way を Overpass API から取り込み、data/osm/ways.geojson に保存する。
+ * 航路台帳が参照している OSM の way を OSM API から取り込み、data/osm/ways.geojson に保存する。
  * 人が手動で実行し、差分をレビューしてからコミットする（ADR 0003）。
  *
  *   pnpm data:import-osm
  *
- * Overpass のエンドポイントは環境変数 OVERPASS_URL で変えられる。
+ * OSM API（https://api.openstreetmap.org）に way ごとに1回ずつ、順番に問い合わせる。
  */
 import type { Position } from "geojson";
 import { type OsmWayFeature, readOsmSnapshot, writeOsmSnapshot } from "./lib/osmSnapshot.ts";
 import { paths } from "./lib/paths.ts";
 import { loadRegistry, referencedOsmWayIds } from "./lib/registry.ts";
 
-const OVERPASS_URL = process.env.OVERPASS_URL ?? "https://overpass-api.de/api/interpreter";
+const OSM_API = "https://api.openstreetmap.org/api/0.6";
 const USER_AGENT = "japan_ferry_route_map (https://github.com/namihagi/japan_ferry_route_map)";
 
-interface OverpassWay {
-  type: "way";
+interface OsmElement {
+  type: "node" | "way";
   id: number;
+  lat?: number;
+  lon?: number;
+  nodes?: number[];
   tags?: Record<string, string>;
-  geometry?: { lat: number; lon: number }[];
 }
 
-async function fetchWays(ids: number[]): Promise<OverpassWay[]> {
-  const query = `[out:json][timeout:120];way(id:${ids.join(",")});out tags geom;`;
-  const response = await fetch(OVERPASS_URL, {
-    method: "POST",
-    headers: { "User-Agent": USER_AGENT, "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({ data: query }),
+/** way と、その node の座標を取得する。削除済み・存在しない way は null。 */
+async function fetchWay(id: number): Promise<{ coordinates: Position[]; name?: string } | null> {
+  const response = await fetch(`${OSM_API}/way/${id}/full.json`, {
+    headers: { "User-Agent": USER_AGENT },
   });
-  const text = await response.text();
-  if (!response.ok || !text.startsWith("{")) {
-    throw new Error(
-      `Overpass API から取得できなかった（HTTP ${response.status}）:\n${text.slice(0, 500)}`,
-    );
-  }
-  return (JSON.parse(text) as { elements: OverpassWay[] }).elements.filter((e) => e.type === "way");
+  if (response.status === 404 || response.status === 410) return null;
+  if (!response.ok)
+    throw new Error(`OSM API から way ${id} を取得できなかった（HTTP ${response.status}）`);
+  const { elements } = (await response.json()) as { elements: OsmElement[] };
+  const nodes = new Map(
+    elements.filter((e) => e.type === "node").map((e) => [e.id, [e.lon, e.lat]]),
+  );
+  const way = elements.find((e) => e.type === "way" && e.id === id);
+  if (!way?.nodes) return null;
+  const coordinates = way.nodes.map((nodeId) => {
+    const position = nodes.get(nodeId);
+    if (!position) throw new Error(`way ${id} の node ${nodeId} の座標がない`);
+    return position as Position;
+  });
+  const name = way.tags?.name;
+  return name ? { coordinates, name } : { coordinates };
 }
 
 const registry = await loadRegistry(paths.dataDir);
 const ids = referencedOsmWayIds(registry.routes);
 const previous = await readOsmSnapshot(paths.osmSnapshot);
 
-console.log(`${ids.length} 本の way を ${OVERPASS_URL} から取得します`);
-const fetched = new Map((await fetchWays(ids)).map((way) => [way.id, way]));
-
+console.log(`${ids.length} 本の way を OSM API から取得します`);
 const next = new Map<number, OsmWayFeature>();
 const missing: number[] = [];
 for (const id of ids) {
-  const way = fetched.get(id);
-  if (!way?.geometry) {
+  const way = await fetchWay(id);
+  if (!way) {
     missing.push(id);
     const kept = previous.get(id);
     if (kept) next.set(id, kept);
     continue;
   }
-  const coordinates: Position[] = way.geometry.map(({ lon, lat }) => [lon, lat]);
-  const name = way.tags?.name;
   next.set(id, {
     type: "Feature",
-    properties: name ? { osmId: id, name } : { osmId: id },
-    geometry: { type: "LineString", coordinates },
+    properties: way.name ? { osmId: id, name: way.name } : { osmId: id },
+    geometry: { type: "LineString", coordinates: way.coordinates },
   });
 }
 

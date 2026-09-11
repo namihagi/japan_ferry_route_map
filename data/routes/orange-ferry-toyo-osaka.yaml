@@ -1,0 +1,15 @@
+id: orange-ferry-toyo-osaka
+name: 東予～大阪航路
+operator: 四国開発フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.orange-ferry.co.jp/
+portsOfCall: [toyo, osaka-nanko]
+legs:
+  - from: toyo
+    to: osaka-nanko
+    osmWays: [1141572801]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.orange-ferry.co.jp/

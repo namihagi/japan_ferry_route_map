@@ -1,0 +1,15 @@
+id: sunflower-oarai-tomakomai
+name: 大洗～苫小牧航路
+operator: 商船三井さんふらわあ
+vesselType: ferry
+status: operating
+officialUrl: https://www.sunflower.co.jp/
+portsOfCall: [oarai, tomakomai]
+legs:
+  - from: oarai
+    to: tomakomai
+    osmWays: [550415107]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.sunflower.co.jp/

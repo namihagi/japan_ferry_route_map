@@ -1,0 +1,15 @@
+id: nankai-ferry
+name: 和歌山～徳島航路
+operator: 南海フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://nankai-ferry.co.jp/
+portsOfCall: [wakayama, tokushima]
+legs:
+  - from: wakayama
+    to: tokushima
+    osmWays: [42975873]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://nankai-ferry.co.jp/

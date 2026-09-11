@@ -1,0 +1,15 @@
+id: miyazaki-car-ferry
+name: 神戸～宮崎航路
+operator: 宮崎カーフェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.miyazakicarferry.com/
+portsOfCall: [kobe-sannomiya, miyazaki]
+legs:
+  - from: kobe-sannomiya
+    to: miyazaki
+    osmWays: [1354194097]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.miyazakicarferry.com/

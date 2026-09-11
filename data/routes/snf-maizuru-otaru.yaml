@@ -1,0 +1,16 @@
+id: snf-maizuru-otaru
+name: 舞鶴～小樽航路
+operator: 新日本海フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.snf.jp/
+portsOfCall: [maizuru, otaru]
+legs:
+  - from: maizuru
+    to: otaru
+    osmWays: [70108523]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.snf.jp/
+    - https://www.snf.jp/guide/searoute/

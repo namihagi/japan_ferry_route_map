@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildPublicData } from "./buildPublicData.ts";
+import type { EstimatedLegFeature } from "./estimatedGeometry.ts";
 import type { OsmWayFeature } from "./osmSnapshot.ts";
 import type { Registry, Route } from "./registry.ts";
 
@@ -54,6 +55,66 @@ describe("buildPublicData", () => {
   it("スナップショットにない way を参照していたら例外にする", () => {
     expect(() => buildPublicData(registry([route("verified", true)]), new Map())).toThrow(
       "way 1 がない",
+    );
+  });
+});
+
+describe("buildPublicData（推定形状）", () => {
+  // 推定形状は港の組ごとに a < b の向きで保存されている
+  const estimated: EstimatedLegFeature = {
+    type: "Feature",
+    properties: {
+      from: "a",
+      to: "b",
+      fromCoord: [133.0, 34.0],
+      toCoord: [133.1, 34.0],
+      method: "corridor-grid-v1",
+      stage: "single",
+      cellSizeM: 20,
+      snapFromM: 0,
+      snapToM: 0,
+      landCrossingM: 0,
+    },
+    geometry: {
+      type: "LineString",
+      coordinates: [
+        [133.0, 34.0],
+        [133.05, 34.01],
+        [133.1, 34.0],
+      ],
+    },
+  };
+
+  function estimatedRoute(from: string, to: string): Route {
+    return {
+      ...route("estimated", true),
+      portsOfCall: [from, to],
+      legs: [{ from, to }],
+    };
+  }
+
+  it("osmWays がない区間は推定形状を使い、出発港から始まる向きにそろえる", () => {
+    const data = buildPublicData(
+      registry([estimatedRoute("b", "a")]),
+      new Map(),
+      new Map([["a--b", estimated]]),
+    );
+    const leg = data.routes.features[0];
+    expect(leg?.properties.geometrySource).toBe("estimated");
+    expect(leg?.geometry.coordinates[0]).toEqual([133.1, 34.0]);
+  });
+
+  it("推定形状を計算したあとで港の座標が変わっていたら例外にする", () => {
+    const moved = registry([estimatedRoute("a", "b")]);
+    moved.ports.set("a", { id: "a", name: "A港", lon: 133.001, lat: 34.0 });
+    expect(() => buildPublicData(moved, new Map(), new Map([["a--b", estimated]]))).toThrow(
+      "港の座標が変わった",
+    );
+  });
+
+  it("推定形状もなければ例外にする", () => {
+    expect(() => buildPublicData(registry([estimatedRoute("a", "b")]), new Map())).toThrow(
+      "推定形状もない",
     );
   });
 });

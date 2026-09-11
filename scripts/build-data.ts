@@ -6,13 +6,18 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { PUBLIC_DATA_FILES } from "../src/domain/publicData.ts";
 import { buildPublicData } from "./lib/buildPublicData.ts";
+import { readEstimatedLegs } from "./lib/estimatedGeometry.ts";
 import { readOsmSnapshot } from "./lib/osmSnapshot.ts";
 import { paths } from "./lib/paths.ts";
 import { loadRegistry } from "./lib/registry.ts";
 
 try {
   const registry = await loadRegistry(paths.dataDir);
-  const data = buildPublicData(registry, await readOsmSnapshot(paths.osmSnapshot));
+  const data = buildPublicData(
+    registry,
+    await readOsmSnapshot(paths.osmSnapshot),
+    await readEstimatedLegs(paths.estimatedDir),
+  );
 
   await mkdir(paths.publicDataDir, { recursive: true });
   await writeFile(join(paths.publicDataDir, PUBLIC_DATA_FILES.routes), JSON.stringify(data.routes));

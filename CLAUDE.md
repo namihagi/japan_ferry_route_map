@@ -27,7 +27,7 @@
 
 - **ブランチと PR**：作業はブランチで行い、PR にする。PR の役割は、CI を通っていない変更が main に入るのを防ぐこと。人のレビューは待たない。
 - **マージ**：CI（`check`）が通り、変更の中身が仕様・ADR・人と合意済みの方針に沿っているなら、自分で `gh pr merge --merge --delete-branch` を実行してマージする。まだ決まっていない判断を含む PR は、マージする前に人に確認する。
-- **PR を出す前の確認**：`pnpm typecheck`、`pnpm lint`、`pnpm test` がすべて通ることを確かめる（CI と同じ内容）。画面に関わる変更では、`pnpm test:e2e` も通す。
+- **PR を出す前の確認**：`pnpm typecheck`、`pnpm lint`、`pnpm test` がすべて通ることを確かめる（CI と同じ内容）。画面に関わる変更では、`pnpm test:e2e` も通す。`tools/sea-router` を変えたら、そのディレクトリで `uv run ruff check .`、`uv run ruff format --check .`、`uv run pytest` も通す。
 - **コミットと PR の書き方**：日本語で書き、先頭に Conventional Commits の種別（`feat:` `fix:` `docs:` `chore:` など）を付ける。
 - **コミットの作成者**：`namihagi <43953318+namihagi@users.noreply.github.com>` にする。これはリポジトリのローカル設定に入っている。新しくクローンした環境では、コミットする前に `git config user.email` を確認する。
 - **言語**：ドキュメントは日本語で書く。コードの識別子は英語にし、データの値（港名、航路名など）は日本語にする。

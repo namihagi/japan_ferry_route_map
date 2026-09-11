@@ -1,0 +1,17 @@
+id: shodoshima-ferry-himeji-fukuda
+name: 姫路～福田航路
+operator: 小豆島フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.shikokuferry.com/route1
+durationMinutes: 100
+portsOfCall: [himeji, shodoshima-fukuda]
+legs:
+  # OSM に航路の線がない（2026-09-11 時点）ため、推定形状を使う
+  - from: himeji
+    to: shodoshima-fukuda
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.shikokuferry.com/
+    - https://www.shikokuferry.com/route1

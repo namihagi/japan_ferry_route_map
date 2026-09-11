@@ -44,6 +44,8 @@ pnpm test:e2e     # ブラウザでの E2E テスト（初回は pnpm exec playw
 pnpm build        # dist/ にビルド
 ```
 
+データ（航路台帳・港台帳・OSM の取り込み・推定形状の計算）の扱いは [`data/README.md`](data/README.md) を参照してください。推定形状の計算には uv（Python）も必要です。
+
 main にマージすると、GitHub Actions が GitHub Pages へ自動でデプロイします。
 
 設計資料は次のとおりです。

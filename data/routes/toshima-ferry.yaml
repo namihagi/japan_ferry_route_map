@@ -1,0 +1,37 @@
+id: toshima-ferry
+name: 鹿児島～十島～名瀬航路（フェリーとしま2）
+operator: 十島村
+vesselType: ferry
+status: operating
+officialUrl: https://www.tokara.jp/
+portsOfCall: [kagoshima-honko, kuchinoshima, nakanoshima, tairajima, suwanosejima, akusekijima, kodakarajima, takarajima, naze]
+legs:
+  - from: kagoshima-honko
+    to: kuchinoshima
+    osmWays: [389191360]
+  - from: kuchinoshima
+    to: nakanoshima
+    osmWays: [389191360]
+  - from: nakanoshima
+    to: tairajima
+    osmWays: [389191360]
+  - from: tairajima
+    to: suwanosejima
+    osmWays: [389191360]
+  - from: suwanosejima
+    to: akusekijima
+    osmWays: [389191360]
+  - from: akusekijima
+    to: kodakarajima
+    osmWays: [389191360]
+  - from: kodakarajima
+    to: takarajima
+    osmWays: [389191360]
+  - from: takarajima
+    to: naze
+    osmWays: [389191360]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.tokara.jp/
+note: 諏訪之瀬島は元浦港に発着することがある。

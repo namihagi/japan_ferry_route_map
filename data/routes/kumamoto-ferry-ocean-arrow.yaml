@@ -1,0 +1,17 @@
+id: kumamoto-ferry-ocean-arrow
+name: 熊本～島原航路（オーシャンアロー）
+operator: 熊本フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.kumamotoferry.co.jp/
+portsOfCall: [kumamoto, shimabara]
+legs:
+  - from: kumamoto
+    to: shimabara
+    osmWays: [35565353]
+verification:
+  checkedOn: "2026-09-12"
+  sources:
+    - https://www.kumamotoferry.co.jp/
+    - https://www.kumamotoferry.co.jp/oa/
+note: 高速カーフェリー。

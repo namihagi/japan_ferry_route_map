@@ -26,3 +26,13 @@
   name: 宮島
   lon: 132.32225
   lat: 34.3021
+
+- id: himeji
+  name: 姫路
+  lon: 134.66277
+  lat: 34.78397
+
+- id: shodoshima-fukuda
+  name: 福田（小豆島）
+  lon: 134.34463
+  lat: 34.54346

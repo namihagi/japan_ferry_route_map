@@ -16,7 +16,8 @@
     "lint": "biome check .",
     "format": "biome check --write .",
     "test": "vitest run",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "data:estimate": "uv run --project tools/sea-router sea-router"
   },
   "dependencies": {
     "maplibre-gl": "^6.9.0"

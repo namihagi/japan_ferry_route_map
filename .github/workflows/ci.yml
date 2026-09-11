@@ -29,3 +29,11 @@ jobs:
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:e2e
+      # 推定形状の計算（tools/sea-router）
+      - uses: astral-sh/setup-uv@v10.1.0
+      - name: sea-router のリントとテスト
+        working-directory: tools/sea-router
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+          uv run pytest -q

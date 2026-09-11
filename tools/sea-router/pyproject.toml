@@ -1,0 +1,36 @@
+[project]
+name = "sea-router"
+version = "0.1.0"
+description = "推定形状（海上だけを通る最短経路）を計算する（ADR 0002）"
+authors = [
+    { name = "namihagi", email = "43953318+namihagi@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.5.3",
+    "pyogrio>=0.13.0",
+    "pyyaml>=6.0.3",
+    "rasterio>=1.5.1",
+    "scikit-image>=0.26.0",
+    "scipy>=1.18.1",
+    "shapely>=2.1.2",
+]
+
+[project.scripts]
+sea-router = "sea_router:main"
+
+[build-system]
+requires = ["uv_build>=0.12.13,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.7",
+]
+
+[tool.pytest.ini_options]
+filterwarnings = ["ignore::PendingDeprecationWarning:rasterio.*"]
+
+[tool.ruff]
+line-length = 120

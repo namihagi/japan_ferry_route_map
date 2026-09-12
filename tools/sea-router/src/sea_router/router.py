@@ -48,6 +48,9 @@ MAX_CELLS = 12_000_000
 # 回廊：大まかな経路を区切る長さと、経路からの幅（メートル）。見つからなければ幅を広げる
 CHUNK_M = 50_000
 CORRIDOR_WIDTHS_M = (5_000, 15_000)
+# 陸地を読む範囲は、計算範囲よりこれだけ広くする。回廊やマス目の端は計算範囲の外へはみ出すため、
+# その分の陸地を読んでおかないと、外側が海として扱われて陸を突き抜ける経路ができる
+LAND_MARGIN_M = max(CORRIDOR_WIDTHS_M) + 5_000
 # 全体を1段階で探し直すときのマスの大きさの候補（メートル）
 FALLBACK_CELL_SIZES_M = (20, 40, 60, 100, 150, 250, 400, 600, 1000)
 # 陸からこの距離（またはマス3つ分の大きい方）以内のマスは通りにくくする（メートル）
@@ -106,6 +109,16 @@ class _Grid:
     @property
     def size(self) -> int:
         return self.rows * self.cols
+
+    @property
+    def extent(self) -> Bounds:
+        """マス目が実際に覆う範囲。行数・列数は切り上げなので、渡した範囲より少し外側まで広い。"""
+        return (
+            self.xmin,
+            self.ymax - self.rows * self.cell,
+            self.xmin + self.cols * self.cell,
+            self.ymax,
+        )
 
     def rasterize(self, geoms: np.ndarray | list, all_touched: bool = False) -> np.ndarray:
         if len(geoms) == 0:
@@ -245,7 +258,7 @@ def _estimate_within(
     proj = LocalProjection((bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2)
     (xmin, ymin), (xmax, ymax) = proj.forward(np.array([[bbox[0], bbox[1]], [bbox[2], bbox[3]]]))
     bounds: Bounds = (xmin, ymin, xmax, ymax)
-    land = _Land(shapely.transform(read_land(bbox), proj.forward))
+    land = _Land(shapely.transform(read_land(_bbox(port_from, port_to, margin_m + LAND_MARGIN_M)), proj.forward))
     start, end = proj.forward(np.array([port_from, port_to]))
 
     cell = SHORT_LEG_CELL_M if distance < SHORT_LEG_M else FINE_CELL_M
@@ -296,7 +309,9 @@ def _fine_search(
 ) -> tuple[np.ndarray, float, float]:
     """細かいマス目で start から end までを探し、見通しの利く範囲を直線でつないだ点列を返す。"""
     grid = _Grid.covering(bounds, cell)
-    polygons = land.within(bounds)
+    # 陸地はマス目が覆う範囲で切り取る。渡した範囲で切り取ると、はみ出した端のマスが
+    # 陸なしの海と判定され、そこを通り抜ける経路ができてしまう
+    polygons = land.within(grid.extent)
     touching = grid.rasterize(polygons, all_touched=True)
     water = ~grid.rasterize(polygons)
     if corridor is not None:

@@ -28,6 +28,18 @@ import {
 import { createFilterPanel } from "./ui/filterPanel.ts";
 import { routeChoices, routeTicket } from "./ui/routeCards.ts";
 
+/** 読み込みに失敗したときは、地図だけが出て操作できない状態になるので、画面に伝える。 */
+function showError(error: unknown): void {
+  console.error(error);
+  const message = error instanceof Error ? error.message : String(error);
+  const existing = document.querySelector(".error-banner");
+  const banner = existing ?? document.createElement("p");
+  banner.className = "error-banner";
+  banner.setAttribute("role", "alert");
+  banner.textContent = `データを読み込めませんでした：${message} 時間をおいて再読み込みしてください。`;
+  if (!existing) document.body.append(banner);
+}
+
 declare global {
   interface Window {
     /** E2E テストから地図の状態を調べるために公開している。 */
@@ -51,11 +63,20 @@ const map = new MapLibreMap({
   style: createBaseStyle(),
   bounds: JAPAN_BOUNDS,
   maxZoom: 17,
+  // 既定では画面幅 640px 未満で出典が折りたたまれる。仕様では常に表示する
+  attributionControl: { compact: false },
+  locale: {
+    "NavigationControl.ZoomIn": "拡大",
+    "NavigationControl.ZoomOut": "縮小",
+    "Popup.Close": "閉じる",
+    "Map.Title": "地図",
+    "AttributionControl.ToggleAttribution": "出典を表示",
+  },
 });
 map.addControl(new NavigationControl({ showCompass: false }));
 window.ferryMap = map;
 
-map.on("load", async () => {
+async function initialize(): Promise<void> {
   addRouteLayers(map, dataBaseUrl);
   addPortLayers(map, dataBaseUrl);
 
@@ -78,6 +99,9 @@ map.on("load", async () => {
   const open = (content: HTMLElement, at: LngLat, highlighted: string[]) => {
     popup.setLngLat(at).setDOMContent(content).addTo(map);
     highlightRoutes(map, highlighted);
+    // 一覧から航路を選ぶと押したボタンが消えるので、開いた内容へフォーカスを移す
+    content.tabIndex = -1;
+    content.focus();
   };
   const showRoute = (route: RouteDetail, at: LngLat) => open(routeTicket(route), at, [route.id]);
   const showChoices = (heading: string, routes: RouteDetail[], at: LngLat) =>
@@ -118,4 +142,11 @@ map.on("load", async () => {
       portIdsNear(map, event.point).length > 0 || routeIdsNear(map, event.point).length > 0;
     map.getCanvas().style.cursor = clickable ? "pointer" : "";
   });
+}
+
+// 取得できなくても未処理の reject にならないようにしておく（本体の待ち受けは initialize 側）
+routeDetails.catch(() => {});
+map.on("load", () => {
+  initialize().catch(showError);
 });
+map.on("error", (event) => showError(event.error ?? new Error("地図の読み込みに失敗しました")));

@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { formatDuration } from "./labels.ts";
 import type { RouteDetail } from "./publicData.ts";
-import { matchesFilter, operatorsOf, routesByPort, SHOW_ALL } from "./routeFilter.ts";
+import {
+  matchesFilter,
+  operatorsOf,
+  routesByPort,
+  SHOW_ALL,
+  toFilterExpression,
+} from "./routeFilter.ts";
 
 function route(id: string, overrides: Partial<RouteDetail> = {}): RouteDetail {
   return {
@@ -55,5 +61,25 @@ describe("formatDuration", () => {
     expect(formatDuration(10)).toBe("約10分");
     expect(formatDuration(100)).toBe("約1時間40分");
     expect(formatDuration(120)).toBe("約2時間");
+  });
+});
+
+describe("toFilterExpression", () => {
+  it("船種・運航状態・運航会社をすべて満たす条件式にする", () => {
+    expect(toFilterExpression({ ...SHOW_ALL, operator: "佐渡汽船" })).toEqual([
+      "all",
+      ["in", ["get", "vesselType"], ["literal", ["ferry", "highspeed", "passenger"]]],
+      ["in", ["get", "status"], ["literal", ["operating", "suspended"]]],
+      ["==", ["get", "operator"], "佐渡汽船"],
+    ]);
+  });
+
+  it("運航会社を選んでいなければ、その条件は真にする", () => {
+    expect(toFilterExpression(SHOW_ALL)[3]).toBe(true);
+  });
+
+  it("船種をすべて外すと、何も通さない条件式にする", () => {
+    const expression = toFilterExpression({ ...SHOW_ALL, vesselTypes: new Set() });
+    expect(expression[1]).toEqual(["in", ["get", "vesselType"], ["literal", []]]);
   });
 });

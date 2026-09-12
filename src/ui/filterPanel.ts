@@ -24,11 +24,17 @@ function swatch(color: string, dashed = false): HTMLElement {
   return el;
 }
 
-function checkbox(name: string, value: string, label: string, color: string): HTMLLabelElement {
+function checkbox(
+  name: string,
+  value: string,
+  label: string,
+  color: string,
+  checked: boolean,
+): HTMLLabelElement {
   return h(
     "label",
     { class: "check" },
-    h("input", { type: "checkbox", name, value, checked: true }),
+    h("input", { type: "checkbox", name, value, checked }),
     swatch(color),
     label,
   );
@@ -58,7 +64,13 @@ export function createFilterPanel(
       {},
       h("legend", {}, "船種"),
       ...VESSEL_TYPES.map((type) =>
-        checkbox("vesselType", type, VESSEL_TYPE_LABELS[type], routeColor(type, "operating")),
+        checkbox(
+          "vesselType",
+          type,
+          VESSEL_TYPE_LABELS[type],
+          routeColor(type, "operating"),
+          initial.vesselTypes.has(type),
+        ),
       ),
     ),
     h(
@@ -71,6 +83,7 @@ export function createFilterPanel(
           status,
           STATUS_LABELS[status],
           status === "suspended" ? routeColor("ferry", status) : "#14213D",
+          initial.statuses.has(status),
         ),
       ),
     ),
@@ -82,7 +95,6 @@ export function createFilterPanel(
       swatch("#14213D", true),
       "点線は、海上の最短経路として計算した推定の線です。実際の航路とは異なることがあります。",
     ),
-    count,
   );
 
   const compact = window.matchMedia("(max-width: 640px)").matches;
@@ -122,6 +134,8 @@ export function createFilterPanel(
       h("h1", { class: "panel__title" }, "日本フェリー航路マップ"),
       toggle,
     ),
+    // 表示中の航路数は、絞り込みを畳んでいるときも読めるようにフォームの外に置く
+    count,
     form,
   );
 

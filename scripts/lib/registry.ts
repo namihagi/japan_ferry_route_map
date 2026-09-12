@@ -4,7 +4,13 @@ import { parse } from "yaml";
 import { z } from "zod";
 
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "英小文字・数字・ハイフンの ID にする");
-const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "YYYY-MM-DD 形式にする");
+const isoDate = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/, "YYYY-MM-DD 形式にする")
+  .refine(
+    (value) => new Date(`${value}T00:00:00Z`).toISOString().startsWith(value),
+    "実在する日付にする",
+  );
 
 export const portSchema = z.strictObject({
   id: slug,
@@ -78,6 +84,7 @@ export function findRegistryProblems(registry: Registry): string[] {
     route.legs.forEach((leg, i) => {
       const from = route.portsOfCall[i];
       const to = route.portsOfCall[i + 1];
+      if (from === undefined || to === undefined) return; // 区間の数が合っていない（上で指摘済み）
       if (leg.from !== from || leg.to !== to) {
         problems.push(
           `${where}: 区間 ${i + 1} は ${from} → ${to} のはずが ${leg.from} → ${leg.to} になっている`,

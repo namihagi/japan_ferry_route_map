@@ -1,8 +1,9 @@
 import numpy as np
+import pytest
 import shapely
 
 from sea_router.registry import PortPair
-from sea_router.router import _remove_kinks, _string_pull, choose_cell_size, estimate_leg
+from sea_router.router import MAX_CELLS, NoRouteError, _remove_kinks, _string_pull, choose_cell_size, estimate_leg
 
 
 def test_port_pair_is_order_independent():
@@ -13,7 +14,7 @@ def test_port_pair_is_order_independent():
 def test_short_legs_use_fine_cells_and_long_legs_stay_within_budget():
     assert choose_cell_size(40_000, 30_000, 10_000) == 20
     size = choose_cell_size(950_000, 560_000, 560_000)
-    assert 950_000 * 560_000 / size**2 <= 25_000_000
+    assert 950_000 * 560_000 / size**2 <= MAX_CELLS
 
 
 def test_string_pull_straightens_open_water():
@@ -75,3 +76,33 @@ def test_widens_the_search_area_when_the_route_must_round_a_distant_cape():
     line = shapely.LineString(est.coordinates)
     assert est.land_crossing_m == 0
     assert line.bounds[3] > 34.30
+
+
+def _clipped_wall(south: float, north: float):
+    """陸地ポリゴンを bbox で切り取って返す read_land（land.read_land と同じ振る舞い）。"""
+    wall = shapely.box(133.04, south, 133.06, north)
+
+    def read_land(bbox):
+        clipped = shapely.clip_by_rect(wall, *bbox)
+        return np.array([clipped]) if not clipped.is_empty else np.array([])
+
+    return wall, read_land
+
+
+def test_does_not_slip_through_land_clipped_at_the_edge_of_the_search_area():
+    # 陸地は計算範囲で切り取られて渡される。回廊やマス目の端は計算範囲の外へはみ出すので、
+    # そこを陸なしとみなして突き抜ける経路を返してはいけない
+    wall, read_land = _clipped_wall(33.5, 34.5)
+    est = estimate_leg(read_land, (133.00, 34.03), (133.10, 33.97), max_cells=200_000)
+    line = shapely.LineString(est.coordinates)
+    assert line.intersection(wall).is_empty
+    assert est.land_crossing_m == 0
+    # 壁の北端（34.5）を回り込むため、計算範囲を広げた経路になる
+    assert max(p[1] for p in est.coordinates) > 34.5
+
+
+def test_reports_no_route_when_land_blocks_every_way_around():
+    # 南北に十分長い壁で塞ぐと、計算範囲を広げても経路はない
+    _wall, read_land = _clipped_wall(30.0, 38.0)
+    with pytest.raises(NoRouteError):
+        estimate_leg(read_land, (133.00, 34.03), (133.10, 33.97), max_cells=200_000)

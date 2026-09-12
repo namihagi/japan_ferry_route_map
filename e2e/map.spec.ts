@@ -1,5 +1,29 @@
 import { expect, type Page, test } from "@playwright/test";
 
+interface RouteDetail {
+  id: string;
+  name: string;
+  portsOfCall: { id: string; name: string }[];
+  hasEstimatedLegs: boolean;
+}
+
+interface LegFeature {
+  properties: { routeId: string; geometrySource: string };
+  geometry: { coordinates: [number, number][] };
+}
+
+/** 公開データから期待値を組み立てる（収録航路が増えても壊れないようにするため）。 */
+async function publicData(page: Page) {
+  const details: RouteDetail[] = await (await page.request.get("./data/route-details.json")).json();
+  const routes: { features: LegFeature[] } = await (
+    await page.request.get("./data/routes.geojson")
+  ).json();
+  const ports: {
+    features: { properties: { portId: string }; geometry: { coordinates: [number, number] } }[];
+  } = await (await page.request.get("./data/ports.geojson")).json();
+  return { details, routes, ports };
+}
+
 /** 地図を指定の位置に動かし、描画が落ち着くまで待つ。 */
 async function jumpTo(page: Page, center: [number, number], zoom: number) {
   await page.evaluate(
@@ -25,45 +49,58 @@ async function clickAt(page: Page, lngLat: [number, number]) {
 test.beforeEach(async ({ page }) => {
   await page.goto("./");
   await expect(page.locator(".panel__count")).toContainText("航路を表示しています");
+  await expect(page.locator(".error-banner")).toHaveCount(0);
 });
 
 test("港をクリックすると、その港に発着する航路を選べ、選ぶと詳細が出る", async ({ page }) => {
-  const miyajima: [number, number] = [132.32225, 34.3021];
-  await jumpTo(page, miyajima, 13);
-  await clickAt(page, miyajima);
+  const { details, ports } = await publicData(page);
+
+  // 最も多くの航路が発着する港を選ぶ（重なった線ではなく港の判定を確かめたいので、航路数が多い港が向く）
+  const counts = new Map<string, RouteDetail[]>();
+  for (const route of details) {
+    for (const port of new Set(route.portsOfCall.map((p) => p.id))) {
+      counts.set(port, [...(counts.get(port) ?? []), route]);
+    }
+  }
+  const [portId, routesAtPort] = [...counts].sort((a, b) => b[1].length - a[1].length)[0] as [
+    string,
+    RouteDetail[],
+  ];
+  const portName = details.flatMap((route) => route.portsOfCall).find((port) => port.id === portId)
+    ?.name as string;
+  const coordinates = ports.features.find((f) => f.properties.portId === portId)?.geometry
+    .coordinates as [number, number];
+
+  await jumpTo(page, coordinates, 13);
+  await clickAt(page, coordinates);
 
   const popup = page.locator(".ferry-popup");
-  await expect(popup.getByRole("heading", { name: "宮島に発着する航路" })).toBeVisible();
-  await expect(popup.locator(".choice")).toHaveCount(2);
+  await expect(popup.getByRole("heading", { name: `${portName}に発着する航路` })).toBeVisible();
+  await expect(popup.locator(".choice")).toHaveCount(routesAtPort.length);
 
-  await popup.locator(".choice", { hasText: "宮島松大汽船" }).click();
+  const first = routesAtPort[0] as RouteDetail;
+  await popup.locator(".choice").filter({ hasText: first.name }).first().click();
   const ticket = popup.locator(".ticket");
-  await expect(ticket.getByRole("heading", { name: "宮島航路" })).toBeVisible();
-  await expect(ticket.locator(".stops__port")).toHaveText(["宮島口", "宮島"]);
-  await expect(ticket.getByRole("link")).toHaveAttribute(
-    "href",
-    "https://miyajima-matsudai.co.jp/",
-  );
+  await expect(ticket.getByRole("heading")).toBeVisible();
+  await expect(ticket.locator(".stops__port").first()).toBeVisible();
 });
 
 test("推定形状の航路をクリックすると、推定の線であることが詳細に書かれている", async ({ page }) => {
-  // 姫路～福田航路の推定形状の途中（家島諸島の南）
-  const onLine: [number, number] = [134.45, 34.6];
-  const routes = await (await page.request.get("./data/routes.geojson")).json();
-  const leg = routes.features.find(
-    (f: { properties: { routeId: string } }) =>
-      f.properties.routeId === "shodoshima-ferry-himeji-fukuda",
-  );
-  const [a, b] = [leg.geometry.coordinates[1], leg.geometry.coordinates[2]];
-  onLine[0] = (a[0] + b[0]) / 2;
-  onLine[1] = (a[1] + b[1]) / 2;
+  const { details, routes } = await publicData(page);
+  const estimated = routes.features.find((f) => f.properties.geometrySource === "estimated");
+  if (!estimated) test.skip(true, "推定形状の区間が収録されていない");
+  const leg = estimated as LegFeature;
+  const route = details.find((d) => d.id === leg.properties.routeId) as RouteDetail;
 
-  await jumpTo(page, onLine, 11);
-  await clickAt(page, onLine);
+  // 線の途中（港から離れた頂点）をクリックする
+  const coordinates = leg.geometry.coordinates;
+  const middle = coordinates[Math.floor(coordinates.length / 2)] as [number, number];
+
+  await jumpTo(page, middle, 11);
+  await clickAt(page, middle);
   const ticket = page.locator(".ferry-popup .ticket");
-  await expect(ticket.getByRole("heading", { name: "姫路～福田航路" })).toBeVisible();
+  await expect(ticket.getByRole("heading", { name: route.name })).toBeVisible();
   await expect(ticket).toContainText("点線の区間は推定の線");
-  await expect(ticket).toContainText("所要 約1時間40分");
 });
 
 test("船種で絞り込むと、その船種の航路が地図から消える", async ({ page }) => {

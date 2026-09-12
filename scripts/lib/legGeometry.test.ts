@@ -60,3 +60,35 @@ describe("buildLegGeometry", () => {
     expect(buildLegGeometry([[C, B, A]], A, C)).toEqual([A, B, C]);
   });
 });
+
+describe("stitchWays（つながらない way）", () => {
+  it("継ぎ目が離れすぎている way を並べたら例外にする", () => {
+    const far: Position = [133.5, 34.0];
+    expect(() =>
+      stitchWays([
+        [A, B],
+        [far, C],
+      ]),
+    ).toThrow("離れている");
+  });
+
+  it("3本以上でもつなげる", () => {
+    const mid: Position = [133.15, 34.0];
+    expect(
+      stitchWays([
+        [A, B],
+        [C, B],
+        [C, mid],
+      ]),
+    ).toEqual([A, B, C, mid]);
+  });
+});
+
+describe("trimToPorts（出発側）", () => {
+  it("線が出発港を通り過ぎていれば、出発港で切る", () => {
+    // 線は A から始まるが、区間は B から C まで
+    const line = trimToPorts([A, B, C], [133.1, 34.002], C);
+    expect(line[0]?.[0]).toBeCloseTo(133.1, 3);
+    expect(line[line.length - 1]).toEqual(C);
+  });
+});

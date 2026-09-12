@@ -13,6 +13,10 @@ const CASING_LAYER = "routes-casing";
 const OSM_ONLY: ExpressionSpecification = ["==", ["get", "geometrySource"], "osm"];
 const ESTIMATED_ONLY: ExpressionSpecification = ["==", ["get", "geometrySource"], "estimated"];
 
+/**
+ * 船種ごとの色。色の値は labels.ts の VESSEL_TYPE_COLORS が持つ（labels.ts の routeColor と同じ規則）。
+ * 船種を増やしたらここにも 1 行足す。
+ */
 const COLOR: ExpressionSpecification = [
   "case",
   ["==", ["get", "status"], "suspended"],
@@ -27,6 +31,11 @@ const COLOR: ExpressionSpecification = [
     VESSEL_TYPE_COLORS.ferry,
   ],
 ];
+
+/** 指で押せる大きさにする。細い線は数ピクセルの判定では当たらない。 */
+function tapRadius(fine: number, coarse: number): number {
+  return window.matchMedia?.("(pointer: coarse)").matches ? coarse : fine;
+}
 
 function isHighlighted(routeIds: readonly string[]): ExpressionSpecification {
   return ["in", ["get", "routeId"], ["literal", [...routeIds]]];
@@ -105,7 +114,7 @@ export function highlightRoutes(map: MapLibreMap, routeIds: readonly string[] | 
 export function routeIdsNear(
   map: MapLibreMap,
   point: { x: number; y: number },
-  radius = 8,
+  radius = tapRadius(8, 14),
 ): string[] {
   const box: [PointLike, PointLike] = [
     [point.x - radius, point.y - radius],

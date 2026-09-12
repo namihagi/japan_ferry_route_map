@@ -26,7 +26,11 @@ def _is_up_to_date(file: Path, coord_a: tuple[float, float], coord_b: tuple[floa
     if not file.exists():
         return False
     props = json.loads(file.read_text(encoding="utf-8"))["properties"]
-    return props.get("method") == METHOD and props["fromCoord"] == list(coord_a) and props["toCoord"] == list(coord_b)
+    return (
+        props.get("method") == METHOD
+        and props.get("fromCoord") == list(coord_a)
+        and props.get("toCoord") == list(coord_b)
+    )
 
 
 def _write(file: Path, pair: PortPair, coord_a, coord_b, est) -> None:
@@ -65,6 +69,13 @@ def main() -> None:
 
     failed = False
     for pair in pairs:
+        missing = [p for p in (pair.a, pair.b) if p not in ports]
+        if missing:
+            print(
+                f"{pair.key}: 港台帳に {', '.join(missing)} がありません（data/ports.yaml を確認する）", file=sys.stderr
+            )
+            failed = True
+            continue
         coord_a, coord_b = ports[pair.a], ports[pair.b]
         file = out_dir / f"{pair.key}.geojson"
         if not force and _is_up_to_date(file, coord_a, coord_b):

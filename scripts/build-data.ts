@@ -6,7 +6,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { PUBLIC_DATA_FILES } from "../src/domain/publicData.ts";
 import { buildPublicData } from "./lib/buildPublicData.ts";
-import { readEstimatedLegs } from "./lib/estimatedGeometry.ts";
+import { portPairKey, readEstimatedLegs } from "./lib/estimatedGeometry.ts";
 import { readOsmSnapshot } from "./lib/osmSnapshot.ts";
 import { paths } from "./lib/paths.ts";
 import { loadRegistry } from "./lib/registry.ts";
@@ -26,6 +26,20 @@ try {
     join(paths.publicDataDir, PUBLIC_DATA_FILES.routeDetails),
     JSON.stringify(data.routeDetails),
   );
+
+  const used = new Set(
+    registry.routes.flatMap((route) =>
+      route.legs.filter((leg) => !leg.osmWays).map((leg) => portPairKey(leg.from, leg.to)),
+    ),
+  );
+  const unused = [...(await readEstimatedLegs(paths.estimatedDir)).keys()].filter(
+    (key) => !used.has(key),
+  );
+  if (unused.length > 0) {
+    console.log(
+      `どの区間からも使われていない推定形状があります（消してよいか確認する）: ${unused.join(", ")}`,
+    );
+  }
 
   const published = new Set(data.routes.features.map((f) => f.properties.routeId)).size;
   console.log(

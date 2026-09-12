@@ -2,6 +2,12 @@ import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import type { Feature, LineString, Position } from "geojson";
 
+/**
+ * tools/sea-router が書き出す推定形状の計算方法。tools/sea-router の METHOD と揃える。
+ * 食い違ったら、古い推定形状が残っているので pnpm data:estimate で作り直す。
+ */
+export const EXPECTED_ESTIMATE_METHOD = "corridor-grid-v2";
+
 /** tools/sea-router が data/estimated/<a>--<b>.geojson に書き出す推定形状（a < b の向き）。 */
 export interface EstimatedLegProperties {
   from: string;

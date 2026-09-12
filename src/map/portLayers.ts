@@ -48,7 +48,7 @@ export function addPortLayers(map: MapLibreMap, dataBaseUrl: string): void {
 export function portIdsNear(
   map: MapLibreMap,
   point: { x: number; y: number },
-  radius = 10,
+  radius = window.matchMedia?.("(pointer: coarse)").matches ? 16 : 10,
 ): string[] {
   const box: [PointLike, PointLike] = [
     [point.x - radius, point.y - radius],

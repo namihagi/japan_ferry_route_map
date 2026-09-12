@@ -13,6 +13,9 @@ import type { Position } from "geojson";
  */
 export const MAX_PORT_DISTANCE_KM = 3;
 
+/** way の継ぎ目がこれより離れていたら、つながっていない way を並べたとみなす（km）。 */
+export const MAX_JOIN_GAP_KM = 0.2;
+
 function squaredDistance(a: Position, b: Position): number {
   const dx = (a[0] ?? 0) - (b[0] ?? 0);
   const dy = (a[1] ?? 0) - (b[1] ?? 0);
@@ -40,7 +43,7 @@ export function stitchWays(ways: Position[][]): Position[] {
       ? [...first]
       : [...first].reverse();
 
-  for (const way of rest) {
+  for (const [index, way] of rest.entries()) {
     const tail = line[line.length - 1] as Position;
     const oriented =
       squaredDistance(tail, way[0] as Position) <=
@@ -48,6 +51,12 @@ export function stitchWays(ways: Position[][]): Position[] {
         ? way
         : [...way].reverse();
     const head = oriented[0] as Position;
+    const gap = distance(tail, head);
+    if (gap > MAX_JOIN_GAP_KM) {
+      throw new Error(
+        `${index + 1} 本目と ${index + 2} 本目の way が ${(gap * 1000).toFixed(0)} m 離れている（上限 ${MAX_JOIN_GAP_KM * 1000} m）。way の並び順か ID を見直す`,
+      );
+    }
     line.push(...(squaredDistance(tail, head) === 0 ? oriented.slice(1) : oriented));
   }
   return line;

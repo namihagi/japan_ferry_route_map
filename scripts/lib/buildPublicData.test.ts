@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildPublicData } from "./buildPublicData.ts";
-import type { EstimatedLegFeature } from "./estimatedGeometry.ts";
+import { type EstimatedLegFeature, EXPECTED_ESTIMATE_METHOD } from "./estimatedGeometry.ts";
 import type { OsmWayFeature } from "./osmSnapshot.ts";
 import type { Registry, Route } from "./registry.ts";
 
@@ -78,7 +78,7 @@ describe("buildPublicData（推定形状）", () => {
       to: "b",
       fromCoord: [133.0, 34.0],
       toCoord: [133.1, 34.0],
-      method: "corridor-grid-v1",
+      method: EXPECTED_ESTIMATE_METHOD,
       stage: "single",
       cellSizeM: 20,
       snapFromM: 0,
@@ -120,6 +120,16 @@ describe("buildPublicData（推定形状）", () => {
     expect(() => buildPublicData(moved, new Map(), new Map([["a--b", estimated]]))).toThrow(
       "港の座標が変わった",
     );
+  });
+
+  it("推定形状の計算方法が古ければ例外にする", () => {
+    const stale: EstimatedLegFeature = {
+      ...estimated,
+      properties: { ...estimated.properties, method: "corridor-grid-v1" },
+    };
+    expect(() =>
+      buildPublicData(registry([estimatedRoute("a", "b")]), new Map(), new Map([["a--b", stale]])),
+    ).toThrow("計算方法が古い");
   });
 
   it("推定形状もなければ例外にする", () => {

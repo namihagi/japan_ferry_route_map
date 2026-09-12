@@ -5,7 +5,11 @@ import type {
   PortFeatureProperties,
   RouteDetail,
 } from "../../src/domain/publicData.ts";
-import { type EstimatedLegFeature, portPairKey } from "./estimatedGeometry.ts";
+import {
+  type EstimatedLegFeature,
+  EXPECTED_ESTIMATE_METHOD,
+  portPairKey,
+} from "./estimatedGeometry.ts";
 import { buildLegGeometry } from "./legGeometry.ts";
 import type { OsmWayFeature } from "./osmSnapshot.ts";
 import { findRegistryProblems, type Port, type Registry } from "./registry.ts";
@@ -19,6 +23,13 @@ export interface PublicData {
 }
 
 const position = (port: Port): Position => [port.lon, port.lat];
+
+/** 公開データの座標は小数7桁（約1cm）に丸める。切り出しで生まれる長い小数を持ち回らないため。 */
+const round7 = (coordinates: Position[]): Position[] =>
+  coordinates.map(([lon = 0, lat = 0]) => [
+    Math.round(lon * 1e7) / 1e7,
+    Math.round(lat * 1e7) / 1e7,
+  ]);
 
 const samePosition = (a: Position, b: Position) => a[0] === b[0] && a[1] === b[1];
 
@@ -34,6 +45,11 @@ function estimatedLegGeometry(
   const hint = "pnpm data:estimate を実行する";
   if (!estimated) throw new Error(`実測形状（osmWays）も推定形状もない（${hint}）`);
   const { properties, geometry } = estimated;
+  if (properties.method !== EXPECTED_ESTIMATE_METHOD) {
+    throw new Error(
+      `推定形状の計算方法が古い（${properties.method} → ${EXPECTED_ESTIMATE_METHOD}。${hint}）`,
+    );
+  }
   const forward = properties.from === from.id;
   const [expectedFrom, expectedTo] = forward ? [from, to] : [to, from];
   if (
@@ -109,7 +125,7 @@ export function buildPublicData(
           status: route.status,
           geometrySource,
         },
-        geometry: { type: "LineString", coordinates },
+        geometry: { type: "LineString", coordinates: round7(coordinates) },
       });
       usedPortIds.add(from.id);
       usedPortIds.add(to.id);

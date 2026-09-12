@@ -36,7 +36,7 @@ export function toFilterExpression(filter: RouteFilter): ExpressionSpecification
   ];
 }
 
-/** 運航会社の一覧（重複なし、五十音順）。 */
+/** 運航会社の一覧（重複なし、名前順。漢字の社名は読みでは並ばない）。 */
 export function operatorsOf(routes: readonly RouteDetail[]): string[] {
   return [...new Set(routes.map((route) => route.operator))].sort((a, b) =>
     a.localeCompare(b, "ja"),

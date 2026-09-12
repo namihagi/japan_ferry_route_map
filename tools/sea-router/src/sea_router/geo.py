@@ -18,7 +18,12 @@ def haversine_m(a: tuple[float, float], b: tuple[float, float]) -> float:
 
 @dataclass(frozen=True)
 class LocalProjection:
-    """区間の中心付近で正距円筒図法を使う平面座標。区間程度の広さなら歪みは小さい。"""
+    """区間の中心付近で正距円筒図法を使う平面座標。
+
+    区間程度の広さなら歪みは小さい。ただし南北に長い区間（例：新潟〜小樽で約600km）では、
+    端で東西方向の距離が 10% 程度ずれる。陸の判定は同じ座標系で行うので陸を横切ることはないが、
+    最短性はわずかにずれる。
+    """
 
     lon0: float
     lat0: float

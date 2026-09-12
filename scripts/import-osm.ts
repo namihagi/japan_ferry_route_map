@@ -24,10 +24,23 @@ interface OsmElement {
 }
 
 /** way と、その node の座標を取得する。削除済み・存在しない way は null。 */
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/** 混雑や一時的な障害（429・5xx）は少し待って繰り返す。500 航路規模では途中で必ず出るため。 */
+async function fetchWithRetry(url: string, attempts = 4): Promise<Response> {
+  let response = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
+  for (let attempt = 1; attempt < attempts; attempt++) {
+    if (response.status !== 429 && response.status < 500) return response;
+    const waitMs = 2000 * 2 ** (attempt - 1);
+    console.warn(`HTTP ${response.status}: ${waitMs / 1000} 秒待って再試行します（${url}）`);
+    await sleep(waitMs);
+    response = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
+  }
+  return response;
+}
+
 async function fetchWay(id: number): Promise<{ coordinates: Position[]; name?: string } | null> {
-  const response = await fetch(`${OSM_API}/way/${id}/full.json`, {
-    headers: { "User-Agent": USER_AGENT },
-  });
+  const response = await fetchWithRetry(`${OSM_API}/way/${id}/full.json`);
   if (response.status === 404 || response.status === 410) return null;
   if (!response.ok)
     throw new Error(`OSM API から way ${id} を取得できなかった（HTTP ${response.status}）`);

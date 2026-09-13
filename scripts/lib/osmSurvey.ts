@@ -162,6 +162,35 @@ function terminalPoint(terminal: OsmTerminal): OsmPoint | undefined {
   return terminal.center;
 }
 
+export interface NearestTerminal {
+  name: string;
+  /** OSM に書かれているローマ字表記。港 ID の下書きに使う。 */
+  romaji?: string;
+  at: OsmPoint;
+  distanceM: number;
+}
+
+/** 点に最も近い、名前のある OSM のフェリーターミナル。港台帳にない港の名前と座標の出どころになる。 */
+export function nearestTerminal(
+  point: OsmPoint,
+  terminals: OsmTerminal[],
+  withinM = TERMINAL_MATCH_M,
+): NearestTerminal | undefined {
+  let found: NearestTerminal | undefined;
+  for (const terminal of terminals) {
+    const name = terminal.tags?.name ?? terminal.tags?.["name:ja"];
+    const at = terminalPoint(terminal);
+    if (!name || !at) continue;
+    const m = distanceM(point, at);
+    if (m <= withinM && (!found || m < found.distanceM)) {
+      const romaji =
+        terminal.tags?.["name:ja-Latn"] ?? terminal.tags?.["name:en"] ?? terminal.tags?.int_name;
+      found = { name, romaji, at, distanceM: m };
+    }
+  }
+  return found;
+}
+
 function labelEndpoint(point: OsmPoint, ports: Port[], terminals: OsmTerminal[]): EndpointLabel {
   let nearestPort: { port: Port; m: number } | undefined;
   for (const port of ports) {
@@ -177,17 +206,8 @@ function labelEndpoint(point: OsmPoint, ports: Port[], terminals: OsmTerminal[])
     };
   }
 
-  let nearestTerminal: { name: string; m: number } | undefined;
-  for (const terminal of terminals) {
-    const name = terminal.tags?.name ?? terminal.tags?.["name:ja"];
-    const at = terminalPoint(terminal);
-    if (!name || !at) continue;
-    const m = distanceM(point, at);
-    if (m <= TERMINAL_MATCH_M && (!nearestTerminal || m < nearestTerminal.m)) {
-      nearestTerminal = { name, m };
-    }
-  }
-  const name = nearestTerminal?.name ?? `${point.lon.toFixed(3)},${point.lat.toFixed(3)}`;
+  const terminal = nearestTerminal(point, terminals);
+  const name = terminal?.name ?? `${point.lon.toFixed(3)},${point.lat.toFixed(3)}`;
   return { name, lon: point.lon, lat: point.lat };
 }
 

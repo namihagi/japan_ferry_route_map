@@ -1,0 +1,17 @@
+id: yamasa-kaiun-miike-shimabara
+name: 三池島原ライン
+operator: やまさ海運
+vesselType: highspeed
+status: suspended
+officialUrl: https://www.yamasa-kaiun.net/
+portsOfCall: [miike, shimabara]
+legs:
+  - from: miike
+    to: shimabara
+    osmWays: [1178017227]
+note: 2025年7月1日から運航休止。再開の見込みは公表されていない。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.yamasa-kaiun.net/
+    - https://www.yamasa-kaiun.net/news/msline-kyushi

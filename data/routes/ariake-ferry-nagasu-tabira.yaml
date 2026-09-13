@@ -1,0 +1,17 @@
+id: ariake-ferry-nagasu-tabira
+name: 有明フェリー
+operator: 有明海自動車航送船組合
+vesselType: ferry
+status: operating
+officialUrl: https://www.ariake-ferry.com/
+durationMinutes: 45
+portsOfCall: [nagasu, tabira]
+legs:
+  - from: nagasu
+    to: tabira
+    osmWays: [169099488]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.ariake-ferry.com/
+    - https://www.ariake-ferry.com/route/

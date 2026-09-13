@@ -1,0 +1,17 @@
+id: fujisan-suruga-wan-ferry-shimizu-toi
+name: 駿河湾フェリー
+operator: ふじさん駿河湾フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.223-ferry.or.jp/
+durationMinutes: 90
+portsOfCall: [shimizu, toi]
+legs:
+  - from: shimizu
+    to: toi
+    osmWays: [228061972]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.223-ferry.or.jp/
+    - https://www.223-ferry.or.jp/timetable

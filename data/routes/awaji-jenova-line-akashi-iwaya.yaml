@@ -1,0 +1,17 @@
+id: awaji-jenova-line-akashi-iwaya
+name: 明石～岩屋航路
+operator: 淡路ジェノバライン
+vesselType: highspeed
+status: operating
+officialUrl: https://www.jenova-line.co.jp/
+durationMinutes: 13
+portsOfCall: [akashi, iwaya]
+legs:
+  - from: akashi
+    to: iwaya
+    osmWays: [749246299]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.jenova-line.co.jp/
+    - https://www.jenova-line.co.jp/jikoku.php

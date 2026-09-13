@@ -1,0 +1,18 @@
+id: mutsuwan-ferry-kanita-wakinosawa
+name: むつ湾フェリー
+operator: むつ湾フェリー
+vesselType: ferry
+status: operating
+seasonal: true
+officialUrl: https://mutsuwan-ferry.jp/
+durationMinutes: 60
+portsOfCall: [kanita, wakinosawa]
+legs:
+  - from: kanita
+    to: wakinosawa
+    osmWays: [569686691]
+note: 運航期間は4月下旬から11月上旬まで。冬期は運休する。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://mutsuwan-ferry.jp/

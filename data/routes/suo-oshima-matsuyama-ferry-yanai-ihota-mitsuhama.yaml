@@ -1,0 +1,20 @@
+id: suo-oshima-matsuyama-ferry-yanai-ihota-mitsuhama
+name: 柳井～伊保田～三津浜航路
+operator: 周防大島松山フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.suo-oshima-matsuyamaferry.com/
+durationMinutes: 150
+portsOfCall: [yanai, ihota, mitsuhama]
+legs:
+  - from: yanai
+    to: ihota
+    osmWays: [439857720]
+  - from: ihota
+    to: mitsuhama
+    osmWays: [802333818]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.suo-oshima-matsuyamaferry.com/
+    - https://www.suo-oshima-matsuyamaferry.com/service

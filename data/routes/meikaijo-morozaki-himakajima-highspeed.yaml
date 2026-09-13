@@ -1,0 +1,19 @@
+id: meikaijo-morozaki-himakajima-highspeed
+name: 高速船 師崎～篠島～日間賀島
+operator: 名鉄海上観光船
+vesselType: highspeed
+status: operating
+officialUrl: https://www.meikaijo.co.jp/
+portsOfCall: [morozaki, shinojima, himakajima]
+legs:
+  - from: morozaki
+    to: shinojima
+    osmWays: [207683406]
+  - from: shinojima
+    to: himakajima
+    osmWays: [207683404]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.meikaijo.co.jp/
+    - https://www.meikaijo.co.jp/timetable

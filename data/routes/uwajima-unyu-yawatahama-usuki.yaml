@@ -1,0 +1,17 @@
+id: uwajima-unyu-yawatahama-usuki
+name: 臼杵航路
+operator: 宇和島運輸
+vesselType: ferry
+status: operating
+officialUrl: https://www.uwajimaunyu.co.jp/
+durationMinutes: 145
+portsOfCall: [yawatahama, usuki]
+legs:
+  - from: yawatahama
+    to: usuki
+    osmWays: [412851835]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.uwajimaunyu.co.jp/
+    - https://www.uwajimaunyu.co.jp/timetable/

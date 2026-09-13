@@ -1,0 +1,21 @@
+id: meikaijo-kowa-irago-highspeed
+name: 高速船 河和～日間賀島～篠島～伊良湖
+operator: 名鉄海上観光船
+vesselType: highspeed
+status: operating
+officialUrl: https://www.meikaijo.co.jp/
+portsOfCall: [kowa, himakajima, shinojima, irago]
+legs:
+  - from: kowa
+    to: himakajima
+  - from: himakajima
+    to: shinojima
+    osmWays: [207683404]
+  - from: shinojima
+    to: irago
+    osmWays: [224989519]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.meikaijo.co.jp/
+    - https://www.meikaijo.co.jp/timetable

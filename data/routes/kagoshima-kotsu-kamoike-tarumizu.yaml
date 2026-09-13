@@ -1,0 +1,16 @@
+id: kagoshima-kotsu-kamoike-tarumizu
+name: 鴨池・垂水フェリー
+operator: 鹿児島交通
+vesselType: ferry
+status: operating
+officialUrl: https://www.iwasaki-corp.com/kagoshima_kotsu/tarumizuferry/
+portsOfCall: [kamoike, tarumizu]
+legs:
+  - from: kamoike
+    to: tarumizu
+    osmWays: [173455497]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.iwasaki-corp.com/kagoshima_kotsu/tarumizuferry/
+    - https://www.iwasaki-corp.com/kagoshima_kotsu/tarumizuferry/t-timetable/

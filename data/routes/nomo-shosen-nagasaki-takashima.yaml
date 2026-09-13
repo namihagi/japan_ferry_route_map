@@ -1,0 +1,20 @@
+id: nomo-shosen-nagasaki-takashima
+name: 長崎～伊王島～高島航路
+operator: 野母商船
+vesselType: highspeed
+status: operating
+officialUrl: https://www.nomo.co.jp/
+durationMinutes: 33
+portsOfCall: [nagasaki, iojima, nagasaki-takashima]
+legs:
+  - from: nagasaki
+    to: iojima
+    osmWays: [165379032]
+  - from: iojima
+    to: nagasaki-takashima
+    osmWays: [165379032]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.nomo.co.jp/
+    - https://www.nomo.co.jp/nomo/takasu-shunkan/

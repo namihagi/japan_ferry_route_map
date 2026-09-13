@@ -1136,3 +1136,53 @@
   name: 小長（大崎下島）
   lon: 132.85335
   lat: 34.18840
+
+- id: saitozaki
+  name: 西戸崎
+  lon: 130.35914
+  lat: 33.64941
+
+- id: shikanoshima
+  name: 志賀島
+  lon: 130.31414
+  lat: 33.66225
+
+- id: genkaijima
+  name: 玄界島
+  lon: 130.23512
+  lat: 33.68243
+
+- id: meinohama
+  name: 姪浜
+  lon: 130.32747
+  lat: 33.59726
+
+- id: nokonoshima
+  name: 能古
+  lon: 130.31070
+  lat: 33.61199
+
+- id: oroshima
+  name: 小呂島
+  lon: 130.03497
+  lat: 33.86327
+
+- id: iojima
+  name: 伊王島
+  lon: 129.78006
+  lat: 32.70328
+
+- id: nagasaki-takashima
+  name: 高島（長崎）
+  lon: 129.75701
+  lat: 32.65696
+
+- id: kamoike
+  name: 鴨池
+  lon: 130.56040
+  lat: 31.55329
+
+- id: tarumizu
+  name: 垂水
+  lon: 130.69178
+  lat: 31.48389

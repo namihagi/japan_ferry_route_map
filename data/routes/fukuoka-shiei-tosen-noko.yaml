@@ -1,0 +1,17 @@
+id: fukuoka-shiei-tosen-noko
+name: 能古航路
+operator: 福岡市
+vesselType: ferry
+status: operating
+officialUrl: https://www.city.fukuoka.lg.jp/kowan/kyakusen/hakata-port/ferry_city.html
+durationMinutes: 10
+portsOfCall: [meinohama, nokonoshima]
+legs:
+  - from: meinohama
+    to: nokonoshima
+    osmWays: [699157069]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.city.fukuoka.lg.jp/kowan/kyakusen/hakata-port/hyo.html
+    - https://www.city.fukuoka.lg.jp/kowan/kyakusen/sennpakusyoukai.html

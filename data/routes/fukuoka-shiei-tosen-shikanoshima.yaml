@@ -1,0 +1,20 @@
+id: fukuoka-shiei-tosen-shikanoshima
+name: 志賀島航路
+operator: 福岡市
+vesselType: passenger
+status: operating
+officialUrl: https://www.city.fukuoka.lg.jp/kowan/kyakusen/hakata-port/ferry_city.html
+durationMinutes: 30
+portsOfCall: [hakata, saitozaki, shikanoshima]
+legs:
+  - from: hakata
+    to: saitozaki
+    osmWays: [837595870]
+  - from: saitozaki
+    to: shikanoshima
+    osmWays: [258343586]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.city.fukuoka.lg.jp/kowan/kyakusen/hakata-port/hyo.html
+    - https://www.city.fukuoka.lg.jp/kowan/kyakusen/sennpakusyoukai.html

@@ -1,0 +1,17 @@
+id: setonaikai-kisen-miyajima-kure
+name: 宮島・呉ブルーライン
+operator: 瀬戸内海汽船
+vesselType: highspeed
+status: operating
+seasonal: true
+officialUrl: https://setonaikaikisen.co.jp/
+durationMinutes: 45
+portsOfCall: [miyajima, kure]
+legs:
+  - from: miyajima
+    to: kure
+note: 4月から11月の土・日・祝日を中心に運航する（8月は金曜も）。12月から3月は運休。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://setonaikaikisen.co.jp/kouro/highspeedship5/

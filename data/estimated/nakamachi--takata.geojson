@@ -1,0 +1,46 @@
+{
+  "type": "Feature",
+  "properties": {
+    "from": "nakamachi",
+    "to": "takata",
+    "fromCoord": [
+      132.44427,
+      34.22384
+    ],
+    "toCoord": [
+      132.43516,
+      34.23727
+    ],
+    "method": "corridor-grid-v2",
+    "stage": "single",
+    "cellSizeM": 20,
+    "snapFromM": 20.0,
+    "snapToM": 0.0,
+    "landCrossingM": 0.0
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        132.44427,
+        34.22384
+      ],
+      [
+        132.444337,
+        34.224107
+      ],
+      [
+        132.43607,
+        34.238676
+      ],
+      [
+        132.4352,
+        34.237237
+      ],
+      [
+        132.43516,
+        34.23727
+      ]
+    ]
+  }
+}

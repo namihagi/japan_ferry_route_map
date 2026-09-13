@@ -1,0 +1,15 @@
+id: onomichi-watashibune-doto-kaneyoshi
+name: 尾道（土堂）～向島（兼吉）航路
+operator: おのみち渡し船
+vesselType: ferry
+status: operating
+officialUrl: https://www.city.onomichi.hiroshima.jp/soshiki/32/65681.html
+portsOfCall: [onomichi-doto, mukaishima-kaneyoshi]
+legs:
+  - from: onomichi-doto
+    to: mukaishima-kaneyoshi
+    osmWays: [192166029]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.city.onomichi.hiroshima.jp/soshiki/32/65681.html

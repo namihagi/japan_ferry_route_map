@@ -1,0 +1,42 @@
+{
+  "type": "Feature",
+  "properties": {
+    "from": "kirikushi",
+    "to": "prince-hotel",
+    "fromCoord": [
+      132.47512,
+      34.28487
+    ],
+    "toCoord": [
+      132.46533,
+      34.34287
+    ],
+    "method": "corridor-grid-v2",
+    "stage": "single",
+    "cellSizeM": 20,
+    "snapFromM": 0.0,
+    "snapToM": 0.0,
+    "landCrossingM": 0.0
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        132.47512,
+        34.28487
+      ],
+      [
+        132.475169,
+        34.284921
+      ],
+      [
+        132.46537,
+        34.342837
+      ],
+      [
+        132.46533,
+        34.34287
+      ]
+    ]
+  }
+}

@@ -4,6 +4,7 @@
  * 台帳が「どの航路が存在するか」を決める（ADR 0001）ので、この結果は候補にすぎない。
  * 公式サイトで照合して初めて台帳に入る（add-route スキル）。
  */
+import { EXCLUSION_REASONS, type Exclusion, type Exclusions } from "./excluded.ts";
 import type { Port, Registry, Route } from "./registry.ts";
 
 export interface OsmPoint {
@@ -78,6 +79,8 @@ export interface CandidateRoute {
   region: string;
   coverage: "covered" | "partial" | "none";
   international: boolean;
+  /** 対象航路でないと判断したもの（data/excluded.yaml）。分母から外す。 */
+  excluded?: Exclusion;
 }
 
 export interface OperatorGroup {
@@ -237,7 +240,7 @@ function routeKey(candidate: Candidate): string {
   return candidate.name ? `${operator}|${candidate.name}` : `${operator}|way:${candidate.wayId}`;
 }
 
-function toCandidateRoute(ways: Candidate[]): CandidateRoute {
+function toCandidateRoute(ways: Candidate[], exclusions: Exclusions): CandidateRoute {
   const ports: string[] = [];
   for (const way of ways) {
     for (const end of [way.from, way.to]) {
@@ -246,6 +249,8 @@ function toCandidateRoute(ways: Candidate[]): CandidateRoute {
   }
   const covered = ways.filter((w) => w.coverage !== "none").length;
   const first = ways[0];
+  // 1本でも対象外と記録されていれば、その候補ごと分母から外す（線の分かれ方は OSM の都合なので）。
+  const excluded = ways.map((w) => exclusions.get(w.wayId)).find((e) => e !== undefined);
   return {
     operator: first?.operator,
     name: first?.name,
@@ -256,6 +261,7 @@ function toCandidateRoute(ways: Candidate[]): CandidateRoute {
     region: first?.region ?? "不明",
     coverage: covered === 0 ? "none" : covered === ways.length ? "covered" : "partial",
     international: ways.some((w) => w.international),
+    ...(excluded ? { excluded } : {}),
   };
 }
 
@@ -264,6 +270,7 @@ export function buildSurvey(
   terminals: OsmTerminal[],
   registry: Registry,
   osmTimestamp: string,
+  exclusions: Exclusions = new Map(),
 ): Survey {
   const ports = [...registry.ports.values()];
   const referenced = new Set(
@@ -306,7 +313,7 @@ export function buildSurvey(
     if (list) list.push(candidate);
     else grouped.set(key, [candidate]);
   }
-  const routes = [...grouped.values()].map(toCandidateRoute);
+  const routes = [...grouped.values()].map((list) => toCandidateRoute(list, exclusions));
 
   const registeredByOperator = new Map<string, number>();
   for (const route of registry.routes) {
@@ -325,7 +332,8 @@ export function buildSurvey(
   const groups: OperatorGroup[] = [...byOperator].map(([operator, list]) => ({
     operator,
     routes: [...list].sort((a, b) => a.region.localeCompare(b.region) || b.lengthKm - a.lengthKm),
-    uncovered: list.filter((r) => r.coverage !== "covered" && !r.international).length,
+    uncovered: list.filter((r) => r.coverage !== "covered" && !r.international && !r.excluded)
+      .length,
     registeredRoutes: operator
       .split(";")
       .reduce(
@@ -342,7 +350,7 @@ export function buildSurvey(
 
   const regionCounts = new Map<string, { uncovered: number; covered: number }>();
   for (const route of routes) {
-    if (route.international) continue;
+    if (route.international || route.excluded) continue;
     const counts = regionCounts.get(route.region) ?? { uncovered: 0, covered: 0 };
     if (route.coverage === "covered") counts.covered++;
     else counts.uncovered++;
@@ -383,7 +391,8 @@ const TABLE_HEADER = [
 ];
 
 export function renderMarkdown(survey: Survey): string {
-  const domestic = survey.routes.filter((r) => !r.international);
+  const excluded = survey.routes.filter((r) => r.excluded);
+  const domestic = survey.routes.filter((r) => !r.international && !r.excluded);
   const uncovered = domestic.filter((r) => r.coverage !== "covered");
   const lines: string[] = [];
 
@@ -396,7 +405,9 @@ export function renderMarkdown(survey: Survey): string {
   lines.push("");
   lines.push(
     "OSM に線がない航路（推定形状で描く航路）はここに出てこない。逆に、OSM の `route=ferry` には対象航路で",
-    "ないものも多く含まれる（湖の遊覧船、テーマパークの乗り物、貨物、廃止済みなど）。数は分母の目安として読む。",
+    "ないもの（湖の遊覧船、テーマパークの乗り物、貨物、廃止済みなど）も入っている。調べて対象外と判断したものは",
+    "[`data/excluded.yaml`](../data/excluded.yaml) に記録し、分母から外している（下の「対象外と判断した候補」）。",
+    "まだ調べていない対象外はここに残るので、数は分母の目安として読む。",
   );
   lines.push("");
   lines.push(
@@ -412,7 +423,10 @@ export function renderMarkdown(survey: Survey): string {
   lines.push("");
   lines.push(`- OSM の \`route=ferry\` の way：${survey.ways.length} 本`);
   lines.push(`- まとめた候補：${survey.routes.length} 件`);
-  lines.push(`  - 国際航路とみられるもの：${survey.routes.length - domestic.length} 件`);
+  lines.push(
+    `  - 国際航路とみられるもの：${survey.routes.filter((r) => r.international && !r.excluded).length} 件`,
+  );
+  lines.push(`  - 調べて対象外と判断したもの：${excluded.length} 件`);
   lines.push(
     `  - 台帳に入っているもの：${domestic.filter((r) => r.coverage === "covered").length} 件`,
   );
@@ -450,7 +464,33 @@ export function renderMarkdown(survey: Survey): string {
     lines.push("");
     if (website) lines.push(`OSM に書かれている URL：${website}`, "");
     lines.push(...TABLE_HEADER);
-    for (const route of group.routes) lines.push(routeRow(route));
+    for (const route of group.routes) {
+      if (route.excluded) continue;
+      lines.push(routeRow(route));
+    }
+    lines.push("");
+  }
+
+  if (excluded.length > 0) {
+    lines.push("## 対象外と判断した候補");
+    lines.push("");
+    lines.push(
+      "`CONTEXT.md`「対象航路」に当てはまらないと判断したもの。判断を見直したくなったら",
+      "[`data/excluded.yaml`](../data/excluded.yaml) から消す。",
+    );
+    lines.push("");
+    lines.push("| OSM の名称 | 端に出てくる港 | 地域 | 区分 | 理由 | way |");
+    lines.push("|---|---|---|---|---|---|");
+    for (const route of [...excluded].sort(
+      (a, b) => a.region.localeCompare(b.region) || (a.name ?? "").localeCompare(b.name ?? ""),
+    )) {
+      const reason = route.excluded as Exclusion;
+      lines.push(
+        `| ${route.name ?? "—"} | ${route.ports.join(" / ")} | ${route.region} |` +
+          ` ${EXCLUSION_REASONS[reason.reason]} | ${reason.note} |` +
+          ` ${route.ways.map((w) => w.wayId).join(" ")} |`,
+      );
+    }
     lines.push("");
   }
 
@@ -462,7 +502,7 @@ export function renderMarkdown(survey: Survey): string {
     lines.push("");
     lines.push(...TABLE_HEADER);
     for (const route of orphans.routes) {
-      if (route.coverage === "covered") continue;
+      if (route.coverage === "covered" || route.excluded) continue;
       lines.push(routeRow(route));
     }
     lines.push("");

@@ -1,0 +1,37 @@
+id: nakajima-kisen-nishisen-ferry
+name: 西線（フェリー）
+operator: 中島汽船
+vesselType: ferry
+status: operating
+officialUrl: http://www.nakajimakisen.co.jp/
+portsOfCall: [mitsuhama, takahama, tsurushima, kounoura, futagami, tsuwaji, motonuwa, kaminuwa, nakajima-nishinaka]
+legs:
+  - from: mitsuhama
+    to: takahama
+    osmWays: [987806887]
+  - from: takahama
+    to: tsurushima
+    osmWays: [495700798]
+  - from: tsurushima
+    to: kounoura
+    osmWays: [495700800]
+  - from: kounoura
+    to: futagami
+    osmWays: [988027591]
+  - from: futagami
+    to: tsuwaji
+    osmWays: [988027606]
+  - from: tsuwaji
+    to: motonuwa
+    osmWays: [988027618]
+  - from: motonuwa
+    to: kaminuwa
+    osmWays: [988027619]
+  - from: kaminuwa
+    to: nakajima-nishinaka
+    osmWays: [988027626]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - http://www.nakajimakisen.co.jp/
+    - http://www.nakajimakisen.co.jp/contents/time-table.html

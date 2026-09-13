@@ -1,0 +1,22 @@
+id: imabari-sekizen-ferry
+name: せきぜん渡船（フェリー）
+operator: 今治市
+vesselType: ferry
+status: operating
+officialUrl: https://www.city.imabari.ehime.jp/kotsus/tosen/sekizen/
+portsOfCall: [imabari, oge, kooge, okamura]
+legs:
+  - from: imabari
+    to: oge
+    osmWays: [369489093]
+  - from: oge
+    to: kooge
+    osmWays: [43007718]
+  - from: kooge
+    to: okamura
+    osmWays: [43007719]
+note: 船員不足のため、当面の間は毎週月曜日と木曜日が全便運休。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.city.imabari.ehime.jp/kotsus/tosen/sekizen/

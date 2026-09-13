@@ -1,0 +1,46 @@
+{
+  "type": "Feature",
+  "properties": {
+    "from": "matsuyama",
+    "to": "takahama",
+    "fromCoord": [
+      132.7039,
+      33.8891
+    ],
+    "toCoord": [
+      132.70085,
+      33.88338
+    ],
+    "method": "corridor-grid-v2",
+    "stage": "corridor",
+    "cellSizeM": 20,
+    "snapFromM": 0.0,
+    "snapToM": 0.0,
+    "landCrossingM": 0.0
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        132.7039,
+        33.8891
+      ],
+      [
+        132.704007,
+        33.889177
+      ],
+      [
+        132.699457,
+        33.887378
+      ],
+      [
+        132.700757,
+        33.883421
+      ],
+      [
+        132.70085,
+        33.88338
+      ]
+    ]
+  }
+}

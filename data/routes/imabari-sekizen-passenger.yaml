@@ -1,0 +1,24 @@
+id: imabari-sekizen-passenger
+name: せきぜん渡船（旅客船）
+operator: 今治市
+vesselType: passenger
+status: operating
+officialUrl: https://www.city.imabari.ehime.jp/kotsus/tosen/sekizen/
+portsOfCall: [imabari, munakata, oge, kooge, okamura]
+legs:
+  - from: imabari
+    to: munakata
+    osmWays: [699488574]
+  - from: munakata
+    to: oge
+    osmWays: [699488573]
+  - from: oge
+    to: kooge
+    osmWays: [43007718]
+  - from: kooge
+    to: okamura
+    osmWays: [43007719]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.city.imabari.ehime.jp/kotsus/tosen/sekizen/

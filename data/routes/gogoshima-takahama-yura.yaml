@@ -1,0 +1,17 @@
+id: gogoshima-takahama-yura
+name: 由良～高浜航路
+operator: ごごしま
+vesselType: ferry
+status: operating
+officialUrl: https://gogoshima-ferry.com/
+durationMinutes: 13
+portsOfCall: [takahama, yura]
+legs:
+  - from: takahama
+    to: yura
+    osmWays: [572267406]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://gogoshima-ferry.com/
+    - https://gogoshima-ferry.com/timetable_faretable/

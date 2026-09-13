@@ -23,6 +23,7 @@ function route(id: string, overrides: Partial<RouteDetail> = {}): RouteDetail {
       { id: "miyajima", name: "宮島" },
     ],
     hasEstimatedLegs: false,
+    bounds: [132.3, 34.29, 132.33, 34.32],
     ...overrides,
   };
 }

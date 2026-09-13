@@ -1,13 +1,8 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./style.css";
-import {
-  type LngLat,
-  Map as MapLibreMap,
-  NavigationControl,
-  Popup,
-  setWorkerUrl,
-} from "maplibre-gl";
+import { LngLat, Map as MapLibreMap, NavigationControl, Popup, setWorkerUrl } from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
+import { formatPermalink, parsePermalink } from "./domain/permalink.ts";
 import { PUBLIC_DATA_FILES, type RouteDetail } from "./domain/publicData.ts";
 import {
   matchesFilter,
@@ -58,10 +53,15 @@ const routeDetails = fetch(`${dataBaseUrl}${PUBLIC_DATA_FILES.routeDetails}`).th
   },
 );
 
+/** URL に入っている表示位置と航路（docs/spec.md「パーマリンク」）。 */
+const initial = parsePermalink(window.location.hash);
+
 const map = new MapLibreMap({
   container: "map",
   style: createBaseStyle(),
-  bounds: JAPAN_BOUNDS,
+  ...(initial.view
+    ? { center: [initial.view.lon, initial.view.lat] as [number, number], zoom: initial.view.zoom }
+    : { bounds: JAPAN_BOUNDS }),
   maxZoom: 17,
   // 既定では画面幅 640px 未満で出典が折りたたまれる。仕様では常に表示する
   attributionControl: { compact: false },
@@ -80,6 +80,19 @@ async function initialize(): Promise<void> {
   addRouteLayers(map, dataBaseUrl);
   addPortLayers(map, dataBaseUrl);
 
+  /** 選んでいる航路。URL に書き戻すために持つ（航路の一覧を出しているときは undefined）。 */
+  let selectedRouteId = initial.routeId;
+  /** 履歴を汚さないように replaceState で書き換える（戻るボタンで1手ずつ戻れても嬉しくない）。 */
+  const writePermalink = () => {
+    const center = map.getCenter();
+    const hash = formatPermalink({
+      view: { zoom: map.getZoom(), lat: center.lat, lon: center.lng },
+      routeId: selectedRouteId,
+    });
+    const { pathname, search } = window.location;
+    window.history.replaceState(null, "", `${pathname}${search}${hash}`);
+  };
+
   const details = await routeDetails;
   const byId = new Map(details.map((route) => [route.id, route]));
   const byPort = routesByPort(details);
@@ -94,16 +107,23 @@ async function initialize(): Promise<void> {
     maxWidth: "min(340px, 90vw)",
     closeOnClick: false,
   });
-  popup.on("close", () => highlightRoutes(map, null));
+  popup.on("close", () => {
+    highlightRoutes(map, null);
+    selectedRouteId = undefined;
+    writePermalink();
+  });
 
-  const open = (content: HTMLElement, at: LngLat, highlighted: string[]) => {
+  const open = (content: HTMLElement, at: LngLat, highlighted: string[], routeId?: string) => {
+    selectedRouteId = routeId;
     popup.setLngLat(at).setDOMContent(content).addTo(map);
     highlightRoutes(map, highlighted);
     // 一覧から航路を選ぶと押したボタンが消えるので、開いた内容へフォーカスを移す
     content.tabIndex = -1;
     content.focus();
+    writePermalink();
   };
-  const showRoute = (route: RouteDetail, at: LngLat) => open(routeTicket(route), at, [route.id]);
+  const showRoute = (route: RouteDetail, at: LngLat) =>
+    open(routeTicket(route), at, [route.id], route.id);
   const showChoices = (heading: string, routes: RouteDetail[], at: LngLat) =>
     open(
       routeChoices(heading, routes, (route) => showRoute(route, at)),
@@ -136,6 +156,21 @@ async function initialize(): Promise<void> {
     else if (routes.length === 1) showRoute(only, event.lngLat);
     else showChoices(`この場所を通る航路（${routes.length}）`, routes, event.lngLat);
   });
+
+  map.on("moveend", writePermalink);
+
+  // URL で航路を指定されていたら、その航路に地図を寄せて詳細を開く
+  const linked = selectedRouteId === undefined ? undefined : byId.get(selectedRouteId);
+  if (linked) {
+    const [west, south, east, north] = linked.bounds;
+    if (!initial.view) {
+      map.fitBounds([west, south, east, north], { padding: 60, maxZoom: 12, animate: false });
+    }
+    showRoute(linked, new LngLat((west + east) / 2, (south + north) / 2));
+  } else {
+    selectedRouteId = undefined;
+  }
+  writePermalink();
 
   map.on("mousemove", (event) => {
     const clickable =

@@ -1,0 +1,27 @@
+id: nakajima-kisen-higashisen-ferry
+name: 東線（フェリー）
+operator: 中島汽船
+vesselType: ferry
+status: operating
+officialUrl: http://www.nakajimakisen.co.jp/
+portsOfCall: [mitsuhama, takahama, matsuyama, muzuki, nogutsuna, nakajima-oura]
+legs:
+  - from: mitsuhama
+    to: takahama
+    osmWays: [987806887]
+  - from: takahama
+    to: matsuyama
+  - from: matsuyama
+    to: muzuki
+    osmWays: [572267407]
+  - from: muzuki
+    to: nogutsuna
+    osmWays: [572267412]
+  - from: nogutsuna
+    to: nakajima-oura
+    osmWays: [988708905]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - http://www.nakajimakisen.co.jp/
+    - http://www.nakajimakisen.co.jp/contents/time-table.html

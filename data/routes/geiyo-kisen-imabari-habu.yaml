@@ -1,0 +1,34 @@
+id: geiyo-kisen-imabari-habu
+name: 今治～土生航路
+operator: 芸予汽船
+vesselType: highspeed
+status: operating
+officialUrl: https://geiyokisen.com/
+durationMinutes: 65
+portsOfCall: [imabari, tomoura, kinoura, iwagi, sashima, yuge, ikina, habu]
+legs:
+  - from: imabari
+    to: tomoura
+    osmWays: [848183740]
+  - from: tomoura
+    to: kinoura
+    osmWays: [858996227]
+  - from: kinoura
+    to: iwagi
+    osmWays: [858996225]
+  - from: iwagi
+    to: sashima
+    osmWays: [858996224]
+  - from: sashima
+    to: yuge
+    osmWays: [858996223]
+  - from: yuge
+    to: ikina
+    osmWays: [858996222]
+  - from: ikina
+    to: habu
+    osmWays: [858996221]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://geiyokisen.com/

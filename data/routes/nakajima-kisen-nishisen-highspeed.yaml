@@ -1,0 +1,28 @@
+id: nakajima-kisen-nishisen-highspeed
+name: 西線（高速船）
+operator: 中島汽船
+vesselType: highspeed
+status: operating
+officialUrl: http://www.nakajimakisen.co.jp/
+portsOfCall: [takahama, kounoura, kaminuwa, motonuwa, tsuwaji, futagami]
+legs:
+  - from: takahama
+    to: kounoura
+  - from: kounoura
+    to: kaminuwa
+    osmWays: [988027639]
+  - from: kaminuwa
+    to: motonuwa
+    osmWays: [988027619]
+  - from: motonuwa
+    to: tsuwaji
+    osmWays: [988027618]
+  - from: tsuwaji
+    to: futagami
+    osmWays: [988027606]
+note: 2025年2月1日から当面の間、一部の便が運休している。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - http://www.nakajimakisen.co.jp/
+    - http://www.nakajimakisen.co.jp/contents/time-table.html

@@ -1,0 +1,17 @@
+id: gogoshima-takahama-tomari
+name: 泊～高浜航路
+operator: ごごしま
+vesselType: ferry
+status: operating
+officialUrl: https://gogoshima-ferry.com/
+durationMinutes: 10
+portsOfCall: [takahama, tomari]
+legs:
+  - from: takahama
+    to: tomari
+    osmWays: [563982816]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://gogoshima-ferry.com/
+    - https://gogoshima-ferry.com/timetable_faretable/

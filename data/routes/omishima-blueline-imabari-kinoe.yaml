@@ -1,0 +1,19 @@
+id: omishima-blueline-imabari-kinoe
+name: 今治～宗方～木江航路
+operator: 大三島ブルーライン
+vesselType: ferry
+status: operating
+officialUrl: https://omishima-bl.net/
+durationMinutes: 68
+portsOfCall: [imabari, munakata, kinoe]
+legs:
+  - from: imabari
+    to: munakata
+    osmWays: [699488574]
+  - from: munakata
+    to: kinoe
+    osmWays: [43149072]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://omishima-bl.net/

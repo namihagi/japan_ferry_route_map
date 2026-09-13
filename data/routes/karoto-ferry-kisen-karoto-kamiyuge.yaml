@@ -1,0 +1,16 @@
+id: karoto-ferry-kisen-karoto-kamiyuge
+name: 家老渡～上弓削航路
+operator: 家老渡フェリー汽船
+vesselType: ferry
+status: operating
+officialUrl: https://www.town.kamijima.lg.jp/site/access/5641.html
+portsOfCall: [karoto, kamiyuge]
+legs:
+  - from: karoto
+    to: kamiyuge
+    osmWays: [43210135]
+note: 日曜日とドック時は全便運休。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.town.kamijima.lg.jp/site/access/5641.html

@@ -623,7 +623,7 @@
   lat: 34.2398
 
 - id: matsuyama
-  name: 松山
+  name: 松山観光港
   lon: 132.7039
   lat: 33.8891
 
@@ -821,3 +821,143 @@
   name: 伊保田
   lon: 132.43913
   lat: 33.94422
+
+- id: takahama
+  name: 高浜
+  lon: 132.70085
+  lat: 33.88338
+
+- id: tomari
+  name: 泊（興居島）
+  lon: 132.68130
+  lat: 33.88233
+
+- id: yura
+  name: 由良（興居島）
+  lon: 132.68179
+  lat: 33.90244
+
+- id: muzuki
+  name: 睦月
+  lon: 132.66552
+  lat: 33.95644
+
+- id: nogutsuna
+  name: 野忽那
+  lon: 132.68825
+  lat: 33.97542
+
+- id: nakajima-oura
+  name: 大浦（中島）
+  lon: 132.63013
+  lat: 33.97307
+
+- id: nakajima-nishinaka
+  name: 西中（中島）
+  lon: 132.60479
+  lat: 33.98431
+
+- id: tsurushima
+  name: 釣島
+  lon: 132.63991
+  lat: 33.89432
+
+- id: kounoura
+  name: 神浦
+  lon: 132.60398
+  lat: 33.94966
+
+- id: futagami
+  name: 二神
+  lon: 132.53716
+  lat: 33.93342
+
+- id: tsuwaji
+  name: 津和地
+  lon: 132.51627
+  lat: 33.98312
+
+- id: motonuwa
+  name: 元怒和
+  lon: 132.54055
+  lat: 33.97477
+
+- id: kaminuwa
+  name: 上怒和
+  lon: 132.55748
+  lat: 33.98663
+
+- id: imabari
+  name: 今治
+  lon: 133.00490
+  lat: 34.06998
+
+- id: tomoura
+  name: 友浦
+  lon: 133.08268
+  lat: 34.15230
+
+- id: kinoura
+  name: 木浦
+  lon: 133.11873
+  lat: 34.20526
+
+- id: iwagi
+  name: 岩城
+  lon: 133.14725
+  lat: 34.24534
+
+- id: sashima
+  name: 佐島
+  lon: 133.18762
+  lat: 34.25389
+
+- id: yuge
+  name: 弓削
+  lon: 133.20037
+  lat: 34.25864
+
+- id: ikina
+  name: 生名
+  lon: 133.18558
+  lat: 34.26655
+
+- id: habu
+  name: 土生
+  lon: 133.17801
+  lat: 34.28347
+
+- id: munakata
+  name: 宗方
+  lon: 132.94287
+  lat: 34.20311
+
+- id: oge
+  name: 大下
+  lon: 132.92219
+  lat: 34.18880
+
+- id: kooge
+  name: 小大下
+  lon: 132.89958
+  lat: 34.19038
+
+- id: okamura
+  name: 岡村
+  lon: 132.88391
+  lat: 34.18448
+
+- id: kinoe
+  name: 木江
+  lon: 132.91743
+  lat: 34.23321
+
+- id: karoto
+  name: 家老渡
+  lon: 133.19880
+  lat: 34.27927
+
+- id: kamiyuge
+  name: 上弓削
+  lon: 133.20975
+  lat: 34.27726

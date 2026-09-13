@@ -1,0 +1,16 @@
+id: omishima-blueline-munakata-okamura
+name: 宗方～岡村航路
+operator: 大三島ブルーライン
+vesselType: ferry
+status: operating
+officialUrl: https://omishima-bl.net/
+durationMinutes: 23
+portsOfCall: [munakata, okamura]
+legs:
+  - from: munakata
+    to: okamura
+    osmWays: [699488572]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://omishima-bl.net/

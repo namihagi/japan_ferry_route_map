@@ -1,0 +1,54 @@
+{
+  "type": "Feature",
+  "properties": {
+    "from": "kounoura",
+    "to": "takahama",
+    "fromCoord": [
+      132.60398,
+      33.94966
+    ],
+    "toCoord": [
+      132.70085,
+      33.88338
+    ],
+    "method": "corridor-grid-v2",
+    "stage": "single",
+    "cellSizeM": 20,
+    "snapFromM": 28.3,
+    "snapToM": 0.0,
+    "landCrossingM": 0.0
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        132.60398,
+        33.94966
+      ],
+      [
+        132.604236,
+        33.949447
+      ],
+      [
+        132.66254,
+        33.871386
+      ],
+      [
+        132.667958,
+        33.868868
+      ],
+      [
+        132.685298,
+        33.869948
+      ],
+      [
+        132.700903,
+        33.883437
+      ],
+      [
+        132.70085,
+        33.88338
+      ]
+    ]
+  }
+}

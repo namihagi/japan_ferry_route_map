@@ -1,0 +1,23 @@
+id: nakajima-kisen-higashisen-highspeed
+name: 東線（高速船）
+operator: 中島汽船
+vesselType: highspeed
+status: operating
+officialUrl: http://www.nakajimakisen.co.jp/
+portsOfCall: [takahama, muzuki, nogutsuna, nakajima-oura]
+legs:
+  - from: takahama
+    to: muzuki
+    osmWays: [988708940]
+  - from: muzuki
+    to: nogutsuna
+    osmWays: [572267412]
+  - from: nogutsuna
+    to: nakajima-oura
+    osmWays: [988708905]
+note: 2025年2月1日から当面の間、一部の便が運休している。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - http://www.nakajimakisen.co.jp/
+    - http://www.nakajimakisen.co.jp/contents/time-table.html

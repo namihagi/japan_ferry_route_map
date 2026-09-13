@@ -8,6 +8,7 @@
 | `routes/<id>.yaml` | 航路台帳（1航路1ファイル） | 手で書く |
 | `osm/ways.geojson` | 航路台帳が参照する OSM の way のスナップショット | `pnpm data:import-osm` で取り込む（ADR 0003） |
 | `estimated/<港A>--<港B>.geojson` | 推定形状（港の組ごとに1つ。港 ID の辞書順で A < B） | `pnpm data:estimate` で計算する（ADR 0002） |
+| `excluded.yaml` | OSM の線のうち、対象航路でないと判断したものの記録 | 手で書く（下の「対象外の記録」） |
 
 画面が読み込む公開データ（`public/data/`）は、`pnpm data:build` がこれらから作ります。公開データはコミットしません。
 
@@ -30,6 +31,21 @@
 - `verification`：照合の記録。照合した日と、確かめた公式サイトの URL を書く。**これがない航路は公開しない。**
   - 照合で確かめるのは、航路名、運航会社、寄港地、船種、運航状態の5項目。
   - `durationMinutes`（所要時間）は、公式サイトで確かめられた場合だけ書く。
+
+## 対象外の記録
+
+`excluded.yaml` には、OSM の `route=ferry` のうち [`CONTEXT.md`](../CONTEXT.md) の「対象航路」に当てはまらないと判断した線を書きます。候補一覧（[`docs/coverage.md`](../docs/coverage.md)）の分母から外れるので、同じ線を何度も調べ直さずに済みます。
+
+```yaml
+- osmWays: [958462200, 958462201]
+  reason: sightseeing
+  note: 呉艦船めぐり。呉港に戻る周遊。
+```
+
+- `reason`：`sightseeing`（遊覧・周遊。湖の遊覧船も含む）、`discontinued`（廃止済み）、`cargo`（貨物）、`other`。
+- `note`：そう判断した根拠を書く。**必ず書く。**あとで判断を見直せなくなるため。
+- 判断が変わったら、その項目を消して `pnpm data:survey-osm` を実行し直す。
+- 迷ったら書かない。書かなければ候補一覧に残るだけだが、間違って書くと候補が見えなくなる。
 
 ## 推定形状
 

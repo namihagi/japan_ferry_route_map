@@ -101,6 +101,19 @@ describe("buildSurvey", () => {
   });
 });
 
+describe("buildSurvey（対象外の記録）", () => {
+  it("対象外と記録した way を含む候補は、未収録の数から外れる", () => {
+    const ways = [way(1, { name: "遊覧船" }, takamatsu, tonosho)];
+    const exclusions = new Map([
+      [1, { osmWays: [1], reason: "sightseeing" as const, note: "港に戻る周遊。" }],
+    ]);
+    const survey = buildSurvey(ways, [], registry(), "test", exclusions);
+    expect(survey.routes[0]?.excluded?.reason).toBe("sightseeing");
+    expect(survey.regions).toHaveLength(0);
+    expect(survey.groups[0]?.uncovered).toBe(0);
+  });
+});
+
 describe("classifyRegion", () => {
   it("緯度経度からおおまかな地域を返す", () => {
     expect(classifyRegion({ lon: 141.0, lat: 43.0 })).toBe("北海道");

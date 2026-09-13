@@ -10,6 +10,7 @@
  */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
+import { loadExclusions } from "./lib/excluded.ts";
 import type { OsmTerminal, OsmWay } from "./lib/osmSurvey.ts";
 import { buildSurvey, renderMarkdown } from "./lib/osmSurvey.ts";
 import { paths } from "./lib/paths.ts";
@@ -84,18 +85,22 @@ await mkdir(cacheDir, { recursive: true });
 const ways = await load<OsmWay>(cacheDir, "ways", refresh);
 const terminals = await load<OsmTerminal>(cacheDir, "terminals", refresh);
 const registry = await loadRegistry(paths.dataDir);
+const exclusions = await loadExclusions(paths.dataDir);
 
 const survey = buildSurvey(
   ways.elements,
   terminals.elements,
   registry,
   ways.osm3s?.timestamp_osm_base ?? "不明",
+  exclusions,
 );
 
 await writeFile(join(cacheDir, "survey.json"), JSON.stringify(survey, null, 2));
 await writeFile(paths.coverageDoc, renderMarkdown(survey));
 
-const uncovered = survey.routes.filter((r) => r.coverage !== "covered" && !r.international).length;
+const uncovered = survey.routes.filter(
+  (r) => r.coverage !== "covered" && !r.international && !r.excluded,
+).length;
 console.log(
   `way ${survey.ways.length} 本 → 候補 ${survey.routes.length} 件。うち未収録は ${uncovered} 件。${paths.coverageDoc} に書き出しました`,
 );

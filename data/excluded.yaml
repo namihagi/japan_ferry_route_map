@@ -1,0 +1,107 @@
+# OSM の route=ferry のうち、対象航路でないと判断したものの記録。
+# 対象航路の定義は CONTEXT.md「対象航路」。書き方は data/README.md「対象外の記録」。
+#
+# ここに書いたものは候補一覧（docs/coverage.md）の分母から外れます。同じ線を何度も調べ直さないために
+# 置いています。判断を見直したくなったら、その項目を消して pnpm data:survey-osm を実行し直してください。
+#
+# reason: sightseeing（遊覧・周遊）/ discontinued（廃止済み）/ cargo（貨物）/ other
+
+# --- 遊覧・周遊型の観光船 ---
+
+- osmWays: [142780299]
+  reason: sightseeing
+  note: 松江城の堀をめぐる堀川遊覧船。乗った場所に戻る周遊。
+
+- osmWays: [183704422]
+  reason: sightseeing
+  note: 鳥羽湾めぐり観光船。イルカ島を回って鳥羽港に戻る周遊。
+
+- osmWays: [184004557, 903804300]
+  reason: sightseeing
+  note: 九十九島の遊覧船（パールクイーン・みらい、リラクルーズ）。佐世保港に戻る周遊。
+
+- osmWays: [189337064]
+  reason: sightseeing
+  note: 伊豆諸島の遊覧船「イルカ号」。港に戻る周遊。
+
+- osmWays: [558706882]
+  reason: sightseeing
+  note: 八戸港観光遊覧船「はやぶさII」。八戸港に戻る周遊。
+
+- osmWays: [566479179, 867928794, 616159300]
+  reason: sightseeing
+  note: 長崎～端島（軍艦島）の上陸ツアー。長崎港に戻る周遊で、港どうしを結ぶ定期便ではない。
+
+- osmWays: [958462200, 958462201, 958462213]
+  reason: sightseeing
+  note: 呉艦船めぐり。呉港に戻る周遊。
+
+- osmWays: [1338997191]
+  reason: sightseeing
+  note: YOKOSUKA軍港めぐり。横須賀港に戻る周遊。
+
+- osmWays: [1075023763, 1075023764]
+  reason: sightseeing
+  note: 知床観光船「おーろら」。ウトロ港に戻る周遊。
+
+- osmWays: [1052170840, 1052170843]
+  reason: sightseeing
+  note: 気仙沼ベイクルーズ。湾内をめぐる観光船。
+
+- osmWays: [683845361]
+  reason: sightseeing
+  note: 保津川下り。川下りの観光船。
+
+# --- 湖の遊覧船（海の航路ではない） ---
+
+- osmWays: [168381757]
+  reason: sightseeing
+  note: 河口湖の遊覧船。
+
+- osmWays: [289143974]
+  reason: sightseeing
+  note: 桧原湖遊覧船「島めぐり」。
+
+- osmWays: [297889785]
+  reason: sightseeing
+  note: 田子倉湖遊覧船。
+
+- osmWays: [424485811, 1353364168]
+  reason: sightseeing
+  note: 黒部湖の遊覧船「ガルベ」。
+
+- osmWays: [553740871, 553740872, 553740873, 553740874]
+  reason: sightseeing
+  note: 芦ノ湖の遊覧船。
+
+- osmWays: [1433661712]
+  reason: sightseeing
+  note: 野尻湖一周遊覧船。
+
+# --- テーマパークの乗り物（東京ディズニーリゾート内） ---
+
+- osmWays:
+    [
+      71898114,
+      71898118,
+      72383847,
+      265738551,
+      301718500,
+      1267592728,
+      1289353983,
+      1289353984,
+      1289353985,
+      1289353986,
+      1289353987,
+      1301148484,
+      1301148485,
+      1308759321,
+    ]
+  reason: other
+  note: 東京ディズニーリゾート内のアトラクション。旅客航路ではない。
+
+# --- 廃止済み ---
+
+- osmWays: [925450690, 640903691]
+  reason: discontinued
+  note: 川崎近海汽船シルバーフェリーの八戸～室蘭・宮古～室蘭。公式サイトの航路案内は八戸～苫小牧だけで、室蘭の記載がない（2026-09-13 に確認）。

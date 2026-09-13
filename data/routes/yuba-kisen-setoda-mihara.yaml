@@ -1,0 +1,18 @@
+id: yuba-kisen-setoda-mihara
+name: 瀬戸田～三原航路（旅客船）
+operator: 弓場汽船
+vesselType: passenger
+status: operating
+officialUrl: https://habushosen.jp/
+durationMinutes: 30
+portsOfCall: [setoda, setoda-sawa, mihara]
+legs:
+  - from: setoda
+    to: setoda-sawa
+  - from: setoda-sawa
+    to: mihara
+    osmWays: [860085889]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://habushosen.jp/timetable

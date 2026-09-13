@@ -1,0 +1,17 @@
+id: sanko-kisen-sunoe-okogi
+name: 洲江～小漕航路
+operator: 三光汽船
+vesselType: ferry
+status: operating
+officialUrl: https://sankohkisen.jp/
+durationMinutes: 5
+portsOfCall: [sunoe, okogi]
+legs:
+  - from: sunoe
+    to: okogi
+    osmWays: [43149988]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://sankohkisen.jp/fare_times/
+    - https://sankohkisen.jp/fare_times/iwagi/

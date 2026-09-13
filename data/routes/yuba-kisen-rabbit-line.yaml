@@ -1,0 +1,16 @@
+id: yuba-kisen-rabbit-line
+name: ラビットライン（三原～大久野島）
+operator: 弓場汽船
+vesselType: highspeed
+status: suspended
+officialUrl: https://habushosen.jp/
+portsOfCall: [mihara, okunoshima]
+legs:
+  - from: mihara
+    to: okunoshima
+    osmWays: [860085890, 585837824]
+note: 土生商船グループの定期航路一覧に「運航休止」と書かれている。再開の時期は公表されていない。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://habushosen.jp/timetable

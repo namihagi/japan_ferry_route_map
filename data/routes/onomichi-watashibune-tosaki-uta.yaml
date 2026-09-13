@@ -1,0 +1,15 @@
+id: onomichi-watashibune-tosaki-uta
+name: 戸崎～歌航路
+operator: おのみち渡し船
+vesselType: ferry
+status: operating
+officialUrl: https://www.city.onomichi.hiroshima.jp/soshiki/32/65681.html
+portsOfCall: [tosaki, uta]
+legs:
+  - from: tosaki
+    to: uta
+    osmWays: [886667693]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.city.onomichi.hiroshima.jp/soshiki/32/65681.html

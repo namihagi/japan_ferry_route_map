@@ -1,0 +1,29 @@
+id: bingo-shosen-onomichi-tsuneishi-ferry
+name: 尾道～常石航路（フェリー）
+operator: 備後商船
+vesselType: ferry
+status: operating
+officialUrl: http://bingoshosen.co.jp/
+portsOfCall: [onomichi-ekimae, tosaki, uta, michigoe, momoshima-fukuda, tsuneishi]
+legs:
+  - from: onomichi-ekimae
+    to: tosaki
+    osmWays: [886667655]
+  - from: tosaki
+    to: uta
+    osmWays: [886667693]
+  - from: uta
+    to: michigoe
+    osmWays: [886667694]
+  - from: michigoe
+    to: momoshima-fukuda
+    osmWays: [537125315]
+  - from: momoshima-fukuda
+    to: tsuneishi
+    osmWays: [537125314]
+note: 車を積めるのは常石・福田・歌の間だけ。尾道・戸崎・満越では車の乗降ができない。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - http://bingoshosen.co.jp/
+    - http://bingoshosen.co.jp/fare/

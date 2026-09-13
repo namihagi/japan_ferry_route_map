@@ -1,0 +1,18 @@
+id: sanko-kisen-kanayama-akasaki
+name: 金山～赤崎航路
+operator: 三光汽船
+vesselType: ferry
+status: operating
+officialUrl: https://sankohkisen.jp/
+durationMinutes: 4
+portsOfCall: [kanayama, akasaki]
+legs:
+  - from: kanayama
+    to: akasaki
+    osmWays: [44306485]
+note: 土曜・日曜・祝日は全便運休。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://sankohkisen.jp/fare_times/
+    - https://sankohkisen.jp/fare_times/innoshima/

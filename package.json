@@ -12,6 +12,7 @@
     "preview": "vite preview",
     "data:build": "node scripts/build-data.ts",
     "data:import-osm": "node scripts/import-osm.ts",
+    "data:survey-osm": "node scripts/survey-osm.ts",
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
     "format": "biome check --write .",

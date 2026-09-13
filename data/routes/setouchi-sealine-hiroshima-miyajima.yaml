@@ -1,0 +1,20 @@
+id: setouchi-sealine-hiroshima-miyajima
+name: 広島～宮島航路
+operator: 瀬戸内シーライン
+vesselType: highspeed
+status: operating
+officialUrl: https://setonaikaikisen.co.jp/sealine/
+durationMinutes: 32
+portsOfCall: [hiroshima, prince-hotel, miyajima]
+legs:
+  - from: hiroshima
+    to: prince-hotel
+    osmWays: [1002003201]
+  - from: prince-hotel
+    to: miyajima
+    osmWays: [415510202]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://setonaikaikisen.co.jp/sealine/
+    - https://setonaikaikisen.co.jp/kouro/highspeedship/

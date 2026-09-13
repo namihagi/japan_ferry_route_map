@@ -1,0 +1,19 @@
+id: omishima-ferry-tadanoumi-sakari
+name: 忠海～大久野島～盛航路
+operator: 大三島フェリー
+vesselType: ferry
+status: operating
+officialUrl: http://sanyo-shosen.jp/omishima/
+portsOfCall: [tadanoumi, okunoshima, sakari]
+legs:
+  - from: tadanoumi
+    to: okunoshima
+    osmWays: [714001890]
+  - from: okunoshima
+    to: sakari
+    osmWays: [666229116]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - http://sanyo-shosen.jp/omishima/
+    - http://sanyo-shosen.jp/omishima/time.html

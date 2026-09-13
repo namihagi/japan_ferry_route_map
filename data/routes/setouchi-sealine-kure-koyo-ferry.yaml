@@ -1,0 +1,17 @@
+id: setouchi-sealine-kure-koyo-ferry
+name: 呉～江田島（小用）航路（フェリー）
+operator: 瀬戸内シーライン
+vesselType: ferry
+status: operating
+officialUrl: https://setonaikaikisen.co.jp/sealine/
+durationMinutes: 20
+portsOfCall: [kure, koyo]
+legs:
+  - from: kure
+    to: koyo
+    osmWays: [369486685]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://setonaikaikisen.co.jp/sealine/
+    - https://setonaikaikisen.co.jp/kouro/highspeedship3/

@@ -1,0 +1,22 @@
+id: setouchi-sealine-hiroshima-koyo
+name: 広島～江田島（小用）航路
+operator: 瀬戸内シーライン
+vesselType: highspeed
+status: operating
+officialUrl: https://setonaikaikisen.co.jp/sealine/
+durationMinutes: 27
+portsOfCall: [hiroshima, prince-hotel, kirikushi, koyo]
+legs:
+  - from: hiroshima
+    to: prince-hotel
+    osmWays: [1002003201]
+  - from: prince-hotel
+    to: kirikushi
+  - from: kirikushi
+    to: koyo
+note: 切串に寄港するのは日曜・祝日の一部の便だけ。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://setonaikaikisen.co.jp/sealine/
+    - https://setonaikaikisen.co.jp/kouro/highspeedship2/

@@ -961,3 +961,68 @@
   name: 上弓削
   lon: 133.20975
   lat: 34.27726
+
+- id: prince-hotel
+  name: プリンスホテル前
+  lon: 132.46533
+  lat: 34.34287
+
+- id: kirikushi
+  name: 切串
+  lon: 132.47512
+  lat: 34.28487
+
+- id: koyo
+  name: 小用
+  lon: 132.49301
+  lat: 34.24770
+
+- id: mitaka
+  name: 三高
+  lon: 132.40763
+  lat: 34.25900
+
+- id: takata
+  name: 高田
+  lon: 132.43516
+  lat: 34.23727
+
+- id: nakamachi
+  name: 中町
+  lon: 132.44427
+  lat: 34.22384
+
+- id: tadanoumi
+  name: 忠海
+  lon: 132.99380
+  lat: 34.33686
+
+- id: okunoshima
+  name: 大久野島
+  lon: 132.99916
+  lat: 34.30853
+
+- id: sakari
+  name: 盛（大三島）
+  lon: 133.02812
+  lat: 34.29404
+
+- id: onomichi-ekimae
+  name: 尾道（駅前）
+  lon: 133.19375
+  lat: 34.40344
+
+- id: mukaishima-tomihama
+  name: 向島（富浜）
+  lon: 133.19723
+  lat: 34.40021
+
+- id: onomichi-doto
+  name: 尾道（土堂）
+  lon: 133.20078
+  lat: 34.40665
+
+- id: mukaishima-kaneyoshi
+  name: 向島（兼吉）
+  lon: 133.20268
+  lat: 34.40517

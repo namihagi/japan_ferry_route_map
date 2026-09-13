@@ -1,0 +1,17 @@
+id: setouchi-sealine-hiroshima-mitaka
+name: 広島～江田島（三高）航路
+operator: 瀬戸内シーライン
+vesselType: ferry
+status: operating
+officialUrl: https://setonaikaikisen.co.jp/sealine/
+durationMinutes: 40
+portsOfCall: [hiroshima, mitaka]
+legs:
+  - from: hiroshima
+    to: mitaka
+    osmWays: [385404456]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://setonaikaikisen.co.jp/sealine/
+    - https://setonaikaikisen.co.jp/kouro/ferry/

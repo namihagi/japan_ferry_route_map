@@ -1,0 +1,15 @@
+id: onomichi-watashibune-ekimae-tomihama
+name: 尾道（駅前）～向島（富浜）航路
+operator: おのみち渡し船
+vesselType: ferry
+status: operating
+officialUrl: https://www.city.onomichi.hiroshima.jp/soshiki/32/65681.html
+portsOfCall: [onomichi-ekimae, mukaishima-tomihama]
+legs:
+  - from: onomichi-ekimae
+    to: mukaishima-tomihama
+    osmWays: [175361933]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.city.onomichi.hiroshima.jp/soshiki/32/65681.html

@@ -1,0 +1,19 @@
+id: setouchi-sealine-hiroshima-nakamachi
+name: 広島～江田島（高田・中町）航路
+operator: 瀬戸内シーライン
+vesselType: highspeed
+status: operating
+officialUrl: https://setonaikaikisen.co.jp/sealine/
+durationMinutes: 30
+portsOfCall: [hiroshima, takata, nakamachi]
+legs:
+  - from: hiroshima
+    to: takata
+    osmWays: [465626404]
+  - from: takata
+    to: nakamachi
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://setonaikaikisen.co.jp/sealine/
+    - https://setonaikaikisen.co.jp/kouro/highspeedship4/

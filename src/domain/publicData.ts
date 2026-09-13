@@ -29,6 +29,9 @@ export interface PortFeatureProperties {
   name: string;
 }
 
+/** 航路が収まる範囲（西, 南, 東, 北）。URL から航路を開いたときに、そこへ地図を寄せるために持つ。 */
+export type RouteBounds = [number, number, number, number];
+
 /** route-details.json の各要素。地図で航路を選んだときに見せる情報。 */
 export interface RouteDetail {
   id: string;
@@ -43,6 +46,8 @@ export interface RouteDetail {
   portsOfCall: { id: string; name: string }[];
   /** 推定形状の区間を含むか */
   hasEstimatedLegs: boolean;
+  /** 航路全体が収まる範囲 */
+  bounds: RouteBounds;
 }
 
 /** public/data/ 以下のファイル名。 */

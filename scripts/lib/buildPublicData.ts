@@ -3,6 +3,7 @@ import type {
   GeometrySource,
   LegFeatureProperties,
   PortFeatureProperties,
+  RouteBounds,
   RouteDetail,
 } from "../../src/domain/publicData.ts";
 import {
@@ -32,6 +33,13 @@ const round7 = (coordinates: Position[]): Position[] =>
   ]);
 
 const samePosition = (a: Position, b: Position) => a[0] === b[0] && a[1] === b[1];
+
+/** 航路が収まる範囲。日付変更線をまたぐ航路は国内にないので、単純な最小・最大でよい。 */
+function boundsOf(coordinates: Position[]): RouteBounds {
+  const lons = coordinates.map(([lon = 0]) => lon);
+  const lats = coordinates.map(([, lat = 0]) => lat);
+  return [Math.min(...lons), Math.min(...lats), Math.max(...lons), Math.max(...lats)];
+}
 
 /**
  * 区間の推定形状を、出発港から始まる向きで返す。
@@ -81,6 +89,7 @@ export function buildPublicData(
       skippedRouteIds.push(route.id);
       continue;
     }
+    const routeCoordinates: Position[] = [];
     route.legs.forEach((leg, legIndex) => {
       const where = `routes/${route.id}.yaml 区間 ${legIndex + 1}（${leg.from} → ${leg.to}）`;
       const from = registry.ports.get(leg.from);
@@ -114,6 +123,7 @@ export function buildPublicData(
         return;
       }
 
+      routeCoordinates.push(...coordinates);
       legFeatures.push({
         type: "Feature",
         properties: {
@@ -145,6 +155,14 @@ export function buildPublicData(
         name: registry.ports.get(id)?.name ?? id,
       })),
       hasEstimatedLegs: route.legs.some((leg) => !leg.osmWays),
+      bounds: boundsOf(
+        routeCoordinates.length > 0
+          ? routeCoordinates
+          : route.portsOfCall.flatMap((id) => {
+              const port = registry.ports.get(id);
+              return port ? [position(port)] : [];
+            }),
+      ),
     });
   }
 

@@ -1,0 +1,54 @@
+{
+  "type": "Feature",
+  "properties": {
+    "from": "himakajima",
+    "to": "kowa",
+    "fromCoord": [
+      136.99702,
+      34.70305
+    ],
+    "toCoord": [
+      136.91523,
+      34.77637
+    ],
+    "method": "corridor-grid-v2",
+    "stage": "single",
+    "cellSizeM": 20,
+    "snapFromM": 0.0,
+    "snapToM": 60.0,
+    "landCrossingM": 4.8
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        136.99702,
+        34.70305
+      ],
+      [
+        136.996912,
+        34.703133
+      ],
+      [
+        136.997131,
+        34.703312
+      ],
+      [
+        136.996912,
+        34.703492
+      ],
+      [
+        136.960359,
+        34.740724
+      ],
+      [
+        136.915926,
+        34.776337
+      ],
+      [
+        136.91523,
+        34.77637
+      ]
+    ]
+  }
+}

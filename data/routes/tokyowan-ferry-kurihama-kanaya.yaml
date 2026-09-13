@@ -1,0 +1,17 @@
+id: tokyowan-ferry-kurihama-kanaya
+name: 久里浜～金谷航路
+operator: 東京湾フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.tokyowanferry.com/
+durationMinutes: 40
+portsOfCall: [kurihama, kanaya]
+legs:
+  - from: kurihama
+    to: kanaya
+    osmWays: [369529590]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.tokyowanferry.com/
+    - https://www.tokyowanferry.com/diagram/route/

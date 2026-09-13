@@ -1,0 +1,17 @@
+id: suonada-ferry-tokuyama-taketazu
+name: 徳山～竹田津航路
+operator: スオーナダフェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.suonada.co.jp/
+durationMinutes: 120
+portsOfCall: [tokuyama, taketazu]
+legs:
+  - from: tokuyama
+    to: taketazu
+    osmWays: [377094800]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.suonada.co.jp/
+    - https://www.suonada.co.jp/c_timetable.html

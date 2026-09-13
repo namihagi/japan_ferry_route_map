@@ -1,0 +1,16 @@
+id: meikaijo-morozaki-himakajima-ferry
+name: カーフェリー 師崎～日間賀島
+operator: 名鉄海上観光船
+vesselType: ferry
+status: operating
+officialUrl: https://www.meikaijo.co.jp/
+portsOfCall: [morozaki, himakajima]
+legs:
+  - from: morozaki
+    to: himakajima
+    osmWays: [167287848]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.meikaijo.co.jp/
+    - https://www.meikaijo.co.jp/timetable

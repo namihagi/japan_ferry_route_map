@@ -1,0 +1,17 @@
+id: uwajima-unyu-yawatahama-beppu
+name: 別府航路
+operator: 宇和島運輸
+vesselType: ferry
+status: operating
+officialUrl: https://www.uwajimaunyu.co.jp/
+durationMinutes: 170
+portsOfCall: [yawatahama, beppu]
+legs:
+  - from: yawatahama
+    to: beppu
+    osmWays: [405059463]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.uwajimaunyu.co.jp/
+    - https://www.uwajimaunyu.co.jp/timetable/

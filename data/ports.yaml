@@ -701,3 +701,123 @@
   name: 下田
   lon: 138.9492
   lat: 34.6702
+
+- id: kurihama
+  name: 久里浜
+  lon: 139.71534
+  lat: 35.22004
+
+- id: kanaya
+  name: 金谷
+  lon: 139.81739
+  lat: 35.16936
+
+- id: toba
+  name: 鳥羽
+  lon: 136.84526
+  lat: 34.48400
+
+- id: irago
+  name: 伊良湖
+  lon: 137.01981
+  lat: 34.58412
+
+- id: kowa
+  name: 河和
+  lon: 136.91523
+  lat: 34.77637
+
+- id: morozaki
+  name: 師崎
+  lon: 136.97254
+  lat: 34.69770
+
+- id: himakajima
+  name: 日間賀島
+  lon: 136.99702
+  lat: 34.70305
+
+- id: shinojima
+  name: 篠島
+  lon: 137.00636
+  lat: 34.68292
+
+- id: yawatahama
+  name: 八幡浜
+  lon: 132.41510
+  lat: 33.45820
+
+- id: usuki
+  name: 臼杵
+  lon: 131.81053
+  lat: 33.12649
+
+- id: nagasu
+  name: 長洲
+  lon: 130.44288
+  lat: 32.92688
+
+- id: tabira
+  name: 多比良
+  lon: 130.30926
+  lat: 32.87584
+
+- id: tokuyama
+  name: 徳山
+  lon: 131.79893
+  lat: 34.04976
+
+- id: taketazu
+  name: 竹田津
+  lon: 131.56544
+  lat: 33.67874
+
+- id: kanita
+  name: 蟹田
+  lon: 140.64663
+  lat: 41.04920
+
+- id: wakinosawa
+  name: 脇野沢
+  lon: 140.82672
+  lat: 41.14477
+
+- id: shimizu
+  name: 清水
+  lon: 138.49085
+  lat: 35.02168
+
+- id: toi
+  name: 土肥
+  lon: 138.78607
+  lat: 34.90603
+
+- id: akashi
+  name: 明石
+  lon: 134.99021
+  lat: 34.64533
+
+- id: iwaya
+  name: 岩屋
+  lon: 135.02071
+  lat: 34.59040
+
+- id: miike
+  name: 三池
+  lon: 130.41662
+  lat: 33.01392
+
+- id: tomioka
+  name: 富岡
+  lon: 130.03493
+  lat: 32.52294
+
+- id: mogi
+  name: 茂木
+  lon: 129.91363
+  lat: 32.70750
+
+- id: ihota
+  name: 伊保田
+  lon: 132.43913
+  lat: 33.94422

@@ -1,0 +1,17 @@
+id: isewan-ferry-toba-irago
+name: 鳥羽～伊良湖航路
+operator: 伊勢湾フェリー
+vesselType: ferry
+status: operating
+officialUrl: https://www.isewanferry.co.jp/
+durationMinutes: 60
+portsOfCall: [toba, irago]
+legs:
+  - from: toba
+    to: irago
+    osmWays: [30263603]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.isewanferry.co.jp/
+    - https://www.isewanferry.co.jp/publics/index/21/

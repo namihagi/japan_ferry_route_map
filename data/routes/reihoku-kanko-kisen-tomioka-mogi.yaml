@@ -1,0 +1,17 @@
+id: reihoku-kanko-kisen-tomioka-mogi
+name: 富岡～茂木航路
+operator: 苓北観光汽船
+vesselType: highspeed
+status: operating
+officialUrl: https://www.reihoku-kisen.jp/
+durationMinutes: 45
+portsOfCall: [tomioka, mogi]
+legs:
+  - from: tomioka
+    to: mogi
+    osmWays: [931695581]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://www.reihoku-kisen.jp/
+    - https://www.reihoku-kisen.jp/information.php

@@ -11,6 +11,8 @@
 
 画面が読み込む公開データ（`public/data/`）は、`pnpm data:build` がこれらから作ります。公開データはコミットしません。
 
+下書きは `.cache/drafts/` に作ります（`pnpm data:draft`）。照合前の下書きはリポジトリに置きません。手順は [`add-route`](../.claude/skills/add-route/SKILL.md) にあります。
+
 ## 航路台帳の書き方
 
 スキーマの正本は [`scripts/lib/registry.ts`](../scripts/lib/registry.ts) にあります。

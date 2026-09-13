@@ -1,0 +1,46 @@
+{
+  "type": "Feature",
+  "properties": {
+    "from": "mukaida",
+    "to": "sunami",
+    "fromCoord": [
+      133.09944,
+      34.32946
+    ],
+    "toCoord": [
+      133.08403,
+      34.35978
+    ],
+    "method": "corridor-grid-v2",
+    "stage": "single",
+    "cellSizeM": 20,
+    "snapFromM": 0.0,
+    "snapToM": 0.0,
+    "landCrossingM": 0.0
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        133.09944,
+        34.32946
+      ],
+      [
+        133.099536,
+        34.32953
+      ],
+      [
+        133.085159,
+        34.343739
+      ],
+      [
+        133.08407,
+        34.359747
+      ],
+      [
+        133.08403,
+        34.35978
+      ]
+    ]
+  }
+}

@@ -1026,3 +1026,113 @@
   name: 向島（兼吉）
   lon: 133.20268
   lat: 34.40517
+
+- id: tosaki
+  name: 戸崎
+  lon: 133.24335
+  lat: 34.39861
+
+- id: uta
+  name: 歌
+  lon: 133.23963
+  lat: 34.39849
+
+- id: michigoe
+  name: 満越
+  lon: 133.26163
+  lat: 34.39380
+
+- id: momoshima-fukuda
+  name: 福田（百島）
+  lon: 133.27291
+  lat: 34.38025
+
+- id: tsuneishi
+  name: 常石
+  lon: 133.29650
+  lat: 34.38399
+
+- id: innoshima-mall
+  name: 因島モール
+  lon: 133.16388
+  lat: 34.29548
+
+- id: shigei-nishi
+  name: 重井西
+  lon: 133.13987
+  lat: 34.34075
+
+- id: shigei-higashi
+  name: 重井東
+  lon: 133.14920
+  lat: 34.35205
+
+- id: sunoue
+  name: 須ノ上
+  lon: 133.12700
+  lat: 34.33677
+
+- id: sagi
+  name: 鷺（佐木島）
+  lon: 133.11829
+  lat: 34.35764
+
+- id: mukaida
+  name: 向田（佐木島）
+  lon: 133.09944
+  lat: 34.32946
+
+- id: mihara
+  name: 三原
+  lon: 133.08218
+  lat: 34.39809
+
+- id: sunami
+  name: 須波
+  lon: 133.08403
+  lat: 34.35978
+
+- id: setoda
+  name: 瀬戸田
+  lon: 133.08429
+  lat: 34.30470
+
+- id: setoda-sawa
+  name: 沢（生口島）
+  lon: 133.09028
+  lat: 34.31305
+
+- id: onomichi-shinhama
+  name: 尾道（新浜）
+  lon: 133.17745
+  lat: 34.39880
+
+- id: sunoe
+  name: 洲江（生口島）
+  lon: 133.14400
+  lat: 34.28503
+
+- id: okogi
+  name: 小漕（岩城島）
+  lon: 133.14492
+  lat: 34.27890
+
+- id: akasaki
+  name: 赤崎（生口島）
+  lon: 133.14924
+  lat: 34.29893
+
+- id: kanayama
+  name: 金山（因島）
+  lon: 133.15546
+  lat: 34.29925
+
+- id: osakikami-akashi
+  name: 明石（大崎上島）
+  lon: 132.87590
+  lat: 34.20627
+
+- id: konaga
+  name: 小長（大崎下島）
+  lon: 132.85335
+  lat: 34.18840

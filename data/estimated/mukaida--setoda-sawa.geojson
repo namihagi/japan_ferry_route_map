@@ -1,0 +1,50 @@
+{
+  "type": "Feature",
+  "properties": {
+    "from": "mukaida",
+    "to": "setoda-sawa",
+    "fromCoord": [
+      133.09944,
+      34.32946
+    ],
+    "toCoord": [
+      133.09028,
+      34.31305
+    ],
+    "method": "corridor-grid-v2",
+    "stage": "corridor",
+    "cellSizeM": 20,
+    "snapFromM": 0.0,
+    "snapToM": 40.0,
+    "landCrossingM": 0.0
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        133.09944,
+        34.32946
+      ],
+      [
+        133.09936,
+        34.329515
+      ],
+      [
+        133.095222,
+        34.332573
+      ],
+      [
+        133.094351,
+        34.332573
+      ],
+      [
+        133.090213,
+        34.313327
+      ],
+      [
+        133.09028,
+        34.31305
+      ]
+    ]
+  }
+}

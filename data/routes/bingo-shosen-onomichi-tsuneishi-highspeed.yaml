@@ -1,0 +1,25 @@
+id: bingo-shosen-onomichi-tsuneishi-highspeed
+name: 尾道～常石航路（高速船）
+operator: 備後商船
+vesselType: highspeed
+status: operating
+officialUrl: http://bingoshosen.co.jp/
+portsOfCall: [onomichi-ekimae, tosaki, michigoe, momoshima-fukuda, tsuneishi]
+legs:
+  - from: onomichi-ekimae
+    to: tosaki
+    osmWays: [886667655]
+  - from: tosaki
+    to: michigoe
+  - from: michigoe
+    to: momoshima-fukuda
+    osmWays: [537125315]
+  - from: momoshima-fukuda
+    to: tsuneishi
+    osmWays: [537125314]
+note: 高速船は歌港に寄港しない。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - http://bingoshosen.co.jp/
+    - http://bingoshosen.co.jp/fare/

@@ -1,0 +1,16 @@
+id: shimanami-kaiun-konaga-akashi
+name: 小長～明石航路
+operator: しまなみ海運
+vesselType: ferry
+status: operating
+officialUrl: https://habushosen.jp/
+durationMinutes: 15
+portsOfCall: [konaga, osakikami-akashi]
+legs:
+  - from: konaga
+    to: osakikami-akashi
+    osmWays: [43010472]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://habushosen.jp/timetable

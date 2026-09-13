@@ -1,0 +1,28 @@
+id: habu-shosen-habu-mihara
+name: 土生～三原航路
+operator: 土生商船
+vesselType: highspeed
+status: operating
+officialUrl: https://habushosen.jp/
+durationMinutes: 40
+portsOfCall: [habu, ikina, innoshima-mall, shigei-nishi, sagi, mihara]
+legs:
+  - from: habu
+    to: ikina
+    osmWays: [862429035]
+  - from: ikina
+    to: innoshima-mall
+    osmWays: [862429034]
+  - from: innoshima-mall
+    to: shigei-nishi
+    osmWays: [860085945]
+  - from: shigei-nishi
+    to: sagi
+    osmWays: [860085927]
+  - from: sagi
+    to: mihara
+    osmWays: [860085926]
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://habushosen.jp/timetable

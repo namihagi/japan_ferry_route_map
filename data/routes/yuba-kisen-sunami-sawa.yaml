@@ -1,0 +1,17 @@
+id: yuba-kisen-sunami-sawa
+name: 須波～沢航路（フェリー）
+operator: 弓場汽船
+vesselType: ferry
+status: operating
+officialUrl: https://habushosen.jp/
+durationMinutes: 30
+portsOfCall: [sunami, mukaida, setoda-sawa]
+legs:
+  - from: sunami
+    to: mukaida
+  - from: mukaida
+    to: setoda-sawa
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://habushosen.jp/timetable

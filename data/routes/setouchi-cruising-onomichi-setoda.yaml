@@ -1,0 +1,29 @@
+id: setouchi-cruising-onomichi-setoda
+name: 尾道～瀬戸田航路
+operator: 瀬戸内クルージング
+vesselType: passenger
+status: operating
+officialUrl: https://s-cruise.jp/
+durationMinutes: 50
+portsOfCall: [onomichi-ekimae, onomichi-shinhama, shigei-higashi, sunoue, setoda-sawa, setoda]
+legs:
+  - from: onomichi-ekimae
+    to: onomichi-shinhama
+    osmWays: [886217588]
+  - from: onomichi-shinhama
+    to: shigei-higashi
+    osmWays: [886217542]
+  - from: shigei-higashi
+    to: sunoue
+    osmWays: [886217541]
+  - from: sunoue
+    to: setoda-sawa
+    osmWays: [886217513]
+  - from: setoda-sawa
+    to: setoda
+note: 沢に寄るのは一部の便だけ。
+verification:
+  checkedOn: "2026-09-13"
+  sources:
+    - https://s-cruise.jp/timetable/
+    - https://s-cruise.jp/ship
